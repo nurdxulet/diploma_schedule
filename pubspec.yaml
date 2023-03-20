@@ -1,0 +1,146 @@
+name: schedule
+description: A new Flutter project for schedule.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.1 <3.0.0'
+
+dependencies:
+  audioplayers: ^3.0.1
+  auto_route: ^5.0.4
+  bloc: ^8.1.1
+  bloc_concurrency: ^0.2.1
+  cached_network_image: ^3.2.3
+  carousel_slider: ^4.2.1
+  clippy_flutter: ^1.1.1
+  collection: ^1.17.0
+  convex_bottom_bar: ^3.1.0+1
+  country_picker: ^2.0.19
+  cupertino_icons: ^1.0.5
+  dio: ^4.0.6
+  dotted_border: ^2.0.0+3
+  drift: ^2.4.2
+  dropdown_button2: ^1.9.4
+  equatable: ^2.0.5
+  expandable_page_view: ^1.0.17
+  extended_image: ^7.0.2
+  file_picker: ^5.2.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_rating_bar: ^4.0.1
+  flutter_staggered_grid_view: ^0.6.2
+  flutter_svg: ^2.0.2
+  fluttertoast: ^8.1.3
+  freezed_annotation:
+  google_fonts: ^4.0.3
+  grouped_list: ^5.1.2
+  image_picker: ^0.8.6+4
+  internet_connection_checker: ^1.0.0+1
+  intl: ^0.17.0
+  json_annotation: ^4.8.0
+  json_serializable: ^6.6.1
+  l: ^3.2.0
+  loader_overlay: ^2.1.0
+  lottie: ^2.2.0
+  mask_text_input_formatter: ^2.1.0
+  meta: ^1.8.0
+  # open_file: ^2.1.1
+  # open_file_plus: ^3.4.0
+  package_info_plus: ^3.0.3
+  path: ^1.8.2
+  path_provider: ^2.0.11
+  permission_handler: ^10.2.0
+  pinput: ^2.2.31
+  pretty_dio_logger: ^1.2.0-beta-1
+  provider: ^6.0.5
+  pull_to_refresh: ^2.0.0
+  pure: ^0.2.0
+  rxdart: ^0.27.7
+  scroll_to_index: ^3.0.1
+  select_annotation: ^0.2.0
+  shared_preferences: ^2.0.18
+  shimmer: ^2.0.0
+  sqlite3_flutter_libs: ^0.5.13
+  stack_trace: ^1.11.0
+  staggered_grid_view_flutter: ^0.0.4
+  stream_bloc: ^0.5.3
+  syncfusion_flutter_charts: ^20.4.52
+  syncfusion_flutter_gauges: ^20.4.52
+  # syncfusion_flutter_pdfviewer: ^20.4.51
+  table_calendar: ^3.0.8
+  timelines: ^0.1.0
+  url_launcher: ^6.1.10
+  video_player: ^2.5.1
+
+
+dev_dependencies:
+  auto_route_generator: ^5.0.3
+  bloc_test: ^9.1.0
+  build_runner: ^2.3.3
+  drift_dev: ^2.4.1
+  flutter_gen_runner: ^5.2.0
+  flutter_launcher_icons: ^0.12.0
+  flutter_lints: ^2.0.1
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.3.2
+  lint: ^2.0.1
+  mocktail: ^0.3.0
+
+flutter_gen:
+  output: lib/core/resources
+  integrations:
+    flutter_svg: true
+    # flare_flutter: true
+    rive: true
+    lottie: true
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/fonts/
+    - assets/icons/
+    - assets/images/
+    - assets/temp/
+
+  fonts:
+    - family: Mukta
+      fonts:
+        # - asset: assets/fonts/OpenSans/OpenSans-Black.ttf
+        # - asset: assets/fonts/OpenSans/OpenSans-BlackItalic.ttf
+        # - asset: assets/fonts/Mukta/Mukta-BoldItalic.ttf
+        - asset: assets/fonts/Mukta/Mukta-Bold.ttf
+        - asset: assets/fonts/Mukta/Mukta-ExtraBold.ttf
+        # - asset: assets/fonts/Mukta/Mukta-ExtraBoldItalic.ttf
+        # - asset: assets/fonts/Mukta/Mukta-Italic.ttf
+        - asset: assets/fonts/Mukta/Mukta-ExtraLight.ttf
+        - asset: assets/fonts/Mukta/Mukta-Light.ttf
+        # - asset: assets/fonts/Mukta/Mukta-LightItalic.ttf
+        - asset: assets/fonts/Mukta/Mukta-Medium.ttf
+        # - asset: assets/fonts/Mukta/Mukta-MediumItalic.ttf
+        - asset: assets/fonts/Mukta/Mukta-Regular.ttf
+        - asset: assets/fonts/Mukta/Mukta-SemiBold.ttf
+        # - asset: assets/fonts/Mukta/Mukta-SemiBoldItalic.ttf
+        # - asset: assets/fonts/OpenSans/OpenSans-VariableFont.ttf
+        
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans/OpenSans-Bold.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-BoldItalic.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-ExtraBold.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-Italic.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-Light.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-LightItalic.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-Medium.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-MediumItalic.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-SemiBold.ttf
+        - asset: assets/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf
+       
