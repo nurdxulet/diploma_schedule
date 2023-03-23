@@ -54,7 +54,6 @@ class __AuthPageState extends State<_AuthPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('LOGIN'),
           CustomButton(
             gradient: AppGradients.primaryGradient2,
             body: Text(

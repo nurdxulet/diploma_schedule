@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule/features/app/view/launcher.dart';
 import 'package:schedule/features/app/view/temp_page.dart';
 import 'package:schedule/features/auth/view/auth_page.dart';
+import 'package:schedule/features/home/view/home_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -14,7 +15,7 @@ part 'app_router.gr.dart';
       initial: true,
       name: 'LauncherRoute',
       children: [
-        // AutoRoute<void>(page: MainPage),
+        AutoRoute<void>(page: HomePage),
         // AutoRoute<void>(page: OqysaiPage),
         // AutoRoute<void>(page: ChatPage),
         AutoRoute<void>(page: TempPage),
@@ -53,7 +54,7 @@ part 'app_router.gr.dart';
     // AutoRoute<void>(page: PersonalPlanMaterialsPage),
 
     // /// auth pages
-     AutoRoute<void>(page: AuthPage),
+    AutoRoute<void>(page: AuthPage),
     // AutoRoute<void>(page: ForgotPasswordPage),
     // AutoRoute<void>(page: NewPasswordPage),
 

@@ -35,7 +35,7 @@ mixin AppColors {
   static const Color kWhiteRose = Color(0xffECE9F6);
   static const Color kWhiteRose2 = Color(0xffEAE7FC);
   static const Color kBarChartNotActive = Color(0xffD0D5DC);
-  static const Color kLightBlue = Color(0xffEAEBF8);
+  static const Color kLightBlue = Color.fromARGB(255, 123, 199, 230);
   static const Color kGrey6 = Color(0xff94A2AB);
   static const Color kPurple5 = Color(0xffE4D8FF);
   static const Color kGrayText = Color(0xff697896);
@@ -45,6 +45,10 @@ mixin AppColors {
   static const Color kYellow1 = Color(0xffFFBD14);
   static const Color kGreen1 = Color(0xffBFECB8);
   static const Color kRed1 = Color(0xffFAB4B1);
+  static const Color kMainOrange = Color(0xffFF7A00);
+  static const Color kSubjectGreen = Color(0xff23E9B4);
+  static const Color kSubjectRed = Color(0xffFF5A5A);
+  static const Color kSubjectOrange = Color(0xffFFAC4B);
 
   ///
   // static const Color kDark = Color(0xff404D61);
@@ -73,18 +77,13 @@ mixin AppColors {
 }
 
 mixin AppGradients {
-  static const LinearGradient primaryGradient0 =
-      LinearGradient(colors: [Color(0xff879AFF), Color(0xffBA6FF5)]);
-  static const LinearGradient primaryGradient1 =
-      LinearGradient(colors: [Color(0xffA8C5FF), Color(0xffADACE8)]);
-  static const LinearGradient primaryGradient2 =
-      LinearGradient(colors: [Color(0xff6A74CC), Color(0xff7F65D9)]);
+  static const LinearGradient primaryGradient0 = LinearGradient(colors: [Color(0xff879AFF), Color(0xffBA6FF5)]);
+  static const LinearGradient primaryGradient1 = LinearGradient(colors: [Color(0xffA8C5FF), Color(0xffADACE8)]);
+  static const LinearGradient primaryGradient2 = LinearGradient(colors: [Color(0xff6A74CC), Color(0xff7F65D9)]);
   static const LinearGradient primaryGradient2Opacity20 =
       LinearGradient(colors: [Color(0xffE4E1F7), Color(0xffE2E3F5)]);
-  static const LinearGradient primaryGradient3 =
-      LinearGradient(colors: [Color(0xff64B5FF), Color(0xff4150DE)]);
-  static const LinearGradient primaryGradient5 =
-      LinearGradient(colors: [Color(0xff8063D4), Color(0xff7271F2)]);
+  static const LinearGradient primaryGradient3 = LinearGradient(colors: [Color(0xff64B5FF), Color(0xff4150DE)]);
+  static const LinearGradient primaryGradient5 = LinearGradient(colors: [Color(0xff8063D4), Color(0xff7271F2)]);
   static const LinearGradient primaryGradient6 = LinearGradient(
     colors: [Color(0xffB2A3E8), Color(0xffC9BFEF)],
     begin: Alignment.bottomLeft,
@@ -103,6 +102,12 @@ mixin AppGradients {
     colors: [
       Color.fromARGB(255, 248, 96, 96),
       Color.fromARGB(255, 192, 82, 82),
+    ],
+  );
+  static const LinearGradient orangeButtonGradient = LinearGradient(
+    colors: [
+      Color.fromARGB(255, 219, 125, 63),
+      Color.fromARGB(255, 255, 69, 23),
     ],
   );
 }

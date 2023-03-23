@@ -14,8 +14,8 @@ class _TopIndicatorBox extends BoxPainter {
     final Paint paint = Paint()
       ..shader = const RadialGradient(
         colors: [
-          Color(0xff8063D4),
-          Color(0xff7271F2),
+          Color.fromARGB(255, 219, 121, 40),
+          Color.fromARGB(255, 219, 121, 40),
         ],
       ).createShader(
         Rect.fromCircle(
@@ -28,8 +28,8 @@ class _TopIndicatorBox extends BoxPainter {
       ..strokeCap = StrokeCap.round;
 
     canvas.drawLine(
-      Offset(cfg.size!.width + offset.dx - 50, 2.5),
-      Offset(cfg.size!.width + offset.dx - 20, 2.5),
+      Offset(cfg.size!.width + offset.dx - 72.5, 2.5),
+      Offset(cfg.size!.width + offset.dx - 32.5, 2.5),
       paint,
     );
   }

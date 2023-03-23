@@ -1,0 +1,16 @@
+{
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "endTime": "End time",
+  "helloWorld": "Hello World!",
+  "home": "Home",
+  "lessons": "Lessons",
+  "schedule": "Schedule",
+  "search": "Search",
+  "settings": "Settings",
+  "time": "Time",
+  "timetable": "Timetable",
+  "today": "Today",
+  "todaysLessons": "Todays lessons"
+}

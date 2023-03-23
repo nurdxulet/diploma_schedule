@@ -19,6 +19,12 @@ mixin AppTextStyles {
     fontWeight: FontWeight.w500,
   );
 
+  static const m10w600 = TextStyle(
+    fontSize: 10,
+    color: AppColors.kBlueBlack,
+    fontWeight: FontWeight.w600,
+  );
+
   static const m10w400Blue = TextStyle(
     fontSize: 10,
     color: AppColors.kBlue,
@@ -81,7 +87,13 @@ mixin AppTextStyles {
 
   static const m12w600Grey = TextStyle(
     fontSize: 12,
-    color: Color(0xFF484848),
+    color: Colors.grey,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const m13w600 = TextStyle(
+    fontSize: 13,
+    color: Colors.black,
     fontWeight: FontWeight.w600,
   );
 
@@ -271,7 +283,6 @@ mixin AppTextStyles {
     fontWeight: FontWeight.w600,
   );
 
-  
   static const m22w500 = TextStyle(
     fontSize: 22,
     color: Colors.black,
@@ -348,5 +359,16 @@ mixin AppTextStyles {
     fontSize: 32,
     color: AppColors.kBlueBlack,
     fontWeight: FontWeight.w700,
+  );
+
+  static const m36w700 = TextStyle(
+    fontSize: 36,
+    color: AppColors.kBlueBlack,
+    fontWeight: FontWeight.w700,
+  );
+  static const m36w600 = TextStyle(
+    fontSize: 36,
+    color: AppColors.kBlueBlack,
+    fontWeight: FontWeight.w500,
   );
 }

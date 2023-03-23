@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
@@ -25,7 +26,7 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -35,12 +36,10 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
       builder: (context, appState) {
         return AutoTabsScaffold(
           extendBody: true,
-          routes:   [
-            TempRoute(color: Colors.pink),
+          routes: [
+            const HomeRoute(),
             TempRoute(color: Colors.blue),
             TempRoute(color: Colors.red),
-            TempRoute(color: Colors.yellow),
-            TempRoute(color: Colors.black),
           ],
           backgroundColor: AppColors.kWhite,
           builder: (context, child, animation) {
@@ -57,7 +56,7 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(23),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xff5C469D).withOpacity(0.12),
+                          color: const Color.fromARGB(255, 194, 115, 41).withOpacity(0.42),
                           blurRadius: 32,
                           offset: const Offset(0, -5),
                         ),
@@ -81,47 +80,33 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
                             }
                           },
                           indicator: TopIndicator(),
-                          splashBorderRadius: BorderRadius.circular(23),
+                          // splashBorderRadius: BorderRadius.circular(23),
                           padding: const EdgeInsets.symmetric(horizontal: 19),
                           controller: tabController,
                           labelPadding: EdgeInsets.zero,
-                          tabs:  [
+                          tabs: [
                             CustomTabWidget(
-                              icon: Assets.icons.icMain.path,
-                              activeIcon: Assets.icons.icMainSelected.path,
-                              title: 'Главная',
+                              icon: Assets.icons.icHome.path,
+                              activeIcon: Assets.icons.icHome.path,
+                              title: context.localized.home,
                               currentIndex: tabsRouter.activeIndex,
                               tabIndex: 0,
                             ),
                             CustomTabWidget(
-                              icon: Assets.icons.icOqysai.path,
-                              activeIcon: Assets.icons.icOqysaiSelected.path,
-                              title: 'Мои заказы',
+                              icon: Assets.icons.icSearch.path,
+                              activeIcon: Assets.icons.icSearch.path,
+                              title: context.localized.search,
                               currentIndex: tabsRouter.activeIndex,
                               tabIndex: 1,
                             ),
                             CustomTabWidget(
-                              icon: Assets.icons.icChat.path,
-                              activeIcon: Assets.icons.icChatSelected.path,
-                              title: '',
+                              icon: Assets.icons.icSettings.path,
+                              activeIcon: Assets.icons.icSettings.path,
+                              title: context.localized.settings,
                               currentIndex: tabsRouter.activeIndex,
                               tabIndex: 2,
                             ),
-                            CustomTabWidget(
-                              icon: Assets.icons.icProfile.path,
-                              activeIcon: Assets.icons.icUserSelected.path,
-                              title: 'Склад',
-                              currentIndex: tabsRouter.activeIndex,
-                              tabIndex: 3,
-                            ),
-                            CustomTabWidget(
-                              icon: Assets.icons.icUbtBattle.path,
-                              activeIcon: Assets.icons.icUbtBattleSelected.path,
-                              title: 'Профиль',
-                              currentIndex: tabsRouter.activeIndex,
-                              tabIndex: 4,
-                            ),
-                           ],
+                          ],
                         ),
                       ),
                     ),
@@ -160,13 +145,19 @@ class CustomTabWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(tabIndex == currentIndex ? activeIcon : icon),
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: SvgPicture.asset(
+                tabIndex == currentIndex ? activeIcon : icon,
+                height: 20,
+              ),
+            ),
             if (tabIndex == currentIndex)
               GradientText(
                 title,
                 maxLines: 1,
-                gradient: AppGradients.primaryGradient5,
-                style: AppTextStyles.m10w500.copyWith(),
+                gradient: AppGradients.orangeButtonGradient,
+                style: AppTextStyles.m10w600.copyWith(),
               ),
           ],
         ),
