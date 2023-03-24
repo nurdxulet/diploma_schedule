@@ -23,10 +23,28 @@ class _$AppRouter extends RootStackRouter {
         child: const Launcher(),
       );
     },
+    LanguageRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const LanguagePage(),
+      );
+    },
     AuthRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
         child: const AuthPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const HomePage(),
+      );
+    },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const SettingsPage(),
       );
     },
     TempRoute.name: (routeData) {
@@ -48,11 +66,25 @@ class _$AppRouter extends RootStackRouter {
           path: '/',
           children: [
             RouteConfig(
+              HomeRoute.name,
+              path: 'home-page',
+              parent: LauncherRoute.name,
+            ),
+            RouteConfig(
+              SettingsRoute.name,
+              path: 'settings-page',
+              parent: LauncherRoute.name,
+            ),
+            RouteConfig(
               TempRoute.name,
               path: 'temp-page',
               parent: LauncherRoute.name,
-            )
+            ),
           ],
+        ),
+        RouteConfig(
+          LanguageRoute.name,
+          path: '/language-page',
         ),
         RouteConfig(
           AuthRoute.name,
@@ -75,6 +107,18 @@ class LauncherRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LanguagePage]
+class LanguageRoute extends PageRouteInfo<void> {
+  const LanguageRoute()
+      : super(
+          LanguageRoute.name,
+          path: '/language-page',
+        );
+
+  static const String name = 'LanguageRoute';
+}
+
+/// generated route for
 /// [AuthPage]
 class AuthRoute extends PageRouteInfo<void> {
   const AuthRoute()
@@ -84,6 +128,30 @@ class AuthRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthRoute';
+}
+
+/// generated route for
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute()
+      : super(
+          HomeRoute.name,
+          path: 'home-page',
+        );
+
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute()
+      : super(
+          SettingsRoute.name,
+          path: 'settings-page',
+        );
+
+  static const String name = 'SettingsRoute';
 }
 
 /// generated route for
