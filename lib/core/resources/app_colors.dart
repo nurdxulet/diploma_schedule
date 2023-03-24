@@ -1,6 +1,7 @@
 part of 'resources.dart';
 
 mixin AppColors {
+  static const Color darkMode = Color(0xFF141A28);
   static const Color kBlue = Color(0xff253070);
   static const Color kWhite = Colors.white;
   static const Color kBlack = Color(0xFF000000);

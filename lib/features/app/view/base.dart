@@ -39,7 +39,7 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
           routes: [
             const HomeRoute(),
             TempRoute(color: Colors.blue),
-            TempRoute(color: Colors.red),
+            const SettingsRoute(),
           ],
           backgroundColor: AppColors.kWhite,
           builder: (context, child, animation) {

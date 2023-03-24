@@ -163,6 +163,26 @@ mixin AppTextStyles {
     color: Colors.black,
     fontWeight: FontWeight.w700,
   );
+  static const m15w500 = TextStyle(
+    fontSize: 15,
+    color: Colors.black,
+    fontWeight: FontWeight.w500,
+    height: 22 / 14,
+  );
+
+  static const m15w500White = TextStyle(
+    fontSize: 15,
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+    height: 22 / 14,
+  );
+
+  static const m15w600 = TextStyle(
+    fontSize: 15,
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+    height: 22 / 14,
+  );
 
   static const m16w400 = TextStyle(
     fontSize: 16,

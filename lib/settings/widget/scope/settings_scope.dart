@@ -23,6 +23,7 @@ AppLanguage _locale(SettingsState state) => state.data.locale;
 Locale _localeToLocale(AppLanguage locale) => locale.when(
       kk: () => const Locale('kk'),
       ru: () => const Locale('ru'),
+      en: () => const Locale('en'),
     );
 
 // CityDTO? _city(SettingsState state) => state.data.city;
@@ -37,18 +38,15 @@ class SettingsScope extends StatelessWidget {
     super.key,
   });
 
-  static const BlocScope<SettingsEvent, SettingsState, SettingsBLoC> _scope =
-      BlocScope();
+  static const BlocScope<SettingsEvent, SettingsState, SettingsBLoC> _scope = BlocScope();
 
   // --- Data --- //
 
-  static ScopeData<ThemeMode> get themeModeOf =>
-      _themeToThemeMode.dot(_theme).pipe(_scope.select);
+  static ScopeData<ThemeMode> get themeModeOf => _themeToThemeMode.dot(_theme).pipe(_scope.select);
 
   static ScopeData<AppTheme> get appThemeOf => _scope.select(_theme);
 
-  static ScopeData<Locale> get localeOf =>
-      _localeToLocale.dot(_locale).pipe(_scope.select);
+  static ScopeData<Locale> get localeOf => _localeToLocale.dot(_locale).pipe(_scope.select);
 
   static ScopeData<AppLanguage> get appLanguageOf => _scope.select(_locale);
 

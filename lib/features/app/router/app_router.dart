@@ -4,6 +4,8 @@ import 'package:schedule/features/app/view/launcher.dart';
 import 'package:schedule/features/app/view/temp_page.dart';
 import 'package:schedule/features/auth/view/auth_page.dart';
 import 'package:schedule/features/home/view/home_page.dart';
+import 'package:schedule/features/settings/view/language_page.dart';
+import 'package:schedule/features/settings/view/settings_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -17,7 +19,7 @@ part 'app_router.gr.dart';
       children: [
         AutoRoute<void>(page: HomePage),
         // AutoRoute<void>(page: OqysaiPage),
-        // AutoRoute<void>(page: ChatPage),
+        AutoRoute<void>(page: SettingsPage),
         AutoRoute<void>(page: TempPage),
         // AutoRoute<void>(page: ProfilePage),
         // AutoRoute<void>(
@@ -32,6 +34,9 @@ part 'app_router.gr.dart';
         // ), // AutoRoute<void>(page: NotAuthPage),
       ],
     ),
+
+    //Settings
+    AutoRoute<void>(page: LanguagePage),
 
     ///Main pages
     // AutoRoute<void>(page: NewsDetailPage),

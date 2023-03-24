@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(
                               8,
                             ),
-                            color: Colors.green.withOpacity(0.16),
+                            color: AppColors.kMainOrange.withOpacity(0.16),
                           ),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
                                 context.localized.today,
-                                style: AppTextStyles.m18w500.copyWith(color: Colors.green),
+                                style: AppTextStyles.m18w500.copyWith(color: AppColors.kMainOrange),
                               ),
                             ),
                           ),

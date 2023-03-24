@@ -1,6 +1,7 @@
 enum AppLanguage with Comparable<AppLanguage> {
   kk('Қазақша', 'Kz', 'kk'),
-  ru('Русский', 'Ru', 'ru');
+  ru('Русский', 'Ru', 'ru'),
+  en('English', 'En', 'en');
 
   const AppLanguage(this.title, this.code, this.localeCode);
 
@@ -11,12 +12,15 @@ enum AppLanguage with Comparable<AppLanguage> {
   R when<R>({
     required R Function() kk,
     required R Function() ru,
+    required R Function() en,
   }) {
     switch (this) {
       case AppLanguage.kk:
         return kk();
       case AppLanguage.ru:
         return ru();
+      case AppLanguage.en:
+        return en();
     }
   }
 

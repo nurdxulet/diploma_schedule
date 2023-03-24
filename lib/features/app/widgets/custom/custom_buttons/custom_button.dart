@@ -50,8 +50,8 @@ ButtonStyle mainButtonStyle({
 }) {
   return ElevatedButton.styleFrom(
     maximumSize: const Size.fromHeight(48),
-    foregroundColor: AppColors.kBlue2,
-    backgroundColor: Colors.transparent,
+    // foregroundColor: AppColors.kMainOrange,
+    backgroundColor: AppColors.kMainOrange,
     shadowColor: Colors.transparent,
     elevation: elevation,
     padding: EdgeInsets.zero,

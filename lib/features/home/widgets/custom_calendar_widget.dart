@@ -147,10 +147,10 @@ class CalendarItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                DateFormat('E', context.currentLocale.code).format(day).toUpperCase(),
+                DateFormat('E', context.currentLocale.code).format(day).toUpperCase().substring(0, 2),
                 style: isSelected ?? false
-                    ? AppTextStyles.m12w500.copyWith(color: AppColors.kWhite)
-                    : AppTextStyles.m12w500,
+                    ? AppTextStyles.m12w600.copyWith(color: AppColors.kWhite)
+                    : AppTextStyles.m12w600,
               ),
               Text(
                 day.day.toString(),
