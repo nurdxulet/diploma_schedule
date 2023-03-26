@@ -41,6 +41,12 @@ class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    SearchRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const SearchPage(),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -68,6 +74,11 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               HomeRoute.name,
               path: 'home-page',
+              parent: LauncherRoute.name,
+            ),
+            RouteConfig(
+              SearchRoute.name,
+              path: 'search-page',
               parent: LauncherRoute.name,
             ),
             RouteConfig(
@@ -140,6 +151,18 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [SearchPage]
+class SearchRoute extends PageRouteInfo<void> {
+  const SearchRoute()
+      : super(
+          SearchRoute.name,
+          path: 'search-page',
+        );
+
+  static const String name = 'SearchRoute';
 }
 
 /// generated route for

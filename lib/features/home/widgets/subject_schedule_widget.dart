@@ -57,7 +57,7 @@ class SubjectScheduleWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                   12,
                 ),
-                color: Colors.grey.withOpacity(0.3),
+                color: Colors.grey.withOpacity(0.12),
               ),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 16.0, 16, 16),

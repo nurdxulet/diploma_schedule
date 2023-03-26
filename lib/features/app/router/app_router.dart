@@ -4,6 +4,7 @@ import 'package:schedule/features/app/view/launcher.dart';
 import 'package:schedule/features/app/view/temp_page.dart';
 import 'package:schedule/features/auth/view/auth_page.dart';
 import 'package:schedule/features/home/view/home_page.dart';
+import 'package:schedule/features/search/view/search_screen.dart';
 import 'package:schedule/features/settings/view/language_page.dart';
 import 'package:schedule/features/settings/view/settings_page.dart';
 
@@ -18,7 +19,7 @@ part 'app_router.gr.dart';
       name: 'LauncherRoute',
       children: [
         AutoRoute<void>(page: HomePage),
-        // AutoRoute<void>(page: OqysaiPage),
+        AutoRoute<void>(page: SearchPage),
         AutoRoute<void>(page: SettingsPage),
         AutoRoute<void>(page: TempPage),
         // AutoRoute<void>(page: ProfilePage),
