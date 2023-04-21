@@ -70,35 +70,35 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
         rightChevronPadding: const EdgeInsets.only(left: 4),
         leftChevronIcon: CustomSquareButton(
           iconPath: Assets.icons.chevronLeft.path,
-          backgroundColor: AppColors.kMainOrange.withOpacity(0.1),
-          iconColor: AppColors.kMainOrange,
+          backgroundColor: AppColors.kPrimary.withOpacity(0.1),
+          iconColor: AppColors.kPrimary,
         ),
         rightChevronIcon: CustomSquareButton(
           iconPath: Assets.icons.chevronRight.path,
-          backgroundColor: AppColors.kMainOrange,
+          backgroundColor: AppColors.kPrimary,
           iconColor: AppColors.kWhite,
         ),
       ),
       daysOfWeekVisible: false,
       calendarStyle: CalendarStyle(
         disabledDecoration: BoxDecoration(
-          color: AppColors.kMainOrange.withOpacity(0.1),
+          color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         defaultDecoration: BoxDecoration(
-          color: AppColors.kMainOrange.withOpacity(0.1),
+          color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         weekendDecoration: BoxDecoration(
-          color: AppColors.kMainOrange.withOpacity(0.1),
+          color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         holidayDecoration: BoxDecoration(
-          color: AppColors.kMainOrange.withOpacity(0.1),
+          color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         outsideDecoration: BoxDecoration(
-          color: AppColors.kMainOrange.withOpacity(0.1),
+          color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
       ),
@@ -138,7 +138,7 @@ class CalendarItemWidget extends StatelessWidget {
               ? Colors.grey.withOpacity(0.3)
               : isSelected ?? false
                   ? null
-                  : AppColors.kMainOrange.withOpacity(0.1),
+                  : AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(

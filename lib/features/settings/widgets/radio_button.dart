@@ -29,38 +29,57 @@ class RadioButton extends StatefulWidget {
 class _RadioButtonState extends State<RadioButton> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        bool selected = widget.value != widget.groupValue;
-        if (selected) {
-          widget.onChanged!(widget.value);
-          widget.onSelected!();
-        }
-      },
-      child: Row(
-        children: [
-          Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: widget.value == widget.groupValue ? widget.selectColor : AppColors.kGrey2),
-              color: widget.value == widget.groupValue ? widget.selectColor : widget.color,
-            ),
-            child: widget.value == widget.groupValue
-                ? Icon(
-                    Icons.check,
-                    color: widget.color,
-                    size: 15,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          final bool selected = widget.value != widget.groupValue;
+          if (selected) {
+            widget.onChanged!(widget.value);
+            widget.onSelected!();
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
+          child: SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Container(
+                //   height: 18,
+                //   width: 18,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     border: Border.all(color: widget.value == widget.groupValue ? widget.selectColor : AppColors.kGrey2),
+                //     color: widget.value == widget.groupValue ? widget.selectColor : widget.color,
+                //   ),
+                //   child: widget.value == widget.groupValue
+                //       ? Icon(
+                //           Icons.check,
+                //           color: widget.color,
+                //           size: 15,
+                //         )
+                //       : null,
+                // ),
+                Text(
+                  widget.txt,
+                  style: AppTextStyles.m15w500,
+                ),
+                if (widget.value == widget.groupValue)
+                  const Icon(
+                    Icons.check_circle_rounded,
+                    size: 20,
+                    color: AppColors.kPrimary,
                   )
-                : null,
+                else
+                  const SizedBox(),
+              ],
+            ),
           ),
-          const SizedBox(width: 10),
-          Text(
-            widget.txt,
-            style: AppTextStyles.m15w500,
-          ),
-        ],
+        ),
       ),
     );
   }

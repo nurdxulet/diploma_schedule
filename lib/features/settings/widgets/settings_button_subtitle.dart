@@ -18,33 +18,42 @@ class SettingsButtonSubtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Row(
-        children: [
-          icon,
-          const SizedBox(width: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 8.0,
+            horizontal: 16,
+          ),
+          child: Row(
             children: [
-              Text(
-                str,
-                style: AppTextStyles.m16w500
-                    .copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
+              icon,
+              const SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    str,
+                    style: AppTextStyles.m16w500
+                        .copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
+                  ),
+                  Text(
+                    subtitle,
+                    style: AppTextStyles.m16w500
+                        .copyWith(color: AppColors.kGrey2, fontSize: 14, fontWeight: FontWeight.normal),
+                  )
+                ],
               ),
-              Text(
-                subtitle,
-                style: AppTextStyles.m16w500
-                    .copyWith(color: AppColors.kGrey2, fontSize: 14, fontWeight: FontWeight.normal),
+              const Spacer(),
+              const Icon(
+                Icons.navigate_next_rounded,
+                color: AppColors.kGrey2,
               )
             ],
           ),
-          const Spacer(),
-          const Icon(
-            Icons.navigate_next_rounded,
-            color: AppColors.kGrey2,
-          )
-        ],
+        ),
       ),
     );
   }

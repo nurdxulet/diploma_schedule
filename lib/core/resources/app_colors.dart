@@ -46,7 +46,8 @@ mixin AppColors {
   static const Color kYellow1 = Color(0xffFFBD14);
   static const Color kGreen1 = Color(0xffBFECB8);
   static const Color kRed1 = Color(0xffFAB4B1);
-  static const Color kMainOrange = Color(0xffFF7A00);
+  // static const Color kMainOrange = Color(0xffFF7A00);
+  static const Color kPrimary = Color(0xffFFAC4B);
   static const Color kSubjectGreen = Color(0xff23E9B4);
   static const Color kSubjectRed = Color(0xffFF5A5A);
   static const Color kSubjectOrange = Color(0xffFFAC4B);

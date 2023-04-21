@@ -119,6 +119,9 @@ class $AssetsIconsGen {
   SvgGenImage get icCheckmark =>
       const SvgGenImage('assets/icons/ic_checkmark.svg');
 
+  /// File path: assets/icons/ic_city.svg
+  SvgGenImage get icCity => const SvgGenImage('assets/icons/ic_city.svg');
+
   /// File path: assets/icons/ic_clock.svg
   SvgGenImage get icClock => const SvgGenImage('assets/icons/ic_clock.svg');
 
@@ -442,6 +445,7 @@ class $AssetsIconsGen {
         icChat,
         icChatSelected,
         icCheckmark,
+        icCity,
         icClock,
         icComment,
         icDefinition,

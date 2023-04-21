@@ -4,6 +4,7 @@ import 'package:schedule/features/app/view/launcher.dart';
 import 'package:schedule/features/app/view/temp_page.dart';
 import 'package:schedule/features/auth/view/auth_page.dart';
 import 'package:schedule/features/home/view/home_page.dart';
+import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 import 'package:schedule/features/search/view/search_screen.dart';
 import 'package:schedule/features/settings/view/language_page.dart';
 import 'package:schedule/features/settings/view/settings_page.dart';
@@ -35,6 +36,9 @@ part 'app_router.gr.dart';
         // ), // AutoRoute<void>(page: NotAuthPage),
       ],
     ),
+
+    //Onboarding
+    AutoRoute<void>(page: OnboardingPage),
 
     //Settings
     AutoRoute<void>(page: LanguagePage),

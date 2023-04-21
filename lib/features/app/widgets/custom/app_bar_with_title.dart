@@ -12,7 +12,7 @@ class AppBarWithTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2).copyWith(top: 8),
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16).copyWith(top: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

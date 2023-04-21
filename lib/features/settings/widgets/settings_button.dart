@@ -16,22 +16,29 @@ class SettingsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        children: [
-          icon,
-          const SizedBox(width: 15),
-          Text(
-            str,
-            style: AppTextStyles.m16w500.copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
+          child: Row(
+            children: [
+              icon,
+              const SizedBox(width: 15),
+              Text(
+                str,
+                style: AppTextStyles.m16w500
+                    .copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
+              ),
+              const Spacer(),
+              const Icon(
+                Icons.navigate_next_rounded,
+                color: AppColors.kGrey2,
+              ),
+            ],
           ),
-          const Spacer(),
-          const Icon(
-            Icons.navigate_next_rounded,
-            color: AppColors.kGrey,
-          )
-        ],
+        ),
       ),
     );
   }

@@ -36,11 +36,11 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
       builder: (context, appState) {
         return AutoTabsScaffold(
           extendBody: true,
-          routes: [
-            const HomeRoute(),
+          routes: const [
+            HomeRoute(),
             // TempRoute(color: Colors.blue),
-            const SearchRoute(),
-            const SettingsRoute(),
+            SearchRoute(),
+            SettingsRoute(),
           ],
           backgroundColor: AppColors.kWhite,
           builder: (context, child, animation) {

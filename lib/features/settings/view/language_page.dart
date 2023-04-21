@@ -35,15 +35,12 @@ class _LanguagePageState extends State<LanguagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            AppBarWithTitle(title: context.localized.language),
-            const SizedBox(height: 20),
-            const SetLanguageWidget(),
-          ],
-        ),
+          child: Column(
+        children: [
+          AppBarWithTitle(title: context.localized.language),
+          const SizedBox(height: 20),
+          const SetLanguageWidget(),
+        ],
       )),
     );
   }

@@ -7,6 +7,7 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/view/base.dart';
 import 'package:schedule/features/auth/view/auth_page.dart';
+import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 
 // ignore: unused_element
 const _tag = 'Launcher';
@@ -32,8 +33,7 @@ class _LauncherState extends State<Launcher> {
         state.whenOrNull(
           inAppState: () {
             // BlocProvider.of<ProfileCubit>(context).getProfile();
-            BlocProvider.of<AppBLoC>(context)
-                .add(const AppEvent.sendDeviceToken());
+            BlocProvider.of<AppBLoC>(context).add(const AppEvent.sendDeviceToken());
           },
           errorState: (message) {
             // buildErrorCustomSnackBar(context, 'AppBloc => $message');
@@ -43,15 +43,19 @@ class _LauncherState extends State<Launcher> {
       builder: (context, state) {
         return state.maybeWhen(
           notAuthorizedState: () {
+            return const OnboardingPage();
             // return const Base();
-            return const AuthPage();
+            // return const AuthPage();
           },
           onboardingState: () {
-            return const SizedBox();
+            return const OnboardingPage();
           },
-          loadingState: () {
-            return const _Scaffold(child: SizedBox());
+          inAppState: () {
+            return const Base();
           },
+          // loadingState: () {
+          //   return const _Scaffold(child: SizedBox());
+          // },
           // errorState: (String message) {
           //   return const _Scaffold(child: CustomErrorLoadingWidget());
           // },

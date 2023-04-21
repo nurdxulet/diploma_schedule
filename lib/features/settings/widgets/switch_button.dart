@@ -16,7 +16,7 @@ class SwitchButton extends StatelessWidget {
     return Transform.scale(
       scale: 0.8,
       child: CupertinoSwitch(
-        activeColor: AppColors.kMainOrange,
+        activeColor: AppColors.kPrimary,
         value: notificationOn,
         onChanged: onChanged,
       ),

@@ -1,13 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/extensions.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_button.dart';
 import 'package:schedule/features/home/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/widgets/subject_schedule_widget.dart';
 
@@ -68,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(
                               8,
                             ),
-                            color: AppColors.kMainOrange.withOpacity(0.16),
+                            color: AppColors.kPrimary.withOpacity(0.16),
                           ),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(
@@ -79,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
                                 context.localized.today,
-                                style: AppTextStyles.m18w500.copyWith(color: AppColors.kMainOrange),
+                                style: AppTextStyles.m18w500.copyWith(color: AppColors.kPrimary),
                               ),
                             ),
                           ),
