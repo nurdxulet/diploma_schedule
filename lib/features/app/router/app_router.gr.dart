@@ -44,7 +44,7 @@ class _$AppRouter extends RootStackRouter {
     HomeRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
-        child: const HomePage(),
+        child: WrappedRoute(child: const HomePage()),
       );
     },
     SearchRoute.name: (routeData) {

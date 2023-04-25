@@ -393,6 +393,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  curved_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: curved_navigation_bar
+      sha256: ea6412d00c5d83501bbf1cf9d1ac2ff11a20fbaf910c103c95ace7de82910334
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   dart_style:
     dependency: transitive
     description:
@@ -677,6 +685,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  get_it:
+    dependency: "direct main"
+    description:
+      name: get_it
+      sha256: f9982979e3d2f286a957c04d2c3a98f55b0f0a06ffd6c5c4abbb96f06937f463
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.3.0"
   glob:
     dependency: transitive
     description:

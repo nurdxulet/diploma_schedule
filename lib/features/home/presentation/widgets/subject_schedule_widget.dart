@@ -21,7 +21,7 @@ class SubjectScheduleWidget extends StatelessWidget {
     this.lessonEndTime,
     this.lessonBreakStartTime,
     this.lessonBreakEndTime,
-    this.widgetColor = AppColors.kOrange,
+    this.widgetColor = AppColors.kPrimary,
   });
 
   @override

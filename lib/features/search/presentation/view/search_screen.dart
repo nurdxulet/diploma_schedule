@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_text_field.dart';
-import 'package:schedule/features/search/widgets/organization_widget.dart';
+import 'package:schedule/features/search/presentation/widgets/organization_widget.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -61,11 +61,11 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     // TODO: implement initState
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: AppColors.kPrimary,
-      ),
-    );
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   const SystemUiOverlayStyle(
+    //     statusBarColor: AppColors.kPrimary,
+    //   ),
+    // );
     _foundOrganizations = organizations;
     super.initState();
   }

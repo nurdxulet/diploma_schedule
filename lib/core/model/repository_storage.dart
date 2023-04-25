@@ -4,6 +4,8 @@ import 'package:schedule/features/auth/database/auth_dao.dart';
 import 'package:schedule/features/auth/datasource/auth_remote_ds.dart';
 import 'package:schedule/features/auth/repository/auth_repository.dart';
 import 'package:schedule/features/auth/repository/auth_repository_impl.dart';
+import 'package:schedule/features/home/data/datasource/schedule_datasource.dart';
+import 'package:schedule/features/home/repositories/news_repository.dart';
 import 'package:schedule/settings/database/settings_dao.dart';
 import 'package:schedule/settings/repository/settings_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,14 +14,14 @@ abstract class IRepositoryStorage {
   ISettingsRepository get settings;
 
   IAuthRepository get authRepository;
-  // IEstateRepository get mainRepository;
+  ScheduleRemoteRepository get scheduleRepository;
   // ICompanyRepository get companyRepository;
   // IAdRepository get adRepository;
   // IOtherListRepository get otherListRepository;
 
   // Data sources
   IAuthRemoteDS get authRemoteDS;
-  // EstateRemoteDs get estateRemoteDS;
+  ScheduleRemoteDataSource get scheduleRemoteDS;
   // CompanyRemoteDS get companyRemoteDs;
   // IAdRemoteDS get adRemoteDS;
   // IOtherListRemoteDS get otherListRemoteDS;
@@ -60,6 +62,14 @@ class RepositoryStorage implements IRepositoryStorage {
   IAuthRemoteDS get authRemoteDS => AuthRemoteDSImpl(
         client: _networkExecuter,
       );
+
+  @override
+  // TODO: implement scheduleRepository
+  ScheduleRemoteRepository get scheduleRepository => ScheduleRemoteRepositoryImpl(scheduleRemoteDS);
+
+  @override
+  // TODO: implement scheduleRemoteDS
+  ScheduleRemoteDataSource get scheduleRemoteDS => ScheduleRemoteDataSourceImpl();
 
   // @override
   // IEstateRepository get mainRepository => EstateRepositoryImpl(

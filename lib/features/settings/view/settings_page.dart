@@ -182,7 +182,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             str: 'онбординг',
             onTap: () {
-              BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting());
+              BlocProvider.of<AppBLoC>(context).add(const AppEvent.checkAuth());
             },
           ),
           const Spacer(),

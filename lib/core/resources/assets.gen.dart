@@ -553,6 +553,10 @@ class $AssetsImagesGen {
   AssetGenImage get circleBackground =>
       const AssetGenImage('assets/images/circle background.png');
 
+  /// File path: assets/images/educational_programm.png
+  AssetGenImage get educationalProgramm =>
+      const AssetGenImage('assets/images/educational_programm.png');
+
   /// File path: assets/images/globe5-3.png
   AssetGenImage get globe53 =>
       const AssetGenImage('assets/images/globe5-3.png');
@@ -565,14 +569,6 @@ class $AssetsImagesGen {
   AssetGenImage get magnifyGlass2 =>
       const AssetGenImage('assets/images/magnify-glass2.png');
 
-  /// File path: assets/images/main_icon.png
-  AssetGenImage get mainIcon =>
-      const AssetGenImage('assets/images/main_icon.png');
-
-  /// File path: assets/images/main_icon4x.png
-  AssetGenImage get mainIcon4x =>
-      const AssetGenImage('assets/images/main_icon4x.png');
-
   /// File path: assets/images/medal_icon.png
   AssetGenImage get medalIcon =>
       const AssetGenImage('assets/images/medal_icon.png');
@@ -581,21 +577,17 @@ class $AssetsImagesGen {
   AssetGenImage get notebookDynamicColorImg =>
       const AssetGenImage('assets/images/notebook-dynamic-color-img.png');
 
-  /// File path: assets/images/pdf_preview.jpg
-  AssetGenImage get pdfPreviewJpg =>
-      const AssetGenImage('assets/images/pdf_preview.jpg');
+  /// File path: assets/images/ob_faculty.png
+  AssetGenImage get obFaculty =>
+      const AssetGenImage('assets/images/ob_faculty.png');
 
-  /// File path: assets/images/pdf_preview.png
-  AssetGenImage get pdfPreviewPng =>
-      const AssetGenImage('assets/images/pdf_preview.png');
+  /// File path: assets/images/ob_group.png
+  AssetGenImage get obGroup =>
+      const AssetGenImage('assets/images/ob_group.png');
 
-  /// File path: assets/images/preview_pdf.png
-  AssetGenImage get previewPdf =>
-      const AssetGenImage('assets/images/preview_pdf.png');
-
-  /// File path: assets/images/profile_avatar.png
-  AssetGenImage get profileAvatar =>
-      const AssetGenImage('assets/images/profile_avatar.png');
+  /// File path: assets/images/ob_university.png
+  AssetGenImage get obUniversity =>
+      const AssetGenImage('assets/images/ob_university.png');
 
   /// File path: assets/images/profile_info.svg
   SvgGenImage get profileInfo =>
@@ -609,16 +601,16 @@ class $AssetsImagesGen {
   AssetGenImage get resultBg =>
       const AssetGenImage('assets/images/result_bg.png');
 
+  /// File path: assets/images/schedule.png
+  AssetGenImage get schedule =>
+      const AssetGenImage('assets/images/schedule.png');
+
   /// File path: assets/images/storm_bg.png
   AssetGenImage get stormBg =>
       const AssetGenImage('assets/images/storm_bg.png');
 
   /// File path: assets/images/subjects.svg
   SvgGenImage get subjects => const SvgGenImage('assets/images/subjects.svg');
-
-  /// File path: assets/images/target_image.png
-  AssetGenImage get targetImage =>
-      const AssetGenImage('assets/images/target_image.png');
 
   /// File path: assets/images/ubt_avatar_blur.png
   AssetGenImage get ubtAvatarBlur =>
@@ -628,6 +620,10 @@ class $AssetsImagesGen {
   AssetGenImage get ubtWinnerAvatar =>
       const AssetGenImage('assets/images/ubt_winner_avatar.png');
 
+  /// File path: assets/images/university.png
+  AssetGenImage get university =>
+      const AssetGenImage('assets/images/university.png');
+
   /// List of all assets
   List<dynamic> get values => [
         blueDeskCalendar,
@@ -635,25 +631,24 @@ class $AssetsImagesGen {
         circleBackgroundSmall,
         circleBackgroundTopp,
         circleBackground,
+        educationalProgramm,
         globe53,
         lessonDetailTitleback,
         magnifyGlass2,
-        mainIcon,
-        mainIcon4x,
         medalIcon,
         notebookDynamicColorImg,
-        pdfPreviewJpg,
-        pdfPreviewPng,
-        previewPdf,
-        profileAvatar,
+        obFaculty,
+        obGroup,
+        obUniversity,
         profileInfo,
         progressHdBg,
         resultBg,
+        schedule,
         stormBg,
         subjects,
-        targetImage,
         ubtAvatarBlur,
-        ubtWinnerAvatar
+        ubtWinnerAvatar,
+        university
       ];
 }
 

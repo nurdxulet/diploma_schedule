@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/view/base.dart';
-import 'package:schedule/features/auth/view/auth_page.dart';
 import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 
 // ignore: unused_element
@@ -42,10 +41,28 @@ class _LauncherState extends State<Launcher> {
       },
       builder: (context, state) {
         return state.maybeWhen(
-          notAuthorizedState: () {
-            return const OnboardingPage();
-            // return const Base();
-            // return const AuthPage();
+          // notAuthorizedState: () {
+          //   return const OnboardingPage();
+          //   // return const Base();
+          //   // return const AuthPage();
+          // },
+
+          // loadingState: () {
+          //   return const _Scaffold(child: SizedBox());
+          // },
+
+          loadingState: () {
+            return Scaffold(
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  Text(
+                    'Loading...',
+                    style: AppTextStyles.m26w500Grey2,
+                  )
+                ],
+              ),
+            );
           },
           onboardingState: () {
             return const OnboardingPage();
@@ -53,9 +70,6 @@ class _LauncherState extends State<Launcher> {
           inAppState: () {
             return const Base();
           },
-          // loadingState: () {
-          //   return const _Scaffold(child: SizedBox());
-          // },
           // errorState: (String message) {
           //   return const _Scaffold(child: CustomErrorLoadingWidget());
           // },
