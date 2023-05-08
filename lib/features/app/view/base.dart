@@ -3,13 +3,11 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/gradient_text.dart';
-import 'package:schedule/features/app/widgets/top_indicator.dart';
 
 // ignore: unused_element
 const _tag = 'Base';

@@ -54,141 +54,142 @@ class _SettingsPageState extends State<SettingsPage> {
     // final bool lightMode = themeProvider.isLightMode;
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(height: 30),
-          SettingsButtonSubtitle(
-            str: context.localized.appLanguage,
-            subtitle: context.currentLocale == AppLanguage.ru
-                ? context.localized.russian
-                : context.currentLocale == AppLanguage.kk
-                    ? context.localized.kazakh
-                    : context.localized.english,
-            icon: SvgPicture.asset(
-              Assets.icons.languageIcon.path,
-              color: AppColors.kPrimary,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 30),
+            SettingsButtonSubtitle(
+              str: context.localized.appLanguage,
+              subtitle: context.currentLocale == AppLanguage.ru
+                  ? context.localized.russian
+                  : context.currentLocale == AppLanguage.kk
+                      ? context.localized.kazakh
+                      : context.localized.english,
+              icon: SvgPicture.asset(
+                Assets.icons.languageIcon.path,
+                color: AppColors.kPrimary,
+              ),
+              onPressed: () => context.router.push(
+                const LanguageRoute(),
+              ),
             ),
-            onPressed: () => context.router.push(
-              const LanguageRoute(),
-            ),
-          ),
-          SettingsButtonSubtitle(
-            str: context.localized.design,
-            //TODO DARK THEME
-            subtitle: context.localized.light,
-            icon: SvgPicture.asset(
-              Assets.icons.refreshIcon.path,
-              color: AppColors.kPrimary,
-            ),
-            // onPressed: () => context.router.push(const ThemeScreenRoute()),
-            onPressed: () {
-              bottomSheet(
-                SizedBox(
-                  height: 170,
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        ThemeButton(
-                          txt: context.localized.light,
-                          icon: Icons.sunny,
-                          enabled: themeLight,
-                          onPressed: () {
-                            setState(() {
-                              if (themeLight) {
-                                themeDark = true;
-                                themeLight = false;
-                              } else {
-                                themeLight = true;
-                                themeDark = false;
-                              }
-                            });
-                            // final provider = Provider.of<ThemeProvider>(context, listen: false);
-                            // provider.toggleTheme(theme);
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        ThemeButton(
-                          txt: context.localized.dark,
-                          icon: Icons.nightlight_round_sharp,
-                          enabled: themeDark,
-                          onPressed: () {
-                            setState(() {
-                              if (themeDark) {
-                                themeLight = true;
-                                themeDark = false;
-                              } else {
-                                themeLight = false;
-                                themeDark = true;
-                              }
-                            });
-                            // final provider = Provider.of<ThemeProvider>(context, listen: false);
-                            // provider.toggleTheme(theme);
-                          },
-                        ),
-                        const Spacer(),
-                        CustomButton(
-                          body: Text(
-                            context.localized.save,
-                            style: AppTextStyles.m15w500White,
+            SettingsButtonSubtitle(
+              str: context.localized.design,
+              //TODO DARK THEME
+              subtitle: context.localized.light,
+              icon: SvgPicture.asset(
+                Assets.icons.refreshIcon.path,
+                color: AppColors.kPrimary,
+              ),
+              // onPressed: () => context.router.push(const ThemeScreenRoute()),
+              onPressed: () {
+                bottomSheet(
+                  SizedBox(
+                    height: 170,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          ThemeButton(
+                            txt: context.localized.light,
+                            icon: Icons.sunny,
+                            enabled: themeLight,
+                            onPressed: () {
+                              setState(() {
+                                if (themeLight) {
+                                  themeDark = true;
+                                  themeLight = false;
+                                } else {
+                                  themeLight = true;
+                                  themeDark = false;
+                                }
+                              });
+                              // final provider = Provider.of<ThemeProvider>(context, listen: false);
+                              // provider.toggleTheme(theme);
+                            },
                           ),
-                          onClick: () => Navigator.pop(context),
-                        )
-                      ],
+                          const SizedBox(height: 20),
+                          ThemeButton(
+                            txt: context.localized.dark,
+                            icon: Icons.nightlight_round_sharp,
+                            enabled: themeDark,
+                            onPressed: () {
+                              setState(() {
+                                if (themeDark) {
+                                  themeLight = true;
+                                  themeDark = false;
+                                } else {
+                                  themeLight = false;
+                                  themeDark = true;
+                                }
+                              });
+                              // final provider = Provider.of<ThemeProvider>(context, listen: false);
+                              // provider.toggleTheme(theme);
+                            },
+                          ),
+                          const Spacer(),
+                          CustomButton(
+                            body: Text(
+                              context.localized.save,
+                              style: AppTextStyles.m15w500White,
+                            ),
+                            onClick: () => Navigator.pop(context),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                isDismissible: true,
-                context,
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  Assets.icons.notificationIcon.path,
-                  color: AppColors.kPrimary,
-                ),
-                const SizedBox(width: 15),
-                Text(
-                  context.localized.notifications,
-                  style: AppTextStyles.m16w500
-                      .copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
-                ),
-                const Spacer(),
-                SwitchButton(
-                  notificationOn: notification,
-                  onChanged: notificationOff,
-                ),
-              ],
+                  isDismissible: true,
+                  context,
+                );
+              },
             ),
-          ),
-          SettingsButton(
-            icon: SvgPicture.asset(
-              Assets.icons.exclamationIcon.path,
-              color: AppColors.kPrimary,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    Assets.icons.notificationIcon.path,
+                    color: AppColors.kPrimary,
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    context.localized.notifications,
+                    style: AppTextStyles.m16w500
+                        .copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.normal),
+                  ),
+                  const Spacer(),
+                  SwitchButton(
+                    notificationOn: notification,
+                    onChanged: notificationOff,
+                  ),
+                ],
+              ),
             ),
-            str: context.localized.termsOfUse,
-            onTap: () {},
-          ),
-          SettingsButton(
-            icon: SvgPicture.asset(
-              Assets.icons.exclamationIcon.path,
-              color: AppColors.kPrimary,
+            SettingsButton(
+              icon: SvgPicture.asset(
+                Assets.icons.exclamationIcon.path,
+                color: AppColors.kPrimary,
+              ),
+              str: context.localized.termsOfUse,
+              onTap: () {},
             ),
-            str: 'онбординг',
-            onTap: () {
-              BlocProvider.of<AppBLoC>(context).add(const AppEvent.checkAuth());
-            },
-          ),
-          const Spacer(),
-          const SizedBox(height: 20),
-        ],
-      )),
+            SettingsButton(
+              icon: SvgPicture.asset(
+                Assets.icons.icDefinition.path,
+                color: AppColors.kPrimary,
+              ),
+              str: 'Onboarding',
+              onTap: () {
+                BlocProvider.of<AppBLoC>(context).add(const AppEvent.checkAuth());
+              },
+            ),
+            const Spacer(),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
     );
   }
 }

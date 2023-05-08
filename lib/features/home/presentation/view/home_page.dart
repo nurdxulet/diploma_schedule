@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/extensions.dart';
-import 'package:schedule/core/get_it/injection_container.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/home/bloc/schedule_bloc.dart';
@@ -30,6 +29,7 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
 class _HomePageState extends State<HomePage> {
   String id = '3f24b194-6378-46f8-85e6-138a20e1d041';
+  // String id = '';
   bool sortFromTop = true;
 
   @override
@@ -160,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }
                   if (state is ScheduleSucces) {
+                    state.scheduleListList.reversed;
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {

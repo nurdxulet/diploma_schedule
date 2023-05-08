@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/features/home/data/models/schedule_model_dto.dart';
 import 'package:schedule/features/home/repositories/news_repository.dart';

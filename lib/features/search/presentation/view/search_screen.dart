@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_final_locals
 
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_text_field.dart';
@@ -27,9 +24,10 @@ class _SearchPageState extends State<SearchPage> {
     ),
     OrganizationMock(
       'SDU',
-      'Almaty',
-      'Manasa 147B',
-      'https://epicur.education/wp-content/uploads/2022/02/SDU7-1024x601.jpg',
+      'Kaskelen',
+      'Ablylai Khan 1/1',
+      // 'https://epicur.education/wp-content/uploads/2022/02/SDU7-1024x601.jpg',
+      'https://lh3.googleusercontent.com/p/AF1QipMnEGiXNRxcHFs6hYmU4EwKqnwE_XS2lqwjvT_9=s680-w680-h510',
     ),
     OrganizationMock(
       'AITU',
@@ -152,7 +150,7 @@ class _SearchPageState extends State<SearchPage> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: OrganizationWidget(
-                      isFavourite: false,
+                      isFavourite: index != 0,
                       orgName: _foundOrganizations[index].orgName,
                       orgCity: _foundOrganizations[index].orgCity,
                       orgLocation: _foundOrganizations[index].orgLocation,

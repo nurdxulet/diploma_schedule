@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/features/app/widgets/custom/app_bar_with_title.dart';
-import 'package:schedule/features/settings/widgets/radio_button.dart';
 import 'package:schedule/features/settings/widgets/set_language_widget.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -35,13 +34,14 @@ class _LanguagePageState extends State<LanguagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          AppBarWithTitle(title: context.localized.language),
-          const SizedBox(height: 20),
-          const SetLanguageWidget(),
-        ],
-      )),
+        child: Column(
+          children: [
+            AppBarWithTitle(title: context.localized.language),
+            const SizedBox(height: 20),
+            const SetLanguageWidget(),
+          ],
+        ),
+      ),
     );
   }
 }
