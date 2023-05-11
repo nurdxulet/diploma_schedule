@@ -23,6 +23,12 @@ class _$AppRouter extends RootStackRouter {
         child: const Launcher(),
       );
     },
+    ChoiceRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const ChoicePage(),
+      );
+    },
     OnboardingRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -100,6 +106,10 @@ class _$AppRouter extends RootStackRouter {
           ],
         ),
         RouteConfig(
+          ChoiceRoute.name,
+          path: '/choice-page',
+        ),
+        RouteConfig(
           OnboardingRoute.name,
           path: '/onboarding-page',
         ),
@@ -125,6 +135,18 @@ class LauncherRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LauncherRoute';
+}
+
+/// generated route for
+/// [ChoicePage]
+class ChoiceRoute extends PageRouteInfo<void> {
+  const ChoiceRoute()
+      : super(
+          ChoiceRoute.name,
+          path: '/choice-page',
+        );
+
+  static const String name = 'ChoiceRoute';
 }
 
 /// generated route for

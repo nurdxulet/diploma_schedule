@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_final_locals
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
+import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_text_field.dart';
 import 'package:schedule/features/search/presentation/widgets/organization_widget.dart';
 
@@ -150,6 +152,7 @@ class _SearchPageState extends State<SearchPage> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: OrganizationWidget(
+                      onTap: () => context.router.push(const ChoiceRoute()),
                       isFavourite: index != 0,
                       orgName: _foundOrganizations[index].orgName,
                       orgCity: _foundOrganizations[index].orgCity,
