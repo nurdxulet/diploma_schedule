@@ -54,17 +54,12 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
     Emitter<AppState> emit,
   ) async {
     ///onboarding only one time
-
-    // final bool onboarding = _authRepository.getOnboarding();
-    // if (onboarding) {
-    // if (_authRepository.isAuthenticated) {
-    // emit(const AppState.inAppState());
-    // } else {
-    // emit(const AppState.notAuthorizedState());
-    // }
-    // } else {
-    emit(const AppState.onboardingState());
-    // }
+      if (_authRepository.isAuthenticated) {
+        emit(const AppState.inAppState());
+      } else {
+        emit(const AppState.notAuthorizedState());
+      }
+    
   }
 
   Future<void> _onboardingSave(

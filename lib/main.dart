@@ -5,7 +5,7 @@ import 'package:schedule/features/app/view/schedule_app.dart';
 Future<void> main() => MainRunner.run<AsyncAppDependencies>(
       asyncDependencies: AsyncAppDependencies.obtain,
       appBuilder: (dependencies) => ScheduleApp(
-        sharedPreferences: dependencies.sharedPreferences,  
+        sharedPreferences: dependencies.sharedPreferences,
         packageInfo: dependencies.packageInfo,
       ),
     );

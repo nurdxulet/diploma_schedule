@@ -23,12 +23,6 @@ class _$AppRouter extends RootStackRouter {
         child: const Launcher(),
       );
     },
-    ChoiceRoute.name: (routeData) {
-      return MaterialPageX<void>(
-        routeData: routeData,
-        child: const ChoicePage(),
-      );
-    },
     OnboardingRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -53,10 +47,10 @@ class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const HomePage()),
       );
     },
-    SearchRoute.name: (routeData) {
+    ChoiceRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
-        child: const SearchPage(),
+        child: const ChoicePage(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -89,8 +83,8 @@ class _$AppRouter extends RootStackRouter {
               parent: LauncherRoute.name,
             ),
             RouteConfig(
-              SearchRoute.name,
-              path: 'search-page',
+              ChoiceRoute.name,
+              path: 'choice-page',
               parent: LauncherRoute.name,
             ),
             RouteConfig(
@@ -104,10 +98,6 @@ class _$AppRouter extends RootStackRouter {
               parent: LauncherRoute.name,
             ),
           ],
-        ),
-        RouteConfig(
-          ChoiceRoute.name,
-          path: '/choice-page',
         ),
         RouteConfig(
           OnboardingRoute.name,
@@ -135,18 +125,6 @@ class LauncherRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LauncherRoute';
-}
-
-/// generated route for
-/// [ChoicePage]
-class ChoiceRoute extends PageRouteInfo<void> {
-  const ChoiceRoute()
-      : super(
-          ChoiceRoute.name,
-          path: '/choice-page',
-        );
-
-  static const String name = 'ChoiceRoute';
 }
 
 /// generated route for
@@ -198,15 +176,15 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SearchPage]
-class SearchRoute extends PageRouteInfo<void> {
-  const SearchRoute()
+/// [ChoicePage]
+class ChoiceRoute extends PageRouteInfo<void> {
+  const ChoiceRoute()
       : super(
-          SearchRoute.name,
-          path: 'search-page',
+          ChoiceRoute.name,
+          path: 'choice-page',
         );
 
-  static const String name = 'SearchRoute';
+  static const String name = 'ChoiceRoute';
 }
 
 /// generated route for

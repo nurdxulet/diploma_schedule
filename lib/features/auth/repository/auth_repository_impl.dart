@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:schedule/core/network/layers/network_executer.dart';
 import 'package:schedule/core/network/result.dart';
@@ -6,6 +7,7 @@ import 'package:schedule/features/auth/database/auth_dao.dart';
 import 'package:schedule/features/auth/datasource/auth_remote_ds.dart';
 import 'package:schedule/features/auth/model/user_dto.dart';
 import 'package:schedule/features/auth/repository/auth_repository.dart';
+import 'package:schedule/features/search/models/university_dto.dart';
 
 class AuthRepositoryImpl extends IAuthRepository {
   final IAuthRemoteDS _remoteDS;
@@ -16,11 +18,10 @@ class AuthRepositoryImpl extends IAuthRepository {
   bool get isAuthenticated => _authDao.user.value != null;
 
   AuthRepositoryImpl({
-     required IAuthRemoteDS remoteDS,
+    required IAuthRemoteDS remoteDS,
     required IAuthDao authDao,
     required NetworkExecuter client,
-  })  :
-         _remoteDS = remoteDS,
+  })  : _remoteDS = remoteDS,
         _authDao = authDao,
         _client = client;
 
@@ -47,8 +48,21 @@ class AuthRepositoryImpl extends IAuthRepository {
   bool getOnboarding() => _authDao.onboarding.value ?? false;
 
   @override
-  Future<void> setOnboarding({required bool onboarding}) async =>
-      _authDao.onboarding.setValue(onboarding);
+  Future<void> setOnboarding({required bool onboarding}) async => _authDao.onboarding.setValue(onboarding);
+  
+  @override
+  Future<UniversityDTO?> getUniversityFromCache() async {
+    try {
+      if (_authDao.user.value != null) {
+        final UniversityDTO university =
+            UniversityDTO.fromJson(jsonDecode(_authDao.user.value!) as Map<String, dynamic>);
+        return university;
+      }
+    } on Exception catch (e) {
+      log(e.toString(), name: 'getUniversityFromCache()');
+    }
+    return null;
+  }
 
   // @override
   // Future<Result<BasicResponse>> sendCode({required String email}) async => _client.execute(

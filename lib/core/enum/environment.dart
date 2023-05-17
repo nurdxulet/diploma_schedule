@@ -9,4 +9,4 @@
 //   development,
 // }
 
-const String kBaseUrl = 'https://university-scheduler.herokuapp.com/swagger-ui/index.html#/';
+const String kBaseUrl = 'https://university-scheduler.herokuapp.com/';

@@ -21,7 +21,8 @@ part 'app_router.gr.dart';
       name: 'LauncherRoute',
       children: [
         AutoRoute<void>(page: HomePage),
-        AutoRoute<void>(page: SearchPage),
+        // AutoRoute<void>(page: SearchPage),
+        AutoRoute<void>(page: ChoicePage),
         AutoRoute<void>(page: SettingsPage),
         AutoRoute<void>(page: TempPage),
         // AutoRoute<void>(page: ProfilePage),
@@ -39,7 +40,7 @@ part 'app_router.gr.dart';
     ),
 
     //Choice page
-    AutoRoute<void>(page: ChoicePage),
+    // AutoRoute<void>(page: ChoicePage),
 
     //Onboarding
     AutoRoute<void>(page: OnboardingPage),

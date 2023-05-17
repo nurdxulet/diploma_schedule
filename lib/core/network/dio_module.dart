@@ -43,7 +43,7 @@ class DioModule {
         PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
-          responseBody: false,
+          // responseBody: false,
           responseHeader: true,
           compact: false,
         ),
@@ -59,21 +59,20 @@ class _AuthDioInterceptor extends Interceptor {
 
   // Dio dio = Dio(BaseOptions(baseUrl: SERVER_));
 
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final String? userStr = _authDao.user.value;
-    if (userStr != null) {
-      final UserDTO user =
-          UserDTO.fromJson(jsonDecode(userStr) as Map<String, dynamic>);
-      if (user.token!=null&&user.token!.accessToken != null) {
-        options.headers['Authorization'] = 'Bearer ${user.token!.accessToken}';
-      }
-    }
+  // @override
+  // void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+  //   final String? userStr = _authDao.user.value;
+  //   if (userStr != null) {
+  //     final UserDTO user = UserDTO.fromJson(jsonDecode(userStr) as Map<String, dynamic>);
+  //     if (user.token != null && user.token!.accessToken != null) {
+  //       options.headers['Authorization'] = 'Bearer ${user.token!.accessToken}';
+  //     }
+  //   }
 
-    options.headers['Accept'] = "application/json";
-    // options.headers['Content-Language'] = locale.replaceAll('kk', 'kz');
-    super.onRequest(options, handler);
-  }
+  //   options.headers['Accept'] = "application/json";
+  //   // options.headers['Content-Language'] = locale.replaceAll('kk', 'kz');
+  //   super.onRequest(options, handler);
+  // }
 
   @override
   Future onError(
@@ -83,8 +82,7 @@ class _AuthDioInterceptor extends Interceptor {
     // sl<NotAuthLogic>().statusSubject.add(err.response?.statusCode ?? 0);
     if ((err.response?.statusCode ?? 0) == HttpStatus.unauthorized) {
       // sl<NotAuthLogic>().statusSubject.add(401);
-    } else if ((err.response?.statusCode ?? 0) ==
-        HttpStatus.unprocessableEntity) {
+    } else if ((err.response?.statusCode ?? 0) == HttpStatus.unprocessableEntity) {
     } else if ((err.response?.statusCode ?? 0) == HttpStatus.notFound) {}
     return super.onError(err, handler);
   }

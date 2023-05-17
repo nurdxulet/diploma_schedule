@@ -5,6 +5,7 @@ import 'package:schedule/core/model/repository_storage.dart';
 import 'package:schedule/core/widget/dependencies_scope.dart';
 import 'package:schedule/core/widget/repository_scope.dart';
 import 'package:schedule/features/app/view/app_configuration.dart';
+import 'package:schedule/features/auth/database/auth_dao.dart';
 import 'package:schedule/settings/widget/scope/settings_scope.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,6 +30,7 @@ class ScheduleApp extends StatelessWidget {
             appDatabase: DependenciesScope.of(context).database,
             sharedPreferences: sharedPreferences,
             networkExecuter: DependenciesScope.of(context).networkExecuter,
+            authDao: AuthDao(sharedPreferences: sharedPreferences),
           ),
           child: const SettingsScope(
             child: AppConfiguration(),

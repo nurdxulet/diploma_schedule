@@ -2,28 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
+import 'package:schedule/features/home/data/models/schedule_model_dto.dart';
 
 class SubjectScheduleWidget extends StatelessWidget {
-  final String subjectName;
-  final String? lessonType;
-  final String? lessonLocation;
-  final String? lessonStartTime;
-  final String? lessonEndTime;
-  final String? lessonBreakStartTime;
-  final String? lessonBreakEndTime;
+  final ScheduleDTO schedule;
   final Color? widgetColor;
   const SubjectScheduleWidget({
     super.key,
-    required this.subjectName,
-    this.lessonType,
-    this.lessonLocation,
-    this.lessonStartTime,
-    this.lessonEndTime,
-    this.lessonBreakStartTime,
-    this.lessonBreakEndTime,
     this.widgetColor = AppColors.kPrimary,
+    required this.schedule,
   });
 
   @override
@@ -33,24 +23,6 @@ class SubjectScheduleWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // SizedBox(
-          //   width: 40,
-          //   child: Column(
-          //     children: const [
-          //       Text(
-          //         '11:35',
-          //         style: AppTextStyles.m13w600,
-          //       ),
-          //       Text(
-          //         '13:05',
-          //         style: AppTextStyles.m12w600Grey,
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          // const SizedBox(
-          //   width: 10,
-          // ),
           Expanded(
             child: Container(
               height: 150,
@@ -82,7 +54,7 @@ class SubjectScheduleWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                lessonType ?? 'unknown',
+                                schedule.sessionType ?? 'unknown',
                                 style: AppTextStyles.m12w600.copyWith(color: widgetColor),
                               ),
                               const Spacer(),
@@ -95,13 +67,13 @@ class SubjectScheduleWidget extends StatelessWidget {
                                 width: 5,
                               ),
                               Text(
-                                lessonLocation ?? 'unknown',
+                                schedule.room ?? 'unknown',
                                 style: AppTextStyles.m12w600.copyWith(color: widgetColor),
                               ),
                             ],
                           ),
                           Text(
-                            subjectName,
+                            schedule.subjectName ?? 'No subject name',
                             // 'Enterprice Architecture',
                             style: AppTextStyles.m24w700,
                             maxLines: 2,
@@ -111,12 +83,13 @@ class SubjectScheduleWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '$lessonStartTime - $lessonEndTime',
+                                '${DateFormat('hh:mm a').format(schedule.startTime!)} - ${DateFormat('hh:mm a').format(schedule.endTime!)}',
                                 style: AppTextStyles.m12w600.copyWith(color: AppColors.kLightBlue),
                               ),
                               Text(
-                                'Break: $lessonBreakStartTime - $lessonBreakEndTime',
-                                style: AppTextStyles.m12w600.copyWith(color: AppColors.kLightBlue),
+                                '${DateFormat('hh:mm a').format(schedule.startTime!)} - ${DateFormat('hh:mm a').format(schedule.endTime!)}',
+                                //TODO need break start time and end time
+                                style: AppTextStyles.m12w600.copyWith(color: AppColors.kSubjectGreen),
                               ),
                             ],
                           ),

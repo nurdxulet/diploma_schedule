@@ -57,7 +57,15 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ).copyWith(top: 8, bottom: 14),
+              child: Text(
+                context.localized.settings,
+                style: AppTextStyles.m24w600,
+              ),
+            ),
             SettingsButtonSubtitle(
               str: context.localized.appLanguage,
               subtitle: context.currentLocale == AppLanguage.ru
@@ -182,7 +190,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               str: 'Сбросить учебное заведение',
               onTap: () {
-                BlocProvider.of<AppBLoC>(context).add(const AppEvent.checkAuth());
+                BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting());
               },
             ),
             const Spacer(),

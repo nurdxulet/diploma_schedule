@@ -103,12 +103,10 @@ class NetworkExecuter {
       try {
         final response = await _creator.request(route: route, options: options, dio: _dio);
 
-        final Map<String, dynamic> responseMap = response.data as Map<String, dynamic>;
-
-        if (responseMap is List) {
-          return Result<K>.success(responseMap as K);
+        if (response.data is List) {
+          return Result<K>.success(response.data as K);
         } else {
-          return Result<K>.success(responseMap as K);
+          return Result<K>.success(response.data as K);
         }
 
         /// Dio error
@@ -133,7 +131,6 @@ class NetworkExecuter {
           stackTrace: stackTrace,
           hint: '$route => ${NetworkException.type(error: e.toString())}',
         );
-
         return Result<K>.failure(NetworkException.type(error: e.toString()));
       }
 

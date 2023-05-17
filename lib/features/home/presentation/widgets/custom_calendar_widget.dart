@@ -22,6 +22,13 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
+      // onDisabledDayTapped: (day) {
+      //   _selectedDay = day;
+      //   widget.onSelected?.call(day);
+      //   setState(() {});
+      // },
+      pageAnimationEnabled: false,
+      headerVisible: false,
       startingDayOfWeek: StartingDayOfWeek.monday,
       rowHeight: 78,
       focusedDay: _selectedDay,
@@ -81,10 +88,10 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
       ),
       daysOfWeekVisible: false,
       calendarStyle: CalendarStyle(
-        disabledDecoration: BoxDecoration(
-          color: AppColors.kPrimary.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
+        // disabledDecoration: BoxDecoration(
+        //   color: AppColors.kPrimary.withOpacity(0.1),
+        //   borderRadius: BorderRadius.circular(12),
+        // ),
         defaultDecoration: BoxDecoration(
           color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
@@ -103,10 +110,12 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
         ),
       ),
       calendarFormat: CalendarFormat.week,
-      firstDay: DateTime.now(),
-      lastDay: DateTime(2024),
+      firstDay: getDate(DateTime.now().add(Duration(days: DateTime.daysPerWeek - DateTime.now().day))),
+      lastDay: getDate(DateTime.now().add(Duration(days: DateTime.daysPerWeek - DateTime.now().weekday))),
     );
   }
+
+  DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day);
 }
 
 extension StringExtension on String {

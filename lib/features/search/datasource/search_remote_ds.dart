@@ -68,12 +68,14 @@ class SearchRemoteDSImpl implements ISearchRemoteDS {
           //   );
           // }
 
-          final List<ScheduleDTO> questions =
-              (response ?? []).map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>)).toList();
+          final List<ScheduleDTO> questions = (response ?? [])
+              .map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>))
+              .toList();
 
           return Result<List<ScheduleDTO>>.success(questions);
         },
-        failure: (NetworkException exception) => Result<List<ScheduleDTO>>.failure(exception),
+        failure: (NetworkException exception) =>
+            Result<List<ScheduleDTO>>.failure(exception),
       );
     } catch (e) {
       if (kDebugMode) {
@@ -100,12 +102,14 @@ class SearchRemoteDSImpl implements ISearchRemoteDS {
           //   );
           // }
 
-          final List<ScheduleDTO> questions =
-              (response ?? []).map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>)).toList();
+          final List<ScheduleDTO> questions = (response ?? [])
+              .map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>))
+              .toList();
 
           return Result<List<ScheduleDTO>>.success(questions);
         },
-        failure: (NetworkException exception) => Result<List<ScheduleDTO>>.failure(exception),
+        failure: (NetworkException exception) =>
+            Result<List<ScheduleDTO>>.failure(exception),
       );
     } catch (e) {
       if (kDebugMode) {
@@ -132,12 +136,14 @@ class SearchRemoteDSImpl implements ISearchRemoteDS {
           //   );
           // }
 
-          final List<ScheduleDTO> questions =
-              (response ?? []).map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>)).toList();
+          final List<ScheduleDTO> questions = (response ?? [])
+              .map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>))
+              .toList();
 
           return Result<List<ScheduleDTO>>.success(questions);
         },
-        failure: (NetworkException exception) => Result<List<ScheduleDTO>>.failure(exception),
+        failure: (NetworkException exception) =>
+            Result<List<ScheduleDTO>>.failure(exception),
       );
     } catch (e) {
       if (kDebugMode) {

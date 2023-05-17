@@ -8,7 +8,8 @@ import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/extensions.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/home/bloc/schedule_bloc.dart';
+import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:schedule/features/home/bloc/schedule_cubit.dart';
 import 'package:schedule/features/home/presentation/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/presentation/widgets/subject_schedule_widget.dart';
 
@@ -20,8 +21,8 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ScheduleBloc>(
-      create: (context) => ScheduleBloc(context.repository.scheduleRepository),
+    return BlocProvider<ScheduleCubit>(
+      create: (context) => ScheduleCubit(context.repository.homeRepository, context.repository.authRepository),
       child: this,
     );
   }
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    BlocProvider.of<ScheduleBloc>(context).add(LoadSchedule(id: id));
+    BlocProvider.of<ScheduleCubit>(context).getUniversityFromCache();
     super.initState();
   }
 
@@ -69,11 +70,17 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              DateFormat('EEE').format(DateTime.now()),
+                              DateFormat(
+                                'EEEE',
+                                context.currentLocale.localeCode,
+                              ).format(DateTime.now()),
                               style: AppTextStyles.m12w600Grey,
                             ),
                             Text(
-                              DateFormat('MMM yyy').format(DateTime.now()),
+                              DateFormat(
+                                'MMMM, yyy',
+                                context.currentLocale.localeCode,
+                              ).format(DateTime.now()),
                               style: AppTextStyles.m12w600Grey,
                             ),
                           ],
@@ -131,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           sortFromTop = !sortFromTop;
                         });
+                        BlocProvider.of<ScheduleCubit>(context).sortList(isFromTop: sortFromTop);
                       },
                       child: sortFromTop
                           ? SvgPicture.asset(
@@ -148,47 +156,50 @@ class _HomePageState extends State<HomePage> {
             ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: BlocBuilder<ScheduleBloc, ScheduleState>(
+              sliver: BlocConsumer<ScheduleCubit, ScheduleState>(
+                listener: (context, state) {
+                  state.whenOrNull(
+                    errorState: (message) => buildErrorCustomSnackBar(context, message),
+                  );
+                },
                 builder: (context, state) {
-                  if (state is ScheduleLoading) {
-                    return const SliverToBoxAdapter(
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.blue,
+                  return state.maybeWhen(
+                    orElse: () => const SliverToBoxAdapter(
+                      child: SizedBox(
+                        child: Text(
+                          'THERE IS NO DATA YET',
+                          style: AppTextStyles.m20w500,
                         ),
                       ),
-                    );
-                  }
-                  if (state is ScheduleSucces) {
-                    state.scheduleListList.reversed;
-                    return SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return SubjectScheduleWidget(
-                            widgetColor: AppColors.kSubjectOrange,
-                            subjectName: state.scheduleListList[index]?.subjectName ?? '',
-                            lessonType: state.scheduleListList[index]?.sessionType?.toLowerCase().capitalize(),
-                            lessonLocation: state.scheduleListList[index]?.room,
-                            lessonStartTime:
-                                '${state.scheduleListList[index]?.startTime?.hour}:${state.scheduleListList[index]?.startTime?.minute}',
-                            lessonEndTime:
-                                '${state.scheduleListList[index]?.endTime?.hour}:${state.scheduleListList[index]?.endTime?.minute}',
-                            lessonBreakStartTime:
-                                '${state.scheduleListList[index]?.startTime?.add(const Duration(minutes: 50)).hour}:${state.scheduleListList[index]?.startTime?.add(const Duration(minutes: 50)).minute}',
-                            lessonBreakEndTime:
-                                '${state.scheduleListList[index]?.startTime?.add(const Duration(minutes: 60)).hour}:${state.scheduleListList[index]?.startTime?.add(const Duration(minutes: 60)).minute}',
-                          );
-                        },
-                        childCount: state.scheduleListList.length,
-                        semanticIndexOffset: 2,
-                      ),
-                    );
-                  }
-                  if (state is ScheduleFailure) {
-                    return const SliverToBoxAdapter(child: Text("Failure"));
-                  }
-                  return const SliverToBoxAdapter(
-                    child: SizedBox(),
+                    ),
+                    loadingState: () {
+                      return const SliverToBoxAdapter(
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      );
+                    },
+                    loadedState: (schedulesBack) {
+                      // final List<ScheduleDTO> schedules;
+                      // if (sortFromTop) {
+                      //   schedules = schedulesBack;
+                      // } else {
+                      //   schedules = schedulesBack.reversed;
+                      // }
+                      return SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            return SubjectScheduleWidget(
+                              schedule: schedulesBack[index],
+                            );
+                          },
+                          childCount: schedulesBack.length,
+                          semanticIndexOffset: 2,
+                        ),
+                      );
+                    },
                   );
                 },
               ),

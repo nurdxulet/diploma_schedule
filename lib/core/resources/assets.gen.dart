@@ -609,6 +609,10 @@ class $AssetsImagesGen {
   AssetGenImage get stormBg =>
       const AssetGenImage('assets/images/storm_bg.png');
 
+  /// File path: assets/images/students.jpg
+  AssetGenImage get students =>
+      const AssetGenImage('assets/images/students.jpg');
+
   /// File path: assets/images/subjects.svg
   SvgGenImage get subjects => const SvgGenImage('assets/images/subjects.svg');
 
@@ -645,6 +649,7 @@ class $AssetsImagesGen {
         resultBg,
         schedule,
         stormBg,
+        students,
         subjects,
         ubtAvatarBlur,
         ubtWinnerAvatar,

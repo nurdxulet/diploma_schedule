@@ -1,5 +1,6 @@
 import 'package:schedule/core/network/result.dart';
 import 'package:schedule/features/auth/model/user_dto.dart';
+import 'package:schedule/features/search/models/university_dto.dart';
 
 abstract class IAuthRepository {
   /// Статус аутентификации
@@ -16,40 +17,9 @@ abstract class IAuthRepository {
     required bool onboarding,
   });
 
-  // // RESET password
-  // Future<Result<BasicResponse>> sendCode({
-  //   required String email,
-  // });
-
-  // // RESET password
-  // Future<Result<BasicResponse>> checkCode({
-  //   required String email,
-  //   required String code,
-  // });
-
-  // RESET password
-  // Future<Result<BasicResponse>> changePassword({
-  //   required String email,
-  //   required String password,
-  // });
-
   Future<Result<UserDTO>> getProfile();
 
+  Future<UniversityDTO?> getUniversityFromCache();
+
   Future<bool> clearUser();
-
-  // // Log out api
-  // Future<Result<BasicResponse>> logOut();
-
-  // Future<Result<BasicResponse>> registration({
-  //   required String email,
-  //   required String password,
-  //   required String phone,
-  //   required String birthday,
-  //   required String name,
-  // });
-
-  // Future<Result<BasicResponse>> editProfile({
-  //   required UserPayload userPayload,
-  //   XFile? avatar,
-  // });
 }

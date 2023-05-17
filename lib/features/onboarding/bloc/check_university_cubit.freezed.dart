@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'search_cubit.dart';
+part of 'check_university_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SearchState {
+mixin _$CheckUniversityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(List<ScheduleDTO> schedules) loadedState,
+    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function(String message) errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$SearchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function(String message)? errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$SearchState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult Function(UniversityDTO university)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,17 @@ mixin _$SearchState {
 }
 
 /// @nodoc
-abstract class $SearchStateCopyWith<$Res> {
-  factory $SearchStateCopyWith(
-          SearchState value, $Res Function(SearchState) then) =
-      _$SearchStateCopyWithImpl<$Res, SearchState>;
+abstract class $CheckUniversityStateCopyWith<$Res> {
+  factory $CheckUniversityStateCopyWith(CheckUniversityState value,
+          $Res Function(CheckUniversityState) then) =
+      _$CheckUniversityStateCopyWithImpl<$Res, CheckUniversityState>;
 }
 
 /// @nodoc
-class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
-    implements $SearchStateCopyWith<$Res> {
-  _$SearchStateCopyWithImpl(this._value, this._then);
+class _$CheckUniversityStateCopyWithImpl<$Res,
+        $Val extends CheckUniversityState>
+    implements $CheckUniversityStateCopyWith<$Res> {
+  _$CheckUniversityStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +96,7 @@ abstract class _$$_InitialStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_InitialState>
+    extends _$CheckUniversityStateCopyWithImpl<$Res, _$_InitialState>
     implements _$$_InitialStateCopyWith<$Res> {
   __$$_InitialStateCopyWithImpl(
       _$_InitialState _value, $Res Function(_$_InitialState) _then)
@@ -109,7 +110,7 @@ class _$_InitialState implements _InitialState {
 
   @override
   String toString() {
-    return 'SearchState.initialState()';
+    return 'CheckUniversityState.initialState()';
   }
 
   @override
@@ -126,7 +127,7 @@ class _$_InitialState implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(List<ScheduleDTO> schedules) loadedState,
+    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return initialState();
@@ -137,7 +138,7 @@ class _$_InitialState implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return initialState?.call();
@@ -148,7 +149,7 @@ class _$_InitialState implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult Function(UniversityDTO university)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -196,7 +197,7 @@ class _$_InitialState implements _InitialState {
   }
 }
 
-abstract class _InitialState implements SearchState {
+abstract class _InitialState implements CheckUniversityState {
   const factory _InitialState() = _$_InitialState;
 }
 
@@ -209,7 +210,7 @@ abstract class _$$_LoadingStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_LoadingState>
+    extends _$CheckUniversityStateCopyWithImpl<$Res, _$_LoadingState>
     implements _$$_LoadingStateCopyWith<$Res> {
   __$$_LoadingStateCopyWithImpl(
       _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
@@ -223,7 +224,7 @@ class _$_LoadingState implements _LoadingState {
 
   @override
   String toString() {
-    return 'SearchState.loadingState()';
+    return 'CheckUniversityState.loadingState()';
   }
 
   @override
@@ -240,7 +241,7 @@ class _$_LoadingState implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(List<ScheduleDTO> schedules) loadedState,
+    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return loadingState();
@@ -251,7 +252,7 @@ class _$_LoadingState implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return loadingState?.call();
@@ -262,7 +263,7 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult Function(UniversityDTO university)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -310,7 +311,7 @@ class _$_LoadingState implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements SearchState {
+abstract class _LoadingState implements CheckUniversityState {
   const factory _LoadingState() = _$_LoadingState;
 }
 
@@ -320,12 +321,14 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
           _$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ScheduleDTO> schedules});
+  $Res call({UniversityDTO university});
+
+  $UniversityDTOCopyWith<$Res> get university;
 }
 
 /// @nodoc
 class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_LoadedState>
+    extends _$CheckUniversityStateCopyWithImpl<$Res, _$_LoadedState>
     implements _$$_LoadedStateCopyWith<$Res> {
   __$$_LoadedStateCopyWithImpl(
       _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
@@ -334,34 +337,36 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? schedules = null,
+    Object? university = null,
   }) {
     return _then(_$_LoadedState(
-      schedules: null == schedules
-          ? _value._schedules
-          : schedules // ignore: cast_nullable_to_non_nullable
-              as List<ScheduleDTO>,
+      university: null == university
+          ? _value.university
+          : university // ignore: cast_nullable_to_non_nullable
+              as UniversityDTO,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UniversityDTOCopyWith<$Res> get university {
+    return $UniversityDTOCopyWith<$Res>(_value.university, (value) {
+      return _then(_value.copyWith(university: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_LoadedState implements _LoadedState {
-  const _$_LoadedState({required final List<ScheduleDTO> schedules})
-      : _schedules = schedules;
+  const _$_LoadedState({required this.university});
 
-  final List<ScheduleDTO> _schedules;
   @override
-  List<ScheduleDTO> get schedules {
-    if (_schedules is EqualUnmodifiableListView) return _schedules;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_schedules);
-  }
+  final UniversityDTO university;
 
   @override
   String toString() {
-    return 'SearchState.loadedState(schedules: $schedules)';
+    return 'CheckUniversityState.loadedState(university: $university)';
   }
 
   @override
@@ -369,13 +374,12 @@ class _$_LoadedState implements _LoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadedState &&
-            const DeepCollectionEquality()
-                .equals(other._schedules, _schedules));
+            (identical(other.university, university) ||
+                other.university == university));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_schedules));
+  int get hashCode => Object.hash(runtimeType, university);
 
   @JsonKey(ignore: true)
   @override
@@ -388,10 +392,10 @@ class _$_LoadedState implements _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(List<ScheduleDTO> schedules) loadedState,
+    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function(String message) errorState,
   }) {
-    return loadedState(schedules);
+    return loadedState(university);
   }
 
   @override
@@ -399,10 +403,10 @@ class _$_LoadedState implements _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
-    return loadedState?.call(schedules);
+    return loadedState?.call(university);
   }
 
   @override
@@ -410,12 +414,12 @@ class _$_LoadedState implements _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult Function(UniversityDTO university)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
-      return loadedState(schedules);
+      return loadedState(university);
     }
     return orElse();
   }
@@ -458,11 +462,11 @@ class _$_LoadedState implements _LoadedState {
   }
 }
 
-abstract class _LoadedState implements SearchState {
-  const factory _LoadedState({required final List<ScheduleDTO> schedules}) =
+abstract class _LoadedState implements CheckUniversityState {
+  const factory _LoadedState({required final UniversityDTO university}) =
       _$_LoadedState;
 
-  List<ScheduleDTO> get schedules;
+  UniversityDTO get university;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -479,7 +483,7 @@ abstract class _$$_ErrorStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res, _$_ErrorState>
+    extends _$CheckUniversityStateCopyWithImpl<$Res, _$_ErrorState>
     implements _$$_ErrorStateCopyWith<$Res> {
   __$$_ErrorStateCopyWithImpl(
       _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
@@ -509,7 +513,7 @@ class _$_ErrorState implements _ErrorState {
 
   @override
   String toString() {
-    return 'SearchState.errorState(message: $message)';
+    return 'CheckUniversityState.errorState(message: $message)';
   }
 
   @override
@@ -534,7 +538,7 @@ class _$_ErrorState implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(List<ScheduleDTO> schedules) loadedState,
+    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return errorState(message);
@@ -545,7 +549,7 @@ class _$_ErrorState implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return errorState?.call(message);
@@ -556,7 +560,7 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(List<ScheduleDTO> schedules)? loadedState,
+    TResult Function(UniversityDTO university)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -604,7 +608,7 @@ class _$_ErrorState implements _ErrorState {
   }
 }
 
-abstract class _ErrorState implements SearchState {
+abstract class _ErrorState implements CheckUniversityState {
   const factory _ErrorState({required final String message}) = _$_ErrorState;
 
   String get message;

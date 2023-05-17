@@ -3,9 +3,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/view/base.dart';
+import 'package:schedule/features/onboarding/bloc/check_university_cubit.dart';
 import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 
 // ignore: unused_element
@@ -52,10 +54,10 @@ class _LauncherState extends State<Launcher> {
           // },
 
           loadingState: () {
-            return Scaffold(
+            return const Scaffold(
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   Text(
                     'Loading...',
                     style: AppTextStyles.m26w500Grey2,
@@ -64,8 +66,11 @@ class _LauncherState extends State<Launcher> {
               ),
             );
           },
-          onboardingState: () {
-            return const OnboardingPage();
+          notAuthorizedState: () {
+            return BlocProvider<CheckUniversityCubit>(
+              create: (context) => CheckUniversityCubit(context.repository.onboardingRepository),
+              child: const OnboardingPage(),
+            );
           },
           inAppState: () {
             return const Base();

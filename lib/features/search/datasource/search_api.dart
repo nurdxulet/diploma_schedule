@@ -8,8 +8,20 @@ part 'search_api.freezed.dart';
 class SearchApi extends BaseClientGenerator with _$SearchApi {
   const SearchApi._() : super();
 
-  /// Запрос для авторизации
+  ///
+  /// Запросы для получения списка сущностей (университетов, груп, учителей и т.д.)
+  ///
+  const factory SearchApi.getAllGroups(dynamic universityId) = _GetAllGroups;
 
+//TODO: String cityId to prarametrs
+  const factory SearchApi.getAllUniversities() = _GetAllUniversitis;
+
+  const factory SearchApi.getAllTeachers(dynamic universityId) =
+      _GetAllTeachers;
+
+  ///
+  /// Запросы для получения расписаний по айди
+  ///
   const factory SearchApi.getGroupSchedule(String id) = _GetGroupSchedule;
 
   const factory SearchApi.getSubjectSchedule(String id) = _GetSubjectSchedule;
@@ -30,6 +42,9 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
+        getAllGroups: (dynamic universityId) => 'Groupz/findAll_4',
+        getAllUniversities: () => 'Universitiez/findAll',
+        getAllTeachers: (dynamic universityId) => 'Teacherz/findAllExtended',
         getGroupSchedule: (String id) => 'Schedulez/findAllExtended_2',
         getSubjectSchedule: (String id) => 'Schedulez/findAllExtended_2',
         getTeacherSchedule: (String id) => 'Schedulez/findAllExtended_2',

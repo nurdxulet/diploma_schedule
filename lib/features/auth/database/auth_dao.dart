@@ -13,7 +13,7 @@ class AuthDao extends TypedPreferencesDao implements IAuthDao {
   }) : super(sharedPreferences, name: 'auth');
 
   @override
-  PreferencesEntry<String> get user => stringEntry('user');
+  PreferencesEntry<String> get user => stringEntry('university');
 
   @override
   PreferencesEntry<bool> get onboarding => boolEntry('onboarding');
