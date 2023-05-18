@@ -11,22 +11,18 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
   ///
   /// Запросы для получения списка сущностей (университетов, груп, учителей и т.д.)
   ///
-  const factory SearchApi.getAllGroups(dynamic universityId) = _GetAllGroups;
+  const factory SearchApi.getAllGroups(String universityCode) = _GetAllGroups;
 
-//TODO: String cityId to prarametrs
-  const factory SearchApi.getAllUniversities() = _GetAllUniversitis;
+  // const factory SearchApi.getAllAuditories(String universityCode) = _GetAllGroups;
 
-  const factory SearchApi.getAllTeachers(dynamic universityId) =
-      _GetAllTeachers;
+  const factory SearchApi.getAllTeachers(String universityCode) = _GetAllTeachers;
 
   ///
   /// Запросы для получения расписаний по айди
   ///
-  const factory SearchApi.getGroupSchedule(String id) = _GetGroupSchedule;
+  // const factory SearchApi.getGroupSchedule(String universityCode) = _GetGroupSchedule;
 
-  const factory SearchApi.getSubjectSchedule(String id) = _GetSubjectSchedule;
-
-  const factory SearchApi.getTeacherSchedule(String id) = _GetTeacherSchedule;
+  // const factory SearchApi.getTeacherSchedule(String universityCode) = _GetTeacherSchedule;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
@@ -42,25 +38,18 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
-        getAllGroups: (dynamic universityId) => 'Groupz/findAll_4',
-        getAllUniversities: () => 'Universitiez/findAll',
-        getAllTeachers: (dynamic universityId) => 'Teacherz/findAllExtended',
-        getGroupSchedule: (String id) => 'Schedulez/findAllExtended_2',
-        getSubjectSchedule: (String id) => 'Schedulez/findAllExtended_2',
-        getTeacherSchedule: (String id) => 'Schedulez/findAllExtended_2',
+        getAllGroups: (universityCode) => 'groups',
+        getAllTeachers: (universityCode) => 'teachers/extended',
       );
 
   /// Параметры запросов
   @override
   Map<String, dynamic>? get queryParameters => whenOrNull(
-        getGroupSchedule: (String id) => {
-          'id': id,
+        getAllGroups: (universityCoded) => {
+          'universityCode': universityCode,
         },
-        getSubjectSchedule: (String id) => {
-          'id': id,
-        },
-        getTeacherSchedule: (String id) => {
-          'id': id,
+        getAllTeachers: (iuniversityCoded) => {
+          'universityCode': universityCode,
         },
       );
 }

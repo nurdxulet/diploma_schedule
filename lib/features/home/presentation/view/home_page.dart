@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    BlocProvider.of<ScheduleCubit>(context).getUniversityFromCache();
+    BlocProvider.of<ScheduleCubit>(context).getAllSchedules();
     super.initState();
   }
 
@@ -182,12 +182,6 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     loadedState: (schedulesBack) {
-                      // final List<ScheduleDTO> schedules;
-                      // if (sortFromTop) {
-                      //   schedules = schedulesBack;
-                      // } else {
-                      //   schedules = schedulesBack.reversed;
-                      // }
                       return SliverList(
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
@@ -210,73 +204,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-class ScheduleSubjectMock {
-  final String? subjectName;
-  final String? lessonType;
-  final String? lessonLocation;
-  final String? lessonStartTime;
-  final String? lessonEndTime;
-  final String? lessonBreakStartTime;
-  final String? lessonBreakEndTime;
-
-  ScheduleSubjectMock(
-    this.subjectName,
-    this.lessonType,
-    this.lessonLocation,
-    this.lessonStartTime,
-    this.lessonEndTime,
-    this.lessonBreakStartTime,
-    this.lessonBreakEndTime,
-  );
-}
-
-
-
-                    // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   physics: const NeverScrollableScrollPhysics(),
-                    //   itemCount: 3,
-                    //   itemBuilder: (BuildContext context, int index) {
-                    //     return const SubjectScheduleWidget(
-                    //       widgetColor: AppColors.kSubjectOrange,
-                    //       subjectName: 'Project Research',
-                    //       lessonType: 'Laboratory Class',
-                    //       lessonLocation: '903',
-                    //       lessonStartTime: '14:00 am',
-                    //       lessonEndTime: '16:50 am',
-                    //       lessonBreakStartTime: '14:50 am',
-                    //       lessonBreakEndTime: '15:00 am',
-                    //     );
-                    //   },),
-                    // children: const [
-                    // SubjectScheduleWidget(
-                    //   widgetColor: AppColors.kSubjectOrange,
-                    //   subjectName: 'Project Research',
-                    //   lessonType: 'Laboratory Class',
-                    //   lessonLocation: '903',
-                    //   lessonStartTime: '14:00 am',
-                    //   lessonEndTime: '16:50 am',
-                    //   lessonBreakStartTime: '14:50 am',
-                    //   lessonBreakEndTime: '15:00 am',
-                    // ),
-                    // SubjectScheduleWidget(
-                    //   widgetColor: AppColors.kSubjectRed,
-                    //   subjectName: 'Enterprice Architecture',
-                    //   lessonType: 'Lecture',
-                    //   lessonLocation: '304B',
-                    //   lessonStartTime: '11:00 am',
-                    //   lessonEndTime: '12:50 am',
-                    //   lessonBreakStartTime: '11:50 am',
-                    //   lessonBreakEndTime: '12:00 am',
-                    // ),
-                    // SubjectScheduleWidget(
-                    //   widgetColor: AppColors.kSubjectGreen,
-                    //   subjectName: 'Java Client-Server Applications',
-                    //   lessonType: 'Laboratory Class',
-                    //   lessonLocation: '903',
-                    //   lessonStartTime: '14:00 am',
-                    //   lessonEndTime: '16:50 am',
-                    //   lessonBreakStartTime: '14:50 am',
-                    //   lessonBreakEndTime: '15:00 am',
-                    // ),

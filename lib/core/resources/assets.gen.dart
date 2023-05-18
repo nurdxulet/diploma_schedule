@@ -302,6 +302,10 @@ class $AssetsIconsGen {
   SvgGenImage get icUbtBattleSelected =>
       const SvgGenImage('assets/icons/ic_ubtBattle_selected.svg');
 
+  /// File path: assets/icons/ic_university.svg
+  SvgGenImage get icUniversity =>
+      const SvgGenImage('assets/icons/ic_university.svg');
+
   /// File path: assets/icons/ic_user.svg
   SvgGenImage get icUser => const SvgGenImage('assets/icons/ic_user.svg');
 
@@ -496,6 +500,7 @@ class $AssetsIconsGen {
         icTotalScore,
         icUbtBattle,
         icUbtBattleSelected,
+        icUniversity,
         icUser,
         icUserSelected,
         icWrongAnswer,

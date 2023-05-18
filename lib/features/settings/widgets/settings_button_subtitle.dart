@@ -29,7 +29,7 @@ class SettingsButtonSubtitle extends StatelessWidget {
           ),
           child: Row(
             children: [
-              icon,
+              SizedBox(height: 25, width: 25, child: icon),
               const SizedBox(width: 15),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

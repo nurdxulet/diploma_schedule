@@ -2,19 +2,13 @@
   "@counterAppBarTitle": {
     "description": "Texto mostrado en la AppBar de la página del contador"
   },
-  "abstract": "Конcпект",
   "allResults": "Все результаты",
-  "altynAlem": "Altyn Alem",
-  "analytics": "Аналитика",
-  "answer": "Ответить",
   "appLanguage": "Язык приложения",
-  "attentive": "Внимательный",
-  "ball": "Балл",
   "basicSubjects": "Основные предметы",
+  "breakTime": "Перерыв",
   "calculator": "Калькулятор",
   "calendar": "Календарь",
   "cancel": "Отмена",
-  "changePhoto": "Изменить фото",
   "checks": "Чеки",
   "checksForPayment": "Чеки об оплате",
   "chemistry": "Химия",
@@ -23,7 +17,6 @@
   "chooseProfileSubjects": "Выберите 2 профильных предмета",
   "city": "Город",
   "confirmThePassword": "Подтвердить пароль",
-  "congratulations": "Поздравляем !",
   "conspects": "Конспекты",
   "continues": "продолжение",
   "contract": "Договор",
@@ -33,7 +26,6 @@
   "dark": "Темный",
   "date": "Дата",
   "dateOfBirth": "День рождения",
-  "datee": "Время",
   "day": "День",
   "deadline": "Дедлайн",
   "defeat": "Жеңіліс",
@@ -167,6 +159,7 @@
   "theGameBegins": "Игра начинается",
   "thirdOb": "Вам также нужно выбрать группу, и тогда вы можете увидеть свое расписание",
   "time": "Время",
+  "timeOf": "Время",
   "timetable": "Расписание уроков",
   "today": "Сегодня",
   "todaysLessons": "Сегодняшние уроки",
@@ -198,7 +191,5 @@
   "writeText": "Напишите текст",
   "writeTheAnswer": "Пишите ответ...",
   "writeTheCode": "Напишите код",
-  "writeTheSecretWord": "Восстановление пароля",
-  "youAreInTop10OfRating": "Вы в топ - 10 рейтинга",
-  "yourPair": "Ваша пара"
+  "writeTheSecretWord": "Восстановление пароля"
 }

@@ -3,7 +3,10 @@
     "description": "The conventional newborn programmer greeting"
   },
   "appLanguage": "Application language",
+  "breakTime": "Break",
   "dark": "Dark",
+  "date": "Date",
+  "day": "Day",
   "design": "Design",
   "endTime": "End time",
   "english": "English",
@@ -29,6 +32,7 @@
   "termsOfUse": "Terms of use",
   "thirdOb": "You also need to select a group, and then you can see your schedule",
   "time": "Time",
+  "timeOf": "Time",
   "timetable": "Timetable",
   "today": "Today",
   "todaysLessons": "Todays lessons"

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/build_segment_widget.dart';
 import 'package:schedule/features/app/widgets/custom/app_bar_with_title.dart';
 import 'package:schedule/features/app/widgets/custom/custom_switch_button.dart';
+import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/presentation/view/search_group_view.dart';
 
 class ChoicePage extends StatefulWidget {
@@ -109,34 +111,25 @@ class _ChoicePageState extends State<ChoicePage> {
                   });
                 },
                 controller: pageController,
-                children: const [
-                  GroupSearchView(),
-
-                  GroupSearchView(),
-
-                  GroupSearchView(),
-                  // LoginView(),
-                  // RegisterView(),
-                  // BlocProvider(
-                  //   create: (context) => RatingCubit(context.repository.profileRepository),
-                  //   child: const GeneralRatingView(),
-                  // ),
-                  // BlocProvider(
-                  //   create: (context) => RatingCubit(context.repository.profileRepository),
-                  //   child: const FriendsRatingView(),
-                  // ),
-                  // BlocProvider(
-                  //   create: (context) => RatingCubit(context.repository.profileRepository),
-                  //   child: const FriendsRatingView(),
-                  // ),
+                children: [
+                  BlocProvider(
+                    create: (context) =>
+                        SearchCubit(context.repository.searchRepository, context.repository.authRepository),
+                    child: const GroupSearchView(),
+                  ),
+                  BlocProvider(
+                    create: (context) =>
+                        SearchCubit(context.repository.searchRepository, context.repository.authRepository),
+                    child: const GroupSearchView(),
+                  ),
+                  BlocProvider(
+                    create: (context) =>
+                        SearchCubit(context.repository.searchRepository, context.repository.authRepository),
+                    child: const GroupSearchView(),
+                  ),
                 ],
               ),
             ),
-            // Expanded(
-            //   child: ListView.builder(
-            //     itemBuilder: (context, index) {},
-            //   ),
-            // ),
           ],
         ),
       ),

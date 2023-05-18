@@ -16,7 +16,7 @@ class ScheduleCubit extends Cubit<ScheduleState> {
 
   List<ScheduleDTO> _schedules = [];
 
-  Future<void> getUniversityFromCache() async {
+  Future<void> getAllSchedules() async {
     emit(const ScheduleState.loadingState());
 
     final UniversityDTO? university = await _authRepository.getUniversityFromCache();

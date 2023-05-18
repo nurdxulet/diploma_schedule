@@ -7,15 +7,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/core/widget/bottom_sheet.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/enum/app_language.dart';
 import 'package:schedule/features/app/router/app_router.dart';
-import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_button.dart';
 import 'package:schedule/features/settings/widgets/settings_button.dart';
 import 'package:schedule/features/settings/widgets/settings_button_subtitle.dart';
 import 'package:schedule/features/settings/widgets/switch_button.dart';
-import 'package:schedule/features/settings/widgets/theme_button.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -76,6 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
               icon: SvgPicture.asset(
                 Assets.icons.languageIcon.path,
                 color: AppColors.kPrimary,
+                height: 25,
               ),
               onPressed: () => context.router.push(
                 const LanguageRoute(),
@@ -157,9 +155,14 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: Row(
                 children: [
-                  SvgPicture.asset(
-                    Assets.icons.notificationIcon.path,
-                    color: AppColors.kPrimary,
+                  SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: SvgPicture.asset(
+                      Assets.icons.notificationIcon.path,
+                      color: AppColors.kPrimary,
+                      height: 25,
+                    ),
                   ),
                   const SizedBox(width: 15),
                   Text(
@@ -179,14 +182,16 @@ class _SettingsPageState extends State<SettingsPage> {
               icon: SvgPicture.asset(
                 Assets.icons.exclamationIcon.path,
                 color: AppColors.kPrimary,
+                height: 25,
               ),
               str: context.localized.termsOfUse,
               onTap: () {},
             ),
             SettingsButton(
               icon: SvgPicture.asset(
-                Assets.icons.icDefinition.path,
+                Assets.icons.icUniversity.path,
                 color: AppColors.kPrimary,
+                height: 25,
               ),
               str: 'Сбросить учебное заведение',
               onTap: () {

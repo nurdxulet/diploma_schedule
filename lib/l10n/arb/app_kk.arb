@@ -2,19 +2,13 @@
   "@counterAppBarTitle": {
     "description": "Text shown in the AppBar of the Counter Page"
   },
-  "abstract": "Конcпект",
   "allResults": "Барлық нәтиже",
-  "altynAlem": "Altyn Alem",
-  "analytics": "Аналитика",
-  "answer": "Жауап беру",
   "appLanguage": "Қолданба тілі",
-  "attentive": "Аңғарымпаз",
-  "ball": "Балл",
   "basicSubjects": "Негізгі пәндер",
+  "breakTime": "Үзіліс",
   "calculator": "Калькулятор",
   "calendar": "Күнтізбе",
   "cancel": "Бас тарту",
-  "changePhoto": "Фотосуретті өзгерту",
   "checks": "Чектер",
   "checksForPayment": "Төлем чектерi",
   "chemistry": "Химия",
@@ -23,7 +17,6 @@
   "chooseProfileSubjects": "2 бейіндік пәндерді таңдаңыз",
   "city": "Қала",
   "confirmThePassword": "Сақтау",
-  "congratulations": "Құттықтаймыз ! ",
   "conspects": "Конспекттер",
   "continues": "жалғасы",
   "contract": "Шарт",
@@ -33,7 +26,6 @@
   "dark": "Қараңғы",
   "date": "Күні",
   "dateOfBirth": "Туған күні",
-  "datee": "Уақыты",
   "day": "Күн",
   "deadline": "Дедлайн",
   "defeat": "Поражение",
@@ -167,6 +159,7 @@
   "theGameBegins": "Ойын басталуда",
   "thirdOb": "Сіз сондай-ақ топты таңдауыңыз керек, содан кейін кестеңізді көре аласыз",
   "time": "Уақыт",
+  "timeOf": "Уақыты",
   "timetable": "Сабақ кестесі",
   "today": "Бүгін",
   "todaysLessons": "Бүгінгі сабақтар",
@@ -198,7 +191,5 @@
   "writeText": "Текст жазыңыз",
   "writeTheAnswer": "Жауапты жазыңыз...",
   "writeTheCode": "Кодты жазыңыз",
-  "writeTheSecretWord": "Жасырын сөзді жазыңыз",
-  "youAreInTop10OfRating": " Сіз топ - 10 рейтинг құрамындасыз ",
-  "yourPair": "Сіздің жұбыңыз"
+  "writeTheSecretWord": "Жасырын сөзді жазыңыз"
 }
