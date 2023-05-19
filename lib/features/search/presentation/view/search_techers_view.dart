@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -7,22 +6,21 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/app/widgets/custom/custom_text_field.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
-import 'package:schedule/features/search/bloc/search_schedule_cubit.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
-class GroupSearchView extends StatefulWidget {
-  const GroupSearchView({super.key});
+class TeacherSearchView extends StatefulWidget {
+  const TeacherSearchView({super.key});
 
   @override
-  State<GroupSearchView> createState() => _GroupSearchViewState();
+  State<TeacherSearchView> createState() => _TeacherSearchViewState();
 }
 
-class _GroupSearchViewState extends State<GroupSearchView> {
+class _TeacherSearchViewState extends State<TeacherSearchView> {
   TextEditingController nameController = TextEditingController();
 
   @override
   void initState() {
-    // BlocProvider.of<SearchCubit>(context).getAllGroups();
+    // BlocProvider.of<SearchCubit>(context).getAllTeachers();
     super.initState();
   }
 
@@ -65,15 +63,16 @@ class _GroupSearchViewState extends State<GroupSearchView> {
                     ),
                   );
                 },
-                loadedGroupsState: (groups) {
-                  return groups.isNotEmpty
+                loadedTeachersState: (techers) {
+                  return techers.isNotEmpty
                       ? ListView.builder(
                           padding: const EdgeInsets.only(top: 8),
-                          itemCount: groups.length,
+                          itemCount: techers.length,
                           itemBuilder: (context, index) {
                             return ChoiceCardWidget(
                               index: index + 1,
-                              text: groups[index].title,
+                              text:
+                                  '${techers[index].firstName} ${techers[index].middleName} ${techers[index].lastName}',
                             );
                           },
                         )

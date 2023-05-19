@@ -36,7 +36,7 @@ class SearchCubit extends Cubit<SearchState> {
     }
   }
 
-  Future<void> getAllTeachers(String universityCode) async {
+  Future<void> getAllTeachers() async {
     final UniversityDTO? university = await _authRepository.getUniversityFromCache();
     // log('${university?.code}');
     if (university != null) {
