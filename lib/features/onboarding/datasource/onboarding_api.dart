@@ -15,6 +15,8 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
   const factory OnboardingApi.getEduPrograms(String universityCode) = _GetEduPrograms;
   const factory OnboardingApi.getEduProgramCourses(String universityCode, String educationalProgramId) =
       _GetEduProgramCourses;
+  const factory OnboardingApi.getGroups(String universityCode, String educationalProgramId, int courseNumber) =
+      _GetGroups;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
@@ -34,6 +36,8 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
         getEduPrograms: (String universityCode) => 'educational-programs',
         getEduProgramCourses: (String universityCode, String educationalProgramId) =>
             'educational-programs/$educationalProgramId/courses',
+        getGroups: (String universityCode, String educationalProgramId, int courseNumber) =>
+            'educational-programs/$educationalProgramId/courses/$courseNumber/groups',
       );
 
   /// Параметры запросов
@@ -46,6 +50,9 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
           'universityCode': universityCode,
         },
         getEduProgramCourses: (String universityCode, String educationalProgramId) => {
+          'universityCode': universityCode,
+        },
+        getGroups: (String universityCode, String educationalProgramId, int courseNumber) => {
           'universityCode': universityCode,
         },
       );

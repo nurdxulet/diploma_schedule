@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthApi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -32,7 +32,7 @@ mixin _$AuthApi {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -46,7 +46,7 @@ mixin _$AuthApi {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -120,7 +120,7 @@ abstract class _$$_LoginCopyWith<$Res> {
   factory _$$_LoginCopyWith(_$_Login value, $Res Function(_$_Login) then) =
       __$$_LoginCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phone, String password});
+  $Res call({String universityCode});
 }
 
 /// @nodoc
@@ -132,17 +132,12 @@ class __$$_LoginCopyWithImpl<$Res> extends _$AuthApiCopyWithImpl<$Res, _$_Login>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = null,
-    Object? password = null,
+    Object? universityCode = null,
   }) {
     return _then(_$_Login(
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      universityCode: null == universityCode
+          ? _value.universityCode
+          : universityCode // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -151,16 +146,14 @@ class __$$_LoginCopyWithImpl<$Res> extends _$AuthApiCopyWithImpl<$Res, _$_Login>
 /// @nodoc
 
 class _$_Login extends _Login {
-  const _$_Login({required this.phone, required this.password}) : super._();
+  const _$_Login({required this.universityCode}) : super._();
 
   @override
-  final String phone;
-  @override
-  final String password;
+  final String universityCode;
 
   @override
   String toString() {
-    return 'AuthApi.login(phone: $phone, password: $password)';
+    return 'AuthApi.login(universityCode: $universityCode)';
   }
 
   @override
@@ -168,13 +161,12 @@ class _$_Login extends _Login {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Login &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.universityCode, universityCode) ||
+                other.universityCode == universityCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phone, password);
+  int get hashCode => Object.hash(runtimeType, universityCode);
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +177,7 @@ class _$_Login extends _Login {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -196,13 +188,13 @@ class _$_Login extends _Login {
         registration,
     required TResult Function(FormData formData) editProfile,
   }) {
-    return login(phone, password);
+    return login(universityCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -213,13 +205,13 @@ class _$_Login extends _Login {
         registration,
     TResult? Function(FormData formData)? editProfile,
   }) {
-    return login?.call(phone, password);
+    return login?.call(universityCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -232,7 +224,7 @@ class _$_Login extends _Login {
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(phone, password);
+      return login(universityCode);
     }
     return orElse();
   }
@@ -288,12 +280,10 @@ class _$_Login extends _Login {
 }
 
 abstract class _Login extends AuthApi {
-  const factory _Login(
-      {required final String phone, required final String password}) = _$_Login;
+  const factory _Login({required final String universityCode}) = _$_Login;
   const _Login._() : super._();
 
-  String get phone;
-  String get password;
+  String get universityCode;
   @JsonKey(ignore: true)
   _$$_LoginCopyWith<_$_Login> get copyWith =>
       throw _privateConstructorUsedError;
@@ -363,7 +353,7 @@ class _$_SendCode extends _SendCode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -380,7 +370,7 @@ class _$_SendCode extends _SendCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -397,7 +387,7 @@ class _$_SendCode extends _SendCode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -547,7 +537,7 @@ class _$_CheckCode extends _CheckCode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -564,7 +554,7 @@ class _$_CheckCode extends _CheckCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -581,7 +571,7 @@ class _$_CheckCode extends _CheckCode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -735,7 +725,7 @@ class _$_ResetPassword extends _ResetPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -752,7 +742,7 @@ class _$_ResetPassword extends _ResetPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -769,7 +759,7 @@ class _$_ResetPassword extends _ResetPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -887,7 +877,7 @@ class _$_Profile extends _Profile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -904,7 +894,7 @@ class _$_Profile extends _Profile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -921,7 +911,7 @@ class _$_Profile extends _Profile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -1030,7 +1020,7 @@ class _$_LogOut extends _LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -1047,7 +1037,7 @@ class _$_LogOut extends _LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -1064,7 +1054,7 @@ class _$_LogOut extends _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -1247,7 +1237,7 @@ class _$_Registration extends _Registration {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -1264,7 +1254,7 @@ class _$_Registration extends _Registration {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -1281,7 +1271,7 @@ class _$_Registration extends _Registration {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,
@@ -1433,7 +1423,7 @@ class _$_EditProfile extends _EditProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phone, String password) login,
+    required TResult Function(String universityCode) login,
     required TResult Function(String email) sendCode,
     required TResult Function(String email, String code) checkCode,
     required TResult Function(String email, String password) resetPassword,
@@ -1450,7 +1440,7 @@ class _$_EditProfile extends _EditProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phone, String password)? login,
+    TResult? Function(String universityCode)? login,
     TResult? Function(String email)? sendCode,
     TResult? Function(String email, String code)? checkCode,
     TResult? Function(String email, String password)? resetPassword,
@@ -1467,7 +1457,7 @@ class _$_EditProfile extends _EditProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phone, String password)? login,
+    TResult Function(String universityCode)? login,
     TResult Function(String email)? sendCode,
     TResult Function(String email, String code)? checkCode,
     TResult Function(String email, String password)? resetPassword,

@@ -9,6 +9,8 @@ class ChoiceCardWidget extends StatelessWidget {
   final String? text;
   final TextStyle? textStyle;
   final int? index;
+  
+  final Function()? onCardTap;
   const ChoiceCardWidget({
     super.key,
     this.index,
@@ -16,7 +18,7 @@ class ChoiceCardWidget extends StatelessWidget {
     this.overallScore,
     this.currentScore,
     this.cardColor,
-    this.textStyle,
+    this.textStyle, this.onCardTap,
   });
 
   @override
@@ -40,53 +42,62 @@ class ChoiceCardWidget extends StatelessWidget {
             )
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  "$index",
-                  style: AppTextStyles.m14w400,
-                ),
+        child: Material(
+          borderRadius: BorderRadius.circular(12),
+
+        color: Colors.transparent,
+          child: InkWell(
+            onTap: onCardTap,
+          borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
               ),
-              const SizedBox(
-                width: 8,
-              ),
-              // ClipRRect(
-              //   borderRadius: BorderRadius.circular(50),
-              //   child: Image.network(
-              //     "https://e1.pxfuel.com/desktop-wallpaper/146/700/desktop-wallpaper-neymar-pink-hair.jpg",
-              //     fit: BoxFit.cover,
-              //     height: 40,
-              //     width: 40,
-              //     errorBuilder: (context, error, stackTrace) {
-              //       return const ErrorImageWidget(
-              //         width: 40,
-              //         height: 40,
-              //       );
-              //     },
-              //   ),
-              // ),
-              // const SizedBox(
-              //   width: 8,
-              // ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
                 children: [
-                  Text(
-                    text ?? '',
-                    style: textStyle ?? AppTextStyles.m14w400,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      "$index",
+                      style: AppTextStyles.m14w400,
+                    ),
                   ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.circular(50),
+                  //   child: Image.network(
+                  //     "https://e1.pxfuel.com/desktop-wallpaper/146/700/desktop-wallpaper-neymar-pink-hair.jpg",
+                  //     fit: BoxFit.cover,
+                  //     height: 40,
+                  //     width: 40,
+                  //     errorBuilder: (context, error, stackTrace) {
+                  //       return const ErrorImageWidget(
+                  //         width: 40,
+                  //         height: 40,
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   width: 8,
+                  // ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text ?? '',
+                        style: textStyle ?? AppTextStyles.m14w400,
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
                 ],
               ),
-              const Spacer(),
-            ],
+            ),
           ),
         ),
       ),

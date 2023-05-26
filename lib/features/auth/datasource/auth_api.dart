@@ -11,8 +11,7 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
 
   /// Запрос для авторизации
   const factory AuthApi.login({
-    required String phone,
-    required String password,
+    required String universityCode,
   }) = _Login;
 
   const factory AuthApi.sendCode({
@@ -49,44 +48,43 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
   /// По умолчанию null
   @override
   dynamic get body => whenOrNull(
-        login: (phone, password) => <String, dynamic>{
-          'phone': phone,
-          'password': password,
+        login: (universityCode) => <String, dynamic>{
+          'universityCode': universityCode,
         },
-        registration: (email, password, phone, birthday,name) =>  <String, dynamic>{
+        registration: (email, password, phone, birthday, name) => <String, dynamic>{
           'email': email,
           'password': password,
           'birthday': birthday,
           'phone': phone,
-          'name':name,
+          'name': name,
         },
-        editProfile:(formData) => formData,
+        editProfile: (formData) => formData,
       );
 
   /// Используемые методы запросов, по умолчанию 'GET'
   @override
   String get method => maybeWhen(
         orElse: () => 'GET',
-        login: (_, __) => 'POST',
+        login: (universityCode) => 'POST',
         sendCode: (email) => 'GET',
         checkCode: (email, code) => 'GET',
         resetPassword: (email, password) => 'GET',
         profile: () => 'GET',
-        registration: (email, password, phone, birthday,name) => 'POST',
-        editProfile: (formData) => 'POST' ,
+        registration: (email, password, phone, birthday, name) => 'POST',
+        editProfile: (formData) => 'POST',
       );
 
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
-        login: (_, __) => '/api/v1/auth',
+        login: (universityCode) => '/api/v1/auth',
         sendCode: (email) => '/api/v1/send/code',
         checkCode: (email, code) => '/api/user/check/code',
         resetPassword: (email, password) => '/api/user/reset/password',
         profile: () => '/api/user/profile',
         logOut: () => '/api/user/logout',
-        registration:(email, password, phone, birthday,name) => '/api/v1/register',
-        editProfile:(formData) => '/api/user/edit',
+        registration: (email, password, phone, birthday, name) => '/api/v1/register',
+        editProfile: (formData) => '/api/user/edit',
       );
 
   /// Параметры запросов

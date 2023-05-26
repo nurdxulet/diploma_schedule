@@ -43,3 +43,4 @@ class EduProgramCoursesState with _$EduProgramCoursesState {
     required String message,
   }) = _ErrorState;
 }
+  

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/features/auth/model/user_dto.dart';
 import 'package:schedule/features/auth/repository/auth_repository.dart';
+import 'package:schedule/features/search/models/university_dto.dart';
 
 part 'login_cubit.freezed.dart';
 
@@ -12,19 +13,17 @@ class LoginCubit extends Cubit<LoginState> {
   final IAuthRepository _authRepository;
 
   Future<void> login({
-    required String phone,
-    required String password,
+    required String universityCode,
   }) async {
     emit(const LoginState.loadingState());
 
     final result = await _authRepository.login(
-      phone: phone,
-      password: password,
+      universityCode: universityCode,
     );
 
     result.when(
-      success: (UserDTO user) {
-        emit(LoginState.loadedState(user: user));
+      success: (UniversityDTO university) {
+        emit(LoginState.loadedState(university: university));
       },
       failure: (e) {
         e.maybeWhen(
@@ -42,7 +41,7 @@ class LoginState with _$LoginState {
   const factory LoginState.initialState() = _InitialState;
 
   const factory LoginState.loadedState({
-    required UserDTO user,
+    required UniversityDTO university,
   }) = _LoadedState;
 
   const factory LoginState.loadingState() = _LoadingState;

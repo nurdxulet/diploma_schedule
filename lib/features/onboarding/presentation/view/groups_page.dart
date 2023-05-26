@@ -3,46 +3,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
+import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/router/app_router.dart';
+import 'package:schedule/features/app/view/base.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
-import 'package:schedule/features/onboarding/bloc/check_university_cubit.dart';
-import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
-import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
+import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
-class EduProgramsPage extends StatefulWidget with AutoRouteWrapper {
-  const EduProgramsPage({super.key});
+class GroupsPage extends StatefulWidget with AutoRouteWrapper {
+  final String eduProgramId;
+  final int courseNumber;
+  const GroupsPage({super.key, required this.eduProgramId, required this.courseNumber});
 
   @override
-  State<EduProgramsPage> createState() => _EduProgramsPageState();
+  State<GroupsPage> createState() => _GroupsPageState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          EduProgramsCubit(context.repository.onboardingRepository, context.repository.onboardingRepository),
+      create: (context) => GroupsCubit(context.repository.onboardingRepository, context.repository.authRepository),
       child: this,
     );
   }
 }
 
-class _EduProgramsPageState extends State<EduProgramsPage> {
+class _GroupsPageState extends State<GroupsPage> {
   @override
   void initState() {
-    BlocProvider.of<EduProgramsCubit>(context).getEduPrograms();
+    BlocProvider.of<GroupsCubit>(context).getEduProgramCourses(widget.eduProgramId, widget.courseNumber);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: LoaderOverlay(
+    return LoaderOverlay(
+      child: WillPopScope(
+        onWillPop: () async => false,
         child: Scaffold(
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
-              child: BlocConsumer<EduProgramsCubit, EduProgramsState>(
+              child: BlocConsumer<GroupsCubit, GroupsState>(
                 listener: (context, state) {
                   state.whenOrNull(
                     initialState: () {
@@ -56,7 +57,6 @@ class _EduProgramsPageState extends State<EduProgramsPage> {
                       setState(() {});
                       // context.router.push(const EduCoursesRoute());
                       // context.router.push();
-                      // context.appBloc.add(const AppEvent.logining());
                     },
                     errorState: (String message) {
                       context.loaderOverlay.hide();
@@ -67,17 +67,17 @@ class _EduProgramsPageState extends State<EduProgramsPage> {
                 builder: (context, state) {
                   return state.maybeWhen(
                     orElse: () => const SizedBox(),
-                    loadedState: (eduPrograms) {
+                    loadedState: (groups) {
                       return ListView.builder(
-                        itemCount: eduPrograms.length,
+                        itemCount: groups.length,
                         itemBuilder: (context, index) {
                           return ChoiceCardWidget(
                             onCardTap: () {
-                              context.router.push(EduCoursesRoute(eduProgramId: eduPrograms[index].id));
-                              // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
+                              BlocProvider.of<AppBLoC>(context).add(const AppEvent.logining());
+                              context.router.push(const LauncherRoute());
                             },
                             index: index + 1,
-                            text: eduPrograms[index].title,
+                            text: groups[index].title,
                           );
                         },
                       );

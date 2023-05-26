@@ -8,12 +8,14 @@ import 'package:schedule/core/network/result.dart';
 import 'package:schedule/features/onboarding/datasource/onboarding_api.dart';
 import 'package:schedule/features/onboarding/models/course_dto.dart';
 import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
+import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/models/university_dto.dart';
 
 abstract class IOnboardingRemoteDS {
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode);
   Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId);
+  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber);
 }
 
 class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
@@ -101,6 +103,32 @@ class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
         l.d('login => ${NetworkException.type(error: e.toString())}');
       }
       return Result<List<CourseDTO>>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber) async {
+    try {
+      final Result<List?> result = await client.produce(
+        route: OnboardingApi.getGroups(universityCode, educationalProgramId, courseNumber),
+      );
+
+      return result.when(
+        success: (List? response) {
+          final List<GroupDTO> groups =
+              (response ?? []).map((e) => GroupDTO.fromJson(e as Map<String, dynamic>)).toList();
+
+          return Result<List<GroupDTO>>.success(groups);
+        },
+        failure: (NetworkException exception) => Result<List<GroupDTO>>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('login => ${NetworkException.type(error: e.toString())}');
+      }
+      return Result<List<GroupDTO>>.failure(
         NetworkException.type(error: e.toString()),
       );
     }

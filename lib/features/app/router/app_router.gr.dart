@@ -46,6 +46,18 @@ class _$AppRouter extends RootStackRouter {
         )),
       );
     },
+    GroupsRoute.name: (routeData) {
+      final args = routeData.argsAs<GroupsRouteArgs>();
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: WrappedRoute(
+            child: GroupsPage(
+          key: args.key,
+          eduProgramId: args.eduProgramId,
+          courseNumber: args.courseNumber,
+        )),
+      );
+    },
     LanguageRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -129,6 +141,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/edu-courses-page',
         ),
         RouteConfig(
+          GroupsRoute.name,
+          path: '/groups-page',
+        ),
+        RouteConfig(
           LanguageRoute.name,
           path: '/language-page',
         ),
@@ -207,6 +223,45 @@ class EduCoursesRouteArgs {
   @override
   String toString() {
     return 'EduCoursesRouteArgs{key: $key, eduProgramId: $eduProgramId}';
+  }
+}
+
+/// generated route for
+/// [GroupsPage]
+class GroupsRoute extends PageRouteInfo<GroupsRouteArgs> {
+  GroupsRoute({
+    Key? key,
+    required String eduProgramId,
+    required int courseNumber,
+  }) : super(
+          GroupsRoute.name,
+          path: '/groups-page',
+          args: GroupsRouteArgs(
+            key: key,
+            eduProgramId: eduProgramId,
+            courseNumber: courseNumber,
+          ),
+        );
+
+  static const String name = 'GroupsRoute';
+}
+
+class GroupsRouteArgs {
+  const GroupsRouteArgs({
+    this.key,
+    required this.eduProgramId,
+    required this.courseNumber,
+  });
+
+  final Key? key;
+
+  final String eduProgramId;
+
+  final int courseNumber;
+
+  @override
+  String toString() {
+    return 'GroupsRouteArgs{key: $key, eduProgramId: $eduProgramId, courseNumber: $courseNumber}';
   }
 }
 

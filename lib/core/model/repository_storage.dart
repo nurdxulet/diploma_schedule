@@ -7,6 +7,7 @@ import 'package:schedule/features/auth/repository/auth_repository_impl.dart';
 import 'package:schedule/features/home/data/datasource/home_remote_ds.dart';
 import 'package:schedule/features/home/repositories/home_repository.dart';
 import 'package:schedule/features/home/repositories/home_repository_impl.dart';
+import 'package:schedule/features/onboarding/database/onboarding_dao.dart';
 import 'package:schedule/features/onboarding/datasource/onboarding_remote_ds.dart';
 import 'package:schedule/features/onboarding/repository/onboarding_repository.dart';
 import 'package:schedule/features/onboarding/repository/onboarding_repository_impl.dart';
@@ -43,12 +44,14 @@ abstract class IRepositoryStorage {
 class RepositoryStorage implements IRepositoryStorage {
   // ignore: unused_field
   //nurda kosty bez ponyatiya _authDao degendi
+  final IOnboardingDao _onboardingDao;
   final IAuthDao _authDao;
   final AppDatabase _appDatabase;
   final SharedPreferences _sharedPreferences;
   final NetworkExecuter _networkExecuter;
 
   RepositoryStorage({
+    required IOnboardingDao onboardingDao,
     required IAuthDao authDao,
     required AppDatabase appDatabase,
     required SharedPreferences sharedPreferences,
@@ -56,9 +59,11 @@ class RepositoryStorage implements IRepositoryStorage {
   })  : _appDatabase = appDatabase,
         _sharedPreferences = sharedPreferences,
         _networkExecuter = networkExecuter,
-
+        _onboardingDao = onboardingDao,
         //nurda kosty bez ponyatiya
+
         _authDao = authDao;
+  // _onboardingDao = onboardingDao;
 
   ///
   /// Repositories
@@ -84,7 +89,7 @@ class RepositoryStorage implements IRepositoryStorage {
   @override
   IOnboardingRepository get onboardingRepository => OnboardingRepositoryImpl(
         remoteDS: onboardingRemoteDS,
-        authDao: _authDao,
+        onboardingDao: _onboardingDao,
         //nurda kosty bez ponyatiya
       );
 

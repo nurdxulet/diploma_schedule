@@ -75,8 +75,8 @@ class _LauncherState extends State<Launcher> {
                   child: const OnboardingPage(),
                 ),
                 BlocProvider<EduProgramsCubit>(
-                  create: (context) =>
-                      EduProgramsCubit(context.repository.onboardingRepository, context.repository.authRepository),
+                  create: (context) => EduProgramsCubit(
+                      context.repository.onboardingRepository, context.repository.onboardingRepository),
                   child: const OnboardingPage(),
                 ),
               ],

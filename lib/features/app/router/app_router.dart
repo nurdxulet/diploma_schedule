@@ -6,6 +6,7 @@ import 'package:schedule/features/auth/view/auth_page.dart';
 import 'package:schedule/features/home/presentation/view/home_page.dart';
 import 'package:schedule/features/onboarding/presentation/view/edu_courses_page.dart';
 import 'package:schedule/features/onboarding/presentation/view/edu_programs_page.dart';
+import 'package:schedule/features/onboarding/presentation/view/groups_page.dart';
 import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 import 'package:schedule/features/search/presentation/view/choice_page.dart';
 import 'package:schedule/features/search/presentation/view/search_page.dart';
@@ -48,6 +49,7 @@ part 'app_router.gr.dart';
     AutoRoute<void>(page: OnboardingPage),
     AutoRoute<void>(page: EduProgramsPage),
     AutoRoute<void>(page: EduCoursesPage),
+    AutoRoute<void>(page: GroupsPage),
 
     //Settings
     AutoRoute<void>(page: LanguagePage),

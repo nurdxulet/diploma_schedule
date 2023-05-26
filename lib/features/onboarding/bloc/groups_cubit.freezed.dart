@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_cubit.dart';
+part of 'groups_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$GroupsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedState,
     required TResult Function(String message) errorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedState,
     TResult? Function(String message)? errorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(UniversityDTO university)? loadedState,
     TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) =>
@@ -44,24 +44,24 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initialState,
-    required TResult Function(_LoadedState value) loadedState,
     required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedEduProgramsState value) loadedState,
     required TResult Function(_ErrorState value) errorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initialState,
-    TResult? Function(_LoadedState value)? loadedState,
     TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedEduProgramsState value)? loadedState,
     TResult? Function(_ErrorState value)? errorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initialState,
-    TResult Function(_LoadedState value)? loadedState,
     TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedEduProgramsState value)? loadedState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,16 @@ mixin _$LoginState {
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $GroupsStateCopyWith<$Res> {
+  factory $GroupsStateCopyWith(
+          GroupsState value, $Res Function(GroupsState) then) =
+      _$GroupsStateCopyWithImpl<$Res, GroupsState>;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$GroupsStateCopyWithImpl<$Res, $Val extends GroupsState>
+    implements $GroupsStateCopyWith<$Res> {
+  _$GroupsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$_InitialStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_InitialState>
+    extends _$GroupsStateCopyWithImpl<$Res, _$_InitialState>
     implements _$$_InitialStateCopyWith<$Res> {
   __$$_InitialStateCopyWithImpl(
       _$_InitialState _value, $Res Function(_$_InitialState) _then)
@@ -109,7 +109,7 @@ class _$_InitialState implements _InitialState {
 
   @override
   String toString() {
-    return 'LoginState.initialState()';
+    return 'GroupsState.initialState()';
   }
 
   @override
@@ -125,8 +125,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return initialState();
@@ -136,8 +136,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return initialState?.call();
@@ -147,8 +147,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(UniversityDTO university)? loadedState,
     TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -162,8 +162,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initialState,
-    required TResult Function(_LoadedState value) loadedState,
     required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedEduProgramsState value) loadedState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return initialState(this);
@@ -173,8 +173,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initialState,
-    TResult? Function(_LoadedState value)? loadedState,
     TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedEduProgramsState value)? loadedState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return initialState?.call(this);
@@ -184,8 +184,8 @@ class _$_InitialState implements _InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initialState,
-    TResult Function(_LoadedState value)? loadedState,
     TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedEduProgramsState value)? loadedState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -196,165 +196,8 @@ class _$_InitialState implements _InitialState {
   }
 }
 
-abstract class _InitialState implements LoginState {
+abstract class _InitialState implements GroupsState {
   const factory _InitialState() = _$_InitialState;
-}
-
-/// @nodoc
-abstract class _$$_LoadedStateCopyWith<$Res> {
-  factory _$$_LoadedStateCopyWith(
-          _$_LoadedState value, $Res Function(_$_LoadedState) then) =
-      __$$_LoadedStateCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UniversityDTO university});
-
-  $UniversityDTOCopyWith<$Res> get university;
-}
-
-/// @nodoc
-class __$$_LoadedStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoadedState>
-    implements _$$_LoadedStateCopyWith<$Res> {
-  __$$_LoadedStateCopyWithImpl(
-      _$_LoadedState _value, $Res Function(_$_LoadedState) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? university = null,
-  }) {
-    return _then(_$_LoadedState(
-      university: null == university
-          ? _value.university
-          : university // ignore: cast_nullable_to_non_nullable
-              as UniversityDTO,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UniversityDTOCopyWith<$Res> get university {
-    return $UniversityDTOCopyWith<$Res>(_value.university, (value) {
-      return _then(_value.copyWith(university: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_LoadedState implements _LoadedState {
-  const _$_LoadedState({required this.university});
-
-  @override
-  final UniversityDTO university;
-
-  @override
-  String toString() {
-    return 'LoginState.loadedState(university: $university)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoadedState &&
-            (identical(other.university, university) ||
-                other.university == university));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, university);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      __$$_LoadedStateCopyWithImpl<_$_LoadedState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialState,
-    required TResult Function(UniversityDTO university) loadedState,
-    required TResult Function() loadingState,
-    required TResult Function(String message) errorState,
-  }) {
-    return loadedState(university);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialState,
-    TResult? Function(UniversityDTO university)? loadedState,
-    TResult? Function()? loadingState,
-    TResult? Function(String message)? errorState,
-  }) {
-    return loadedState?.call(university);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialState,
-    TResult Function(UniversityDTO university)? loadedState,
-    TResult Function()? loadingState,
-    TResult Function(String message)? errorState,
-    required TResult orElse(),
-  }) {
-    if (loadedState != null) {
-      return loadedState(university);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initialState,
-    required TResult Function(_LoadedState value) loadedState,
-    required TResult Function(_LoadingState value) loadingState,
-    required TResult Function(_ErrorState value) errorState,
-  }) {
-    return loadedState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initialState,
-    TResult? Function(_LoadedState value)? loadedState,
-    TResult? Function(_LoadingState value)? loadingState,
-    TResult? Function(_ErrorState value)? errorState,
-  }) {
-    return loadedState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initialState,
-    TResult Function(_LoadedState value)? loadedState,
-    TResult Function(_LoadingState value)? loadingState,
-    TResult Function(_ErrorState value)? errorState,
-    required TResult orElse(),
-  }) {
-    if (loadedState != null) {
-      return loadedState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadedState implements LoginState {
-  const factory _LoadedState({required final UniversityDTO university}) =
-      _$_LoadedState;
-
-  UniversityDTO get university;
-  @JsonKey(ignore: true)
-  _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -366,7 +209,7 @@ abstract class _$$_LoadingStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoadingState>
+    extends _$GroupsStateCopyWithImpl<$Res, _$_LoadingState>
     implements _$$_LoadingStateCopyWith<$Res> {
   __$$_LoadingStateCopyWithImpl(
       _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
@@ -380,7 +223,7 @@ class _$_LoadingState implements _LoadingState {
 
   @override
   String toString() {
-    return 'LoginState.loadingState()';
+    return 'GroupsState.loadingState()';
   }
 
   @override
@@ -396,8 +239,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return loadingState();
@@ -407,8 +250,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return loadingState?.call();
@@ -418,8 +261,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(UniversityDTO university)? loadedState,
     TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -433,8 +276,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initialState,
-    required TResult Function(_LoadedState value) loadedState,
     required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedEduProgramsState value) loadedState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return loadingState(this);
@@ -444,8 +287,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initialState,
-    TResult? Function(_LoadedState value)? loadedState,
     TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedEduProgramsState value)? loadedState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return loadingState?.call(this);
@@ -455,8 +298,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initialState,
-    TResult Function(_LoadedState value)? loadedState,
     TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedEduProgramsState value)? loadedState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -467,8 +310,162 @@ class _$_LoadingState implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements LoginState {
+abstract class _LoadingState implements GroupsState {
   const factory _LoadingState() = _$_LoadingState;
+}
+
+/// @nodoc
+abstract class _$$_LoadedEduProgramsStateCopyWith<$Res> {
+  factory _$$_LoadedEduProgramsStateCopyWith(_$_LoadedEduProgramsState value,
+          $Res Function(_$_LoadedEduProgramsState) then) =
+      __$$_LoadedEduProgramsStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<GroupDTO> groups});
+}
+
+/// @nodoc
+class __$$_LoadedEduProgramsStateCopyWithImpl<$Res>
+    extends _$GroupsStateCopyWithImpl<$Res, _$_LoadedEduProgramsState>
+    implements _$$_LoadedEduProgramsStateCopyWith<$Res> {
+  __$$_LoadedEduProgramsStateCopyWithImpl(_$_LoadedEduProgramsState _value,
+      $Res Function(_$_LoadedEduProgramsState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? groups = null,
+  }) {
+    return _then(_$_LoadedEduProgramsState(
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupDTO>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadedEduProgramsState implements _LoadedEduProgramsState {
+  const _$_LoadedEduProgramsState({required final List<GroupDTO> groups})
+      : _groups = groups;
+
+  final List<GroupDTO> _groups;
+  @override
+  List<GroupDTO> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
+
+  @override
+  String toString() {
+    return 'GroupsState.loadedState(groups: $groups)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadedEduProgramsState &&
+            const DeepCollectionEquality().equals(other._groups, _groups));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_groups));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadedEduProgramsStateCopyWith<_$_LoadedEduProgramsState> get copyWith =>
+      __$$_LoadedEduProgramsStateCopyWithImpl<_$_LoadedEduProgramsState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedState,
+    required TResult Function(String message) errorState,
+  }) {
+    return loadedState(groups);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialState,
+    TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedState,
+    TResult? Function(String message)? errorState,
+  }) {
+    return loadedState?.call(groups);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedState,
+    TResult Function(String message)? errorState,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(groups);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initialState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedEduProgramsState value) loadedState,
+    required TResult Function(_ErrorState value) errorState,
+  }) {
+    return loadedState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initialState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedEduProgramsState value)? loadedState,
+    TResult? Function(_ErrorState value)? errorState,
+  }) {
+    return loadedState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initialState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedEduProgramsState value)? loadedState,
+    TResult Function(_ErrorState value)? errorState,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedEduProgramsState implements GroupsState {
+  const factory _LoadedEduProgramsState(
+      {required final List<GroupDTO> groups}) = _$_LoadedEduProgramsState;
+
+  List<GroupDTO> get groups;
+  @JsonKey(ignore: true)
+  _$$_LoadedEduProgramsStateCopyWith<_$_LoadedEduProgramsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -482,7 +479,7 @@ abstract class _$$_ErrorStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_ErrorState>
+    extends _$GroupsStateCopyWithImpl<$Res, _$_ErrorState>
     implements _$$_ErrorStateCopyWith<$Res> {
   __$$_ErrorStateCopyWithImpl(
       _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
@@ -512,7 +509,7 @@ class _$_ErrorState implements _ErrorState {
 
   @override
   String toString() {
-    return 'LoginState.errorState(message: $message)';
+    return 'GroupsState.errorState(message: $message)';
   }
 
   @override
@@ -536,8 +533,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(UniversityDTO university) loadedState,
     required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedState,
     required TResult Function(String message) errorState,
   }) {
     return errorState(message);
@@ -547,8 +544,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(UniversityDTO university)? loadedState,
     TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedState,
     TResult? Function(String message)? errorState,
   }) {
     return errorState?.call(message);
@@ -558,8 +555,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(UniversityDTO university)? loadedState,
     TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -573,8 +570,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initialState,
-    required TResult Function(_LoadedState value) loadedState,
     required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedEduProgramsState value) loadedState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return errorState(this);
@@ -584,8 +581,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initialState,
-    TResult? Function(_LoadedState value)? loadedState,
     TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedEduProgramsState value)? loadedState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return errorState?.call(this);
@@ -595,8 +592,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initialState,
-    TResult Function(_LoadedState value)? loadedState,
     TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedEduProgramsState value)? loadedState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -607,7 +604,7 @@ class _$_ErrorState implements _ErrorState {
   }
 }
 
-abstract class _ErrorState implements LoginState {
+abstract class _ErrorState implements GroupsState {
   const factory _ErrorState({required final String message}) = _$_ErrorState;
 
   String get message;

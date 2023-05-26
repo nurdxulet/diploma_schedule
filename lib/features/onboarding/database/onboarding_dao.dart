@@ -1,7 +1,7 @@
 import 'package:schedule/core/database/shared_preferences/typed_preferences_dao.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class IAuthDao {
+abstract class IOnboardingDao {
   PreferencesEntry<String> get university;
 
   PreferencesEntry<String> get educationalProgram;
@@ -11,10 +11,10 @@ abstract class IAuthDao {
   PreferencesEntry<bool> get onboarding;
 }
 
-class AuthDao extends TypedPreferencesDao implements IAuthDao {
-  AuthDao({
+class OnboardingDao extends TypedPreferencesDao implements IOnboardingDao {
+  OnboardingDao({
     required SharedPreferences sharedPreferences,
-  }) : super(sharedPreferences, name: 'auth');
+  }) : super(sharedPreferences, name: 'onboarding');
 
   @override
   PreferencesEntry<String> get university => stringEntry('university');
