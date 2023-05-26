@@ -8,6 +8,7 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/view/base.dart';
 import 'package:schedule/features/onboarding/bloc/check_university_cubit.dart';
+import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
 import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';
 
 // ignore: unused_element
@@ -67,8 +68,18 @@ class _LauncherState extends State<Launcher> {
             );
           },
           notAuthorizedState: () {
-            return BlocProvider<CheckUniversityCubit>(
-              create: (context) => CheckUniversityCubit(context.repository.onboardingRepository),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider<CheckUniversityCubit>(
+                  create: (context) => CheckUniversityCubit(context.repository.onboardingRepository),
+                  child: const OnboardingPage(),
+                ),
+                BlocProvider<EduProgramsCubit>(
+                  create: (context) =>
+                      EduProgramsCubit(context.repository.onboardingRepository, context.repository.authRepository),
+                  child: const OnboardingPage(),
+                ),
+              ],
               child: const OnboardingPage(),
             );
           },

@@ -12,6 +12,9 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
   /// Запрос для проверки кода университета и получения информации об университете
   ///
   const factory OnboardingApi.checkUniversity(String universityCode) = _CheckUniversity;
+  const factory OnboardingApi.getEduPrograms(String universityCode) = _GetEduPrograms;
+  const factory OnboardingApi.getEduProgramCourses(String universityCode, String educationalProgramId) =
+      _GetEduProgramCourses;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
@@ -28,6 +31,9 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
   @override
   String get path => when(
         checkUniversity: (String universityCode) => 'universities/code',
+        getEduPrograms: (String universityCode) => 'educational-programs',
+        getEduProgramCourses: (String universityCode, String educationalProgramId) =>
+            'educational-programs/$educationalProgramId/courses',
       );
 
   /// Параметры запросов
@@ -35,6 +41,12 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
   Map<String, dynamic>? get queryParameters => whenOrNull(
         checkUniversity: (String universityCode) => {
           'code': universityCode,
+        },
+        getEduPrograms: (String universityCode) => {
+          'universityCode': universityCode,
+        },
+        getEduProgramCourses: (String universityCode, String educationalProgramId) => {
+          'universityCode': universityCode,
         },
       );
 }

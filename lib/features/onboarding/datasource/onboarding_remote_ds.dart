@@ -6,10 +6,14 @@ import 'package:schedule/core/error/network_exception.dart';
 import 'package:schedule/core/network/layers/network_executer.dart';
 import 'package:schedule/core/network/result.dart';
 import 'package:schedule/features/onboarding/datasource/onboarding_api.dart';
+import 'package:schedule/features/onboarding/models/course_dto.dart';
+import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/models/university_dto.dart';
 
 abstract class IOnboardingRemoteDS {
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
+  Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode);
+  Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId);
 }
 
 class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
@@ -28,17 +32,6 @@ class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
 
       return result.when(
         success: (Map<String, dynamic>? response) {
-          //   if (response == null) {
-          //     return const Result.failure(
-          //       NetworkException.type(error: 'Incorrect data parsing!'),
-          //     );
-          //   }
-
-          //   final UniversityDTO news =
-          //       (response).map((e) => UniversityDTO.fromJson(e as Map<String, dynamic>)).toList();
-
-          //   return Result<UniversityDTO>.success(news);
-          // },
           if (response == null) {
             return const Result.failure(
               NetworkException.type(error: 'Incorrect data parsing!'),
@@ -56,6 +49,58 @@ class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
         l.d('login => ${NetworkException.type(error: e.toString())}');
       }
       return Result<UniversityDTO>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode) async {
+    try {
+      final Result<List?> result = await client.produce(
+        route: OnboardingApi.getEduPrograms(universityCode),
+      );
+
+      return result.when(
+        success: (List? response) {
+          final List<EduProgramDTO> eduPrograms =
+              (response ?? []).map((e) => EduProgramDTO.fromJson(e as Map<String, dynamic>)).toList();
+
+          return Result<List<EduProgramDTO>>.success(eduPrograms);
+        },
+        failure: (NetworkException exception) => Result<List<EduProgramDTO>>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('login => ${NetworkException.type(error: e.toString())}');
+      }
+      return Result<List<EduProgramDTO>>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId) async {
+    try {
+      final Result<List?> result = await client.produce(
+        route: OnboardingApi.getEduProgramCourses(universityCode, educationalProgramId),
+      );
+
+      return result.when(
+        success: (List? response) {
+          final List<CourseDTO> eduPrograms =
+              (response ?? []).map((e) => CourseDTO.fromJson(e as Map<String, dynamic>)).toList();
+
+          return Result<List<CourseDTO>>.success(eduPrograms);
+        },
+        failure: (NetworkException exception) => Result<List<CourseDTO>>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('login => ${NetworkException.type(error: e.toString())}');
+      }
+      return Result<List<CourseDTO>>.failure(
         NetworkException.type(error: e.toString()),
       );
     }

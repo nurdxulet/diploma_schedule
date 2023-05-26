@@ -29,6 +29,23 @@ class _$AppRouter extends RootStackRouter {
         child: const OnboardingPage(),
       );
     },
+    EduProgramsRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: WrappedRoute(child: const EduProgramsPage()),
+      );
+    },
+    EduCoursesRoute.name: (routeData) {
+      final args = routeData.argsAs<EduCoursesRouteArgs>();
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: WrappedRoute(
+            child: EduCoursesPage(
+          key: args.key,
+          eduProgramId: args.eduProgramId,
+        )),
+      );
+    },
     LanguageRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -104,6 +121,14 @@ class _$AppRouter extends RootStackRouter {
           path: '/onboarding-page',
         ),
         RouteConfig(
+          EduProgramsRoute.name,
+          path: '/edu-programs-page',
+        ),
+        RouteConfig(
+          EduCoursesRoute.name,
+          path: '/edu-courses-page',
+        ),
+        RouteConfig(
           LanguageRoute.name,
           path: '/language-page',
         ),
@@ -137,6 +162,52 @@ class OnboardingRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OnboardingRoute';
+}
+
+/// generated route for
+/// [EduProgramsPage]
+class EduProgramsRoute extends PageRouteInfo<void> {
+  const EduProgramsRoute()
+      : super(
+          EduProgramsRoute.name,
+          path: '/edu-programs-page',
+        );
+
+  static const String name = 'EduProgramsRoute';
+}
+
+/// generated route for
+/// [EduCoursesPage]
+class EduCoursesRoute extends PageRouteInfo<EduCoursesRouteArgs> {
+  EduCoursesRoute({
+    Key? key,
+    required String eduProgramId,
+  }) : super(
+          EduCoursesRoute.name,
+          path: '/edu-courses-page',
+          args: EduCoursesRouteArgs(
+            key: key,
+            eduProgramId: eduProgramId,
+          ),
+        );
+
+  static const String name = 'EduCoursesRoute';
+}
+
+class EduCoursesRouteArgs {
+  const EduCoursesRouteArgs({
+    this.key,
+    required this.eduProgramId,
+  });
+
+  final Key? key;
+
+  final String eduProgramId;
+
+  @override
+  String toString() {
+    return 'EduCoursesRouteArgs{key: $key, eduProgramId: $eduProgramId}';
+  }
 }
 
 /// generated route for
