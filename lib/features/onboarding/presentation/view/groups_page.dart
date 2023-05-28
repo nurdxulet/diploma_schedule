@@ -3,25 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
-import 'package:schedule/features/app/bloc/app_bloc.dart';
+import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
-import 'package:schedule/features/app/view/base.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
+import 'package:schedule/features/onboarding/models/course_dto.dart';
+import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class GroupsPage extends StatefulWidget with AutoRouteWrapper {
-  final String eduProgramId;
-  final int courseNumber;
-  const GroupsPage({super.key, required this.eduProgramId, required this.courseNumber});
+  final EduProgramDTO educationalProgram;
+  final CourseDTO course;
+  const GroupsPage({super.key, required this.educationalProgram, required this.course});
 
   @override
   State<GroupsPage> createState() => _GroupsPageState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GroupsCubit(context.repository.onboardingRepository, context.repository.authRepository),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              GroupsCubit(context.repository.onboardingRepository, context.repository.onboardingRepository),
+        ),
+        BlocProvider(
+          create: (context) => EduProgramCoursesCubit(context.repository.onboardingRepository),
+        ),
+      ],
       child: this,
     );
   }
@@ -30,7 +40,8 @@ class GroupsPage extends StatefulWidget with AutoRouteWrapper {
 class _GroupsPageState extends State<GroupsPage> {
   @override
   void initState() {
-    BlocProvider.of<GroupsCubit>(context).getEduProgramCourses(widget.eduProgramId, widget.courseNumber);
+    BlocProvider.of<GroupsCubit>(context)
+        .getEduProgramCourses(widget.educationalProgram.id, widget.course.courseNumber);
     super.initState();
   }
 
@@ -68,18 +79,36 @@ class _GroupsPageState extends State<GroupsPage> {
                   return state.maybeWhen(
                     orElse: () => const SizedBox(),
                     loadedState: (groups) {
-                      return ListView.builder(
-                        itemCount: groups.length,
-                        itemBuilder: (context, index) {
-                          return ChoiceCardWidget(
-                            onCardTap: () {
-                              BlocProvider.of<AppBLoC>(context).add(const AppEvent.logining());
-                              context.router.push(const LauncherRoute());
-                            },
-                            index: index + 1,
-                            text: groups[index].title,
-                          );
-                        },
+                      return Column(
+                        children: [
+                          Text(
+                            context.localized.chooseGroup,
+                            style: AppTextStyles.m15w600.copyWith(color: AppColors.kPrimary),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: groups.length,
+                              itemBuilder: (context, index) {
+                                return ChoiceCardWidget(
+                                  onCardTap: () {
+                                    context.router.push(
+                                      UniInformationRoute(
+                                        educationalProgram: widget.educationalProgram,
+                                        course: widget.course,
+                                        group: groups[index],
+                                      ),
+                                    );
+                                  },
+                                  index: index + 1,
+                                  text: groups[index].title,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       );
                     },
                   );

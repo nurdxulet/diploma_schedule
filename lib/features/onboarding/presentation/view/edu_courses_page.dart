@@ -3,23 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
+import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
+import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
+import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class EduCoursesPage extends StatefulWidget with AutoRouteWrapper {
-  final String eduProgramId;
-  const EduCoursesPage({super.key, required this.eduProgramId});
+  final EduProgramDTO educationalProgram;
+  const EduCoursesPage({super.key, required this.educationalProgram});
 
   @override
   State<EduCoursesPage> createState() => _EduCoursesPageState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          EduProgramCoursesCubit(context.repository.onboardingRepository, context.repository.authRepository),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => EduProgramCoursesCubit(context.repository.onboardingRepository),
+        ),
+        BlocProvider(
+          create: (context) => EduProgramsCubit(context.repository.onboardingRepository),
+        ),
+      ],
       child: this,
     );
   }
@@ -28,7 +37,7 @@ class EduCoursesPage extends StatefulWidget with AutoRouteWrapper {
 class _EduCoursesPageState extends State<EduCoursesPage> {
   @override
   void initState() {
-    BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(widget.eduProgramId);
+    BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(widget.educationalProgram);
     super.initState();
   }
 
@@ -66,19 +75,36 @@ class _EduCoursesPageState extends State<EduCoursesPage> {
                   return state.maybeWhen(
                     orElse: () => const SizedBox(),
                     loadedState: (eduCourses) {
-                      return ListView.builder(
-                        itemCount: eduCourses.length,
-                        itemBuilder: (context, index) {
-                          return ChoiceCardWidget(
-                            onCardTap: () {
-                              context.router.push(GroupsRoute(
-                                  courseNumber: eduCourses[index].courseNumber, eduProgramId: widget.eduProgramId));
-                              // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
-                            },
-                            index: index + 1,
-                            text: eduCourses[index].courseNumber.toString(),
-                          );
-                        },
+                      return Column(
+                        children: [
+                          Text(
+                            context.localized.chooseGroup,
+                            style: AppTextStyles.m15w600.copyWith(color: AppColors.kPrimary),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: eduCourses.length,
+                              itemBuilder: (context, index) {
+                                return ChoiceCardWidget(
+                                  onCardTap: () {
+                                    context.router.push(
+                                      GroupsRoute(
+                                        course: eduCourses[index],
+                                        educationalProgram: widget.educationalProgram,
+                                      ),
+                                    );
+                                    // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
+                                  },
+                                  index: index + 1,
+                                  text: '${context.localized.course} ${eduCourses[index].courseNumber}',
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       );
                     },
                   );

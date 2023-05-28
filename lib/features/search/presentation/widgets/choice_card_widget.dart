@@ -3,13 +3,14 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/error_image_widget.dart';
 
 class ChoiceCardWidget extends StatelessWidget {
+  final bool? isChoosed;
   final Color? cardColor;
   final int? overallScore;
   final int? currentScore;
   final String? text;
   final TextStyle? textStyle;
   final int? index;
-  
+
   final Function()? onCardTap;
   const ChoiceCardWidget({
     super.key,
@@ -18,7 +19,9 @@ class ChoiceCardWidget extends StatelessWidget {
     this.overallScore,
     this.currentScore,
     this.cardColor,
-    this.textStyle, this.onCardTap,
+    this.textStyle,
+    this.onCardTap,
+    this.isChoosed = false,
   });
 
   @override
@@ -44,11 +47,10 @@ class ChoiceCardWidget extends StatelessWidget {
         ),
         child: Material(
           borderRadius: BorderRadius.circular(12),
-
-        color: Colors.transparent,
+          color: Colors.transparent,
           child: InkWell(
             onTap: onCardTap,
-          borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 12,
@@ -59,7 +61,7 @@ class ChoiceCardWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
-                      "$index",
+                      "$index.",
                       style: AppTextStyles.m14w400,
                     ),
                   ),

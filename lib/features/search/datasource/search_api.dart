@@ -11,18 +11,11 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
   ///
   /// Запросы для получения списка сущностей (университетов, груп, учителей и т.д.)
   ///
-  const factory SearchApi.getAllGroups(String universityCode) = _GetAllGroups;
-
-  // const factory SearchApi.getAllAuditories(String universityCode) = _GetAllGroups;
+  const factory SearchApi.getAllGroups(String universityCode, String educationalProgramId) = _GetAllGroups;
 
   const factory SearchApi.getAllTeachers(String universityCode) = _GetAllTeachers;
 
-  ///
-  /// Запросы для получения расписаний по айди
-  ///
-  // const factory SearchApi.getGroupSchedule(String universityCode) = _GetGroupSchedule;
-
-  // const factory SearchApi.getTeacherSchedule(String universityCode) = _GetTeacherSchedule;
+  const factory SearchApi.getAllRooms(String universityCode) = _GetAllRooms;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
@@ -38,17 +31,21 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
-        getAllGroups: (universityCode) => 'groups',
+        getAllGroups: (universityCode, educationalProgramId) => 'educational-programs/$educationalProgramId/groups',
         getAllTeachers: (universityCode) => 'teachers/extended',
+        getAllRooms: (universityCode) => 'rooms',
       );
 
   /// Параметры запросов
   @override
   Map<String, dynamic>? get queryParameters => whenOrNull(
-        getAllGroups: (universityCoded) => {
+        getAllGroups: (universityCode, educationalProgramId) => {
           'universityCode': universityCode,
         },
-        getAllTeachers: (iuniversityCoded) => {
+        getAllTeachers: (universityCode) => {
+          'universityCode': universityCode,
+        },
+        getAllRooms: (universityCode) => {
           'universityCode': universityCode,
         },
       );

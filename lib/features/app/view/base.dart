@@ -51,6 +51,7 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
             return Builder(
               builder: (newContext) {
                 return FlashyTabBar(
+                  animationDuration: const Duration(milliseconds: 300),
                   selectedIndex: tabController!.index,
                   onItemSelected: (index) => setState(() {
                     tabController!.index = index;
@@ -90,33 +91,6 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
                     ),
                   ],
                 );
-                // return SizedBox(
-                //   height: 100,
-                //   child: CurvedNavigationBar(
-                //     onTap: (value) {
-                //       if (tabsRouter.activeIndex == value) {
-                //         tabsRouter.popTop();
-                //       } else {
-                //         tabsRouter.setActiveIndex(value);
-                //       }
-                //     },
-                //     backgroundColor: AppColors.kPrimary,
-                //     items: [
-                //       SvgPicture.asset(
-                //         Assets.icons.icHome.path,
-                //         height: 20,
-                //       ),
-                //       SvgPicture.asset(
-                //         Assets.icons.icSearch.path,
-                //         height: 20,
-                //       ),
-                //       SvgPicture.asset(
-                //         Assets.icons.icSettings.path,
-                //         height: 20,
-                //       ),
-                //     ],
-                //   ),
-                // );
               },
             );
           },

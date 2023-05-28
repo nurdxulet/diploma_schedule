@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/home/data/models/schedule_model_dto.dart';
+import 'package:schedule/features/home/data/models/schedule_dto.dart';
 
 class SubjectScheduleWidget extends StatelessWidget {
   final ScheduleDTO schedule;
@@ -68,13 +68,13 @@ class SubjectScheduleWidget extends StatelessWidget {
                                 width: 5,
                               ),
                               Text(
-                                schedule.room ?? 'unknown',
+                                schedule.room?.name ?? 'unknown',
                                 style: AppTextStyles.m12w600.copyWith(color: widgetColor),
                               ),
                             ],
                           ),
                           Text(
-                            schedule.subjectName ?? 'No subject name',
+                            schedule.subject?.title ?? 'No subject name',
                             // 'Enterprice Architecture',
                             style: AppTextStyles.m24w700,
                             maxLines: 2,

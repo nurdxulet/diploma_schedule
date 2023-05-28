@@ -19,12 +19,6 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  int page = 0;
   TextEditingController codeController = TextEditingController();
 
   @override
@@ -58,25 +52,28 @@ class _OnboardingPageState extends State<OnboardingPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Добро пожаловать в TAN Schedule! 🖖",
+                      "${context.localized.welcomeToTANSchedule} 🖖",
                       style: AppTextStyles.m24w600.copyWith(color: AppColors.kPrimary),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      "Я покажу актуальное расписание занятий, какие аудитории свободны а так же многое другое!",
+                    Text(
+                      context.localized.iWillShowMuchMore,
                       style: AppTextStyles.m16w500,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Image.asset(
-                      Assets.images.students.path,
-                      fit: BoxFit.contain,
-                      height: 350,
+                    Center(
+                      child: Image.asset(
+                        Assets.images.students.path,
+                        fit: BoxFit.contain,
+                        height: 350,
+                      ),
                     ),
                     const Spacer(),
                   ],
@@ -85,37 +82,39 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: page == 0
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomTextField(
+                  hintText: context.localized.enterEducationInstitutionCode,
+                  hintStyle: AppTextStyles.m16w500,
+                  textStyle: AppTextStyles.m16w500,
+                  controller: codeController,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                CustomButton(
+                  radius: 10,
+                  body: Text(
+                    context.localized.start,
+                    style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CustomTextField(
-                        hintText: 'Введите код университета',
-                        hintStyle: AppTextStyles.m16w500,
-                        textStyle: AppTextStyles.m16w500,
-                        controller: codeController,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      CustomButton(
-                        radius: 10,
-                        body: Text(
-                          context.localized.start,
-                          style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
-                        ),
-                        onClick: () {
-                          BlocProvider.of<CheckUniversityCubit>(context).checkUniversity(codeController.text);
-                        },
-                      ),
-                    ],
-                  ),
-                )
-              : const SizedBox(),
+                  onClick: () {
+                    if (codeController.text.isEmpty) {
+                      buildErrorCustomSnackBar(context, context.localized.enterEducationInstitutionCode);
+                    } else {
+                      BlocProvider.of<CheckUniversityCubit>(context).checkUniversity(codeController.text);
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

@@ -84,6 +84,8 @@ class SettingsScope extends StatelessWidget {
           ),
           BlocProvider<AppBLoC>(
             create: (context) => AppBLoC(
+              // context.repository.authRepository,
+              context.repository.onboardingRepository,
               context.repository.authRepository,
             ),
           ),

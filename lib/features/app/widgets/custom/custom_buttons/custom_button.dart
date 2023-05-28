@@ -61,15 +61,15 @@ ButtonStyle mainButtonStyle({
   );
 }
 
-ButtonStyle checksButtonStyle({
+ButtonStyle redMainButtonStyle({
   double elevation = 0,
   double height = 44,
-  double radius = 12,
+  double radius = 10,
 }) {
   return ElevatedButton.styleFrom(
     maximumSize: const Size.fromHeight(48),
-    foregroundColor: AppColors.kLightBlue,
-    backgroundColor: AppColors.kLightBlue,
+    foregroundColor: AppColors.kSubjectRed,
+    backgroundColor: AppColors.kSubjectRed,
     shadowColor: Colors.transparent,
     elevation: elevation,
     padding: EdgeInsets.zero,

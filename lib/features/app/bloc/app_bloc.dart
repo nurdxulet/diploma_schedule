@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/features/auth/repository/auth_repository.dart';
+import 'package:schedule/features/onboarding/repository/onboarding_repository.dart';
 
 part 'app_bloc.freezed.dart';
 
@@ -10,11 +11,14 @@ const _tag = 'AppBLoC';
 
 class AppBLoC extends Bloc<AppEvent, AppState> {
   final IAuthRepository _authRepository;
+  final IOnboardingRepository _onboardingRepository;
 
   // Статус аутентификации
-  bool get isAuthenticated => _authRepository.isAuthenticated;
+  // bool get isAuthenticated => _authRepository.isAuthenticated;
+  bool get isAuthenticated => _onboardingRepository.isAuthenticated;
 
   AppBLoC(
+    this._onboardingRepository,
     this._authRepository,
   ) : super(const AppState.loadingState()) {
     // _notAuthLogic.statusSubject.listen(
@@ -54,7 +58,9 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
     Emitter<AppState> emit,
   ) async {
     ///onboarding only one time
-    if (_authRepository.isAuthenticated) {
+    ///
+    // if (_authRepository.isAuthenticated) {
+    if (_onboardingRepository.isAuthenticated) {
       emit(const AppState.inAppState());
     } else {
       emit(const AppState.notAuthorizedState());

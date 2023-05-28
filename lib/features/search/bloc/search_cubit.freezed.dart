@@ -22,6 +22,7 @@ mixin _$SearchState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$SearchState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$SearchState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) =>
@@ -50,6 +53,7 @@ mixin _$SearchState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,7 @@ mixin _$SearchState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +73,7 @@ mixin _$SearchState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) =>
@@ -134,6 +140,7 @@ class _$_InitialState implements _InitialState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) {
     return initialState();
@@ -146,6 +153,7 @@ class _$_InitialState implements _InitialState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) {
     return initialState?.call();
@@ -158,6 +166,7 @@ class _$_InitialState implements _InitialState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -174,6 +183,7 @@ class _$_InitialState implements _InitialState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return initialState(this);
@@ -186,6 +196,7 @@ class _$_InitialState implements _InitialState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return initialState?.call(this);
@@ -198,6 +209,7 @@ class _$_InitialState implements _InitialState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -254,6 +266,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) {
     return loadingState();
@@ -266,6 +279,7 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) {
     return loadingState?.call();
@@ -278,6 +292,7 @@ class _$_LoadingState implements _LoadingState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -294,6 +309,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return loadingState(this);
@@ -306,6 +322,7 @@ class _$_LoadingState implements _LoadingState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return loadingState?.call(this);
@@ -318,6 +335,7 @@ class _$_LoadingState implements _LoadingState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -408,6 +426,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) {
     return loadedGroupsState(groups);
@@ -420,6 +439,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) {
     return loadedGroupsState?.call(groups);
@@ -432,6 +452,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -448,6 +469,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return loadedGroupsState(this);
@@ -460,6 +482,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return loadedGroupsState?.call(this);
@@ -472,6 +495,7 @@ class _$_LoadedGroupsState implements _LoadedGroupsState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -568,6 +592,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) {
     return loadedTeachersState(teachers);
@@ -580,6 +605,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) {
     return loadedTeachersState?.call(teachers);
@@ -592,6 +618,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -608,6 +635,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return loadedTeachersState(this);
@@ -620,6 +648,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return loadedTeachersState?.call(this);
@@ -632,6 +661,7 @@ class _$_LoadedTeachersState implements _LoadedTeachersState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {
@@ -649,6 +679,171 @@ abstract class _LoadedTeachersState implements SearchState {
   List<TeacherDTO> get teachers;
   @JsonKey(ignore: true)
   _$$_LoadedTeachersStateCopyWith<_$_LoadedTeachersState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LoadedRoomsStateCopyWith<$Res> {
+  factory _$$_LoadedRoomsStateCopyWith(
+          _$_LoadedRoomsState value, $Res Function(_$_LoadedRoomsState) then) =
+      __$$_LoadedRoomsStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<RoomDTO> rooms});
+}
+
+/// @nodoc
+class __$$_LoadedRoomsStateCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$_LoadedRoomsState>
+    implements _$$_LoadedRoomsStateCopyWith<$Res> {
+  __$$_LoadedRoomsStateCopyWithImpl(
+      _$_LoadedRoomsState _value, $Res Function(_$_LoadedRoomsState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? rooms = null,
+  }) {
+    return _then(_$_LoadedRoomsState(
+      rooms: null == rooms
+          ? _value._rooms
+          : rooms // ignore: cast_nullable_to_non_nullable
+              as List<RoomDTO>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadedRoomsState implements _LoadedRoomsState {
+  const _$_LoadedRoomsState({required final List<RoomDTO> rooms})
+      : _rooms = rooms;
+
+  final List<RoomDTO> _rooms;
+  @override
+  List<RoomDTO> get rooms {
+    if (_rooms is EqualUnmodifiableListView) return _rooms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rooms);
+  }
+
+  @override
+  String toString() {
+    return 'SearchState.loadedRoomsState(rooms: $rooms)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadedRoomsState &&
+            const DeepCollectionEquality().equals(other._rooms, _rooms));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_rooms));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadedRoomsStateCopyWith<_$_LoadedRoomsState> get copyWith =>
+      __$$_LoadedRoomsStateCopyWithImpl<_$_LoadedRoomsState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(List<GroupDTO> groups) loadedGroupsState,
+    required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
+    required TResult Function(String message) errorState,
+  }) {
+    return loadedRoomsState(rooms);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialState,
+    TResult? Function()? loadingState,
+    TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
+    TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
+    TResult? Function(String message)? errorState,
+  }) {
+    return loadedRoomsState?.call(rooms);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(List<GroupDTO> groups)? loadedGroupsState,
+    TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
+    TResult Function(String message)? errorState,
+    required TResult orElse(),
+  }) {
+    if (loadedRoomsState != null) {
+      return loadedRoomsState(rooms);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initialState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_LoadedGroupsState value) loadedGroupsState,
+    required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
+    required TResult Function(_ErrorState value) errorState,
+  }) {
+    return loadedRoomsState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initialState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
+    TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
+    TResult? Function(_ErrorState value)? errorState,
+  }) {
+    return loadedRoomsState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initialState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_LoadedGroupsState value)? loadedGroupsState,
+    TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
+    TResult Function(_ErrorState value)? errorState,
+    required TResult orElse(),
+  }) {
+    if (loadedRoomsState != null) {
+      return loadedRoomsState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedRoomsState implements SearchState {
+  const factory _LoadedRoomsState({required final List<RoomDTO> rooms}) =
+      _$_LoadedRoomsState;
+
+  List<RoomDTO> get rooms;
+  @JsonKey(ignore: true)
+  _$$_LoadedRoomsStateCopyWith<_$_LoadedRoomsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -720,6 +915,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function() loadingState,
     required TResult Function(List<GroupDTO> groups) loadedGroupsState,
     required TResult Function(List<TeacherDTO> teachers) loadedTeachersState,
+    required TResult Function(List<RoomDTO> rooms) loadedRoomsState,
     required TResult Function(String message) errorState,
   }) {
     return errorState(message);
@@ -732,6 +928,7 @@ class _$_ErrorState implements _ErrorState {
     TResult? Function()? loadingState,
     TResult? Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult? Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult? Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult? Function(String message)? errorState,
   }) {
     return errorState?.call(message);
@@ -744,6 +941,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function()? loadingState,
     TResult Function(List<GroupDTO> groups)? loadedGroupsState,
     TResult Function(List<TeacherDTO> teachers)? loadedTeachersState,
+    TResult Function(List<RoomDTO> rooms)? loadedRoomsState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
@@ -760,6 +958,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_LoadedGroupsState value) loadedGroupsState,
     required TResult Function(_LoadedTeachersState value) loadedTeachersState,
+    required TResult Function(_LoadedRoomsState value) loadedRoomsState,
     required TResult Function(_ErrorState value) errorState,
   }) {
     return errorState(this);
@@ -772,6 +971,7 @@ class _$_ErrorState implements _ErrorState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult? Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult? Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult? Function(_ErrorState value)? errorState,
   }) {
     return errorState?.call(this);
@@ -784,6 +984,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_LoadedGroupsState value)? loadedGroupsState,
     TResult Function(_LoadedTeachersState value)? loadedTeachersState,
+    TResult Function(_LoadedRoomsState value)? loadedRoomsState,
     TResult Function(_ErrorState value)? errorState,
     required TResult orElse(),
   }) {

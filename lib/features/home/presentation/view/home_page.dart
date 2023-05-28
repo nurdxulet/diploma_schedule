@@ -9,6 +9,7 @@ import 'package:schedule/core/extension/extensions.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:schedule/features/home/bloc/my_schedule_cubit.dart';
 import 'package:schedule/features/home/bloc/schedule_cubit.dart';
 import 'package:schedule/features/home/presentation/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/presentation/widgets/subject_schedule_widget.dart';
@@ -21,8 +22,8 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ScheduleCubit>(
-      create: (context) => ScheduleCubit(context.repository.homeRepository, context.repository.authRepository),
+    return BlocProvider<MyScheduleCubit>(
+      create: (context) => MyScheduleCubit(context.repository.homeRepository, context.repository.onboardingRepository),
       child: this,
     );
   }
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    BlocProvider.of<ScheduleCubit>(context).getAllSchedules();
+    BlocProvider.of<MyScheduleCubit>(context).getMySchedules('GROUP');
     super.initState();
   }
 
@@ -156,7 +157,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: BlocConsumer<ScheduleCubit, ScheduleState>(
+              sliver: BlocConsumer<MyScheduleCubit, MyScheduleState>(
                 listener: (context, state) {
                   state.whenOrNull(
                     errorState: (message) => buildErrorCustomSnackBar(context, message),

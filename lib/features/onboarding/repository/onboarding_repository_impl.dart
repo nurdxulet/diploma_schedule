@@ -24,6 +24,19 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
         _onboardingDao = onboardingDao;
 
   @override
+  bool get isAuthenticated =>
+      _onboardingDao.university.value != null &&
+      _onboardingDao.educationalProgram.value != null &&
+      _onboardingDao.course.value != null &&
+      _onboardingDao.group.value != null;
+
+  @override
+  bool getOnboarding() => _onboardingDao.onboarding.value ?? false;
+
+  @override
+  Future<void> setOnboarding({required bool onboarding}) async => _onboardingDao.onboarding.setValue(onboarding);
+
+  @override
   Future<Result<UniversityDTO>> checkUniversity(String universityCode) async {
     final Result<UniversityDTO> result = await _remoteDS.checkUniversity(universityCode);
 
@@ -51,14 +64,51 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   }
 
   @override
+  Future<EduProgramDTO?> getEduProgramFromCache() async {
+    try {
+      if (_onboardingDao.university.value != null) {
+        final EduProgramDTO eduProgram =
+            EduProgramDTO.fromJson(jsonDecode(_onboardingDao.educationalProgram.value!) as Map<String, dynamic>);
+        return eduProgram;
+      }
+    } on Exception catch (e) {
+      log(e.toString(), name: 'getUniversityFromCache()');
+    }
+    return null;
+  }
+
+  @override
+  Future<CourseDTO?> getCourseFromCache() async {
+    try {
+      if (_onboardingDao.university.value != null) {
+        final CourseDTO course =
+            CourseDTO.fromJson(jsonDecode(_onboardingDao.educationalProgram.value!) as Map<String, dynamic>);
+        return course;
+      }
+    } on Exception catch (e) {
+      log(e.toString(), name: 'getCourseFromCache()');
+    }
+    return null;
+  }
+
+  @override
+  Future<GroupDTO?> getGroupFromCache() async {
+    try {
+      if (_onboardingDao.university.value != null) {
+        final GroupDTO group = GroupDTO.fromJson(jsonDecode(_onboardingDao.group.value!) as Map<String, dynamic>);
+        return group;
+      }
+    } on Exception catch (e) {
+      log(e.toString(), name: 'getUniversityFromCache()');
+    }
+    return null;
+  }
+
+  @override
   Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode) async {
     final Result<List<EduProgramDTO>> result = await _remoteDS.getEduPrograms(universityCode);
 
     return result;
-  }
-
-  Future<void> setEduProgram(EduProgramDTO eduProgram) async {
-    _onboardingDao.educationalProgram.setValue(jsonEncode(eduProgram.toJson()));
   }
 
   @override
@@ -71,5 +121,13 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber) async {
     final Result<List<GroupDTO>> result = await _remoteDS.getGroups(universityCode, educationalProgramId, courseNumber);
     return result;
+  }
+
+  @override
+  Future<String> setUniInfo(EduProgramDTO eduProgram, CourseDTO course, GroupDTO group) async {
+    _onboardingDao.educationalProgram.setValue(jsonEncode(eduProgram.toJson()));
+    _onboardingDao.course.setValue(jsonEncode(course.toJson()));
+    _onboardingDao.group.setValue(jsonEncode(group.toJson()));
+    return 'setUniInfo success';
   }
 }

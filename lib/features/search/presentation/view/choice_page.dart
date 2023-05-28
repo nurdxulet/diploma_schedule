@@ -7,6 +7,7 @@ import 'package:schedule/features/app/widgets/custom/app_bar_with_title.dart';
 import 'package:schedule/features/app/widgets/custom/custom_switch_button.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/presentation/view/search_group_view.dart';
+import 'package:schedule/features/search/presentation/view/search_rooms_view.dart';
 import 'package:schedule/features/search/presentation/view/search_techers_view.dart';
 
 class ChoicePage extends StatefulWidget {
@@ -115,20 +116,21 @@ class _ChoicePageState extends State<ChoicePage> {
                 children: [
                   BlocProvider(
                     create: (context) =>
-                        SearchCubit(context.repository.searchRepository, context.repository.authRepository)
+                        SearchCubit(context.repository.searchRepository, context.repository.onboardingRepository)
                           ..getAllGroups(),
                     child: const GroupSearchView(),
                   ),
                   BlocProvider(
                     create: (context) =>
-                        SearchCubit(context.repository.searchRepository, context.repository.authRepository)
+                        SearchCubit(context.repository.searchRepository, context.repository.onboardingRepository)
                           ..getAllTeachers(),
                     child: const TeacherSearchView(),
                   ),
                   BlocProvider(
                     create: (context) =>
-                        SearchCubit(context.repository.searchRepository, context.repository.authRepository),
-                    child: const GroupSearchView(),
+                        SearchCubit(context.repository.searchRepository, context.repository.onboardingRepository)
+                          ..getAllRooms(),
+                    child: const RoomSearchView(),
                   ),
                 ],
               ),

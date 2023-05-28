@@ -11,7 +11,9 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
   ///
   /// Запрос для проверки кода университета и получения информации об университете
   ///
-  const factory HomeApi.getAllSchedules(String universityCode) = _GetAllSchedules;
+  const factory HomeApi.getAllSchedules(String universityCode, String searchId, String searchType) = _GetAllSchedules;
+
+  const factory HomeApi.getMySchedules(String universityCode, String searchId, String searchType) = _GetMySchedules;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
@@ -27,13 +29,21 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
-        getAllSchedules: (String universityCode) => 'schedules',
+        getAllSchedules: (universityCode, searchType, searchId) => 'schedules/extended',
+        getMySchedules: (universityCode, searchType, searchId) => 'schedules/extended',
       );
 
   /// Параметры запросов
   @override
   Map<String, dynamic>? get queryParameters => whenOrNull(
-        getAllSchedules: (String universityCode) => {
+        getAllSchedules: (universityCode, searchType, searchId) => {
+          'searchId': searchId,
+          'searchType': searchType,
+          'universityCode': universityCode,
+        },
+        getMySchedules: (universityCode, searchType, searchId) => {
+          'searchId': searchId,
+          'searchType': searchType,
           'universityCode': universityCode,
         },
       );

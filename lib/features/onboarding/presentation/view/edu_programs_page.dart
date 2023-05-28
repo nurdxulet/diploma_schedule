@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
+import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
-import 'package:schedule/features/onboarding/bloc/check_university_cubit.dart';
-import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
+import 'package:schedule/features/onboarding/repository/onboarding_repository_impl.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class EduProgramsPage extends StatefulWidget with AutoRouteWrapper {
@@ -19,8 +19,7 @@ class EduProgramsPage extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          EduProgramsCubit(context.repository.onboardingRepository, context.repository.onboardingRepository),
+      create: (context) => EduProgramsCubit(context.repository.onboardingRepository),
       child: this,
     );
   }
@@ -68,18 +67,32 @@ class _EduProgramsPageState extends State<EduProgramsPage> {
                   return state.maybeWhen(
                     orElse: () => const SizedBox(),
                     loadedState: (eduPrograms) {
-                      return ListView.builder(
-                        itemCount: eduPrograms.length,
-                        itemBuilder: (context, index) {
-                          return ChoiceCardWidget(
-                            onCardTap: () {
-                              context.router.push(EduCoursesRoute(eduProgramId: eduPrograms[index].id));
-                              // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
-                            },
-                            index: index + 1,
-                            text: eduPrograms[index].title,
-                          );
-                        },
+                      return Column(
+                        children: [
+                          Text(
+                            context.localized.chooseEduProgram,
+                            style: AppTextStyles.m15w600.copyWith(color: AppColors.kPrimary),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: eduPrograms.length,
+                              itemBuilder: (context, index) {
+                                return ChoiceCardWidget(
+                                  onCardTap: () {
+                                    context.router.push(EduCoursesRoute(educationalProgram: eduPrograms[index]));
+
+                                    // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
+                                  },
+                                  index: index + 1,
+                                  text: eduPrograms[index].title,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       );
                     },
                   );

@@ -42,7 +42,7 @@ class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(
             child: EduCoursesPage(
           key: args.key,
-          eduProgramId: args.eduProgramId,
+          educationalProgram: args.educationalProgram,
         )),
       );
     },
@@ -53,8 +53,21 @@ class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(
             child: GroupsPage(
           key: args.key,
-          eduProgramId: args.eduProgramId,
-          courseNumber: args.courseNumber,
+          educationalProgram: args.educationalProgram,
+          course: args.course,
+        )),
+      );
+    },
+    UniInformationRoute.name: (routeData) {
+      final args = routeData.argsAs<UniInformationRouteArgs>();
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: WrappedRoute(
+            child: UniInformationPage(
+          key: args.key,
+          educationalProgram: args.educationalProgram,
+          course: args.course,
+          group: args.group,
         )),
       );
     },
@@ -85,7 +98,7 @@ class _$AppRouter extends RootStackRouter {
     SettingsRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
-        child: const SettingsPage(),
+        child: WrappedRoute(child: const SettingsPage()),
       );
     },
     TempRoute.name: (routeData) {
@@ -145,6 +158,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/groups-page',
         ),
         RouteConfig(
+          UniInformationRoute.name,
+          path: '/uni-information-page',
+        ),
+        RouteConfig(
           LanguageRoute.name,
           path: '/language-page',
         ),
@@ -197,13 +214,13 @@ class EduProgramsRoute extends PageRouteInfo<void> {
 class EduCoursesRoute extends PageRouteInfo<EduCoursesRouteArgs> {
   EduCoursesRoute({
     Key? key,
-    required String eduProgramId,
+    required EduProgramDTO educationalProgram,
   }) : super(
           EduCoursesRoute.name,
           path: '/edu-courses-page',
           args: EduCoursesRouteArgs(
             key: key,
-            eduProgramId: eduProgramId,
+            educationalProgram: educationalProgram,
           ),
         );
 
@@ -213,16 +230,16 @@ class EduCoursesRoute extends PageRouteInfo<EduCoursesRouteArgs> {
 class EduCoursesRouteArgs {
   const EduCoursesRouteArgs({
     this.key,
-    required this.eduProgramId,
+    required this.educationalProgram,
   });
 
   final Key? key;
 
-  final String eduProgramId;
+  final EduProgramDTO educationalProgram;
 
   @override
   String toString() {
-    return 'EduCoursesRouteArgs{key: $key, eduProgramId: $eduProgramId}';
+    return 'EduCoursesRouteArgs{key: $key, educationalProgram: $educationalProgram}';
   }
 }
 
@@ -231,15 +248,15 @@ class EduCoursesRouteArgs {
 class GroupsRoute extends PageRouteInfo<GroupsRouteArgs> {
   GroupsRoute({
     Key? key,
-    required String eduProgramId,
-    required int courseNumber,
+    required EduProgramDTO educationalProgram,
+    required CourseDTO course,
   }) : super(
           GroupsRoute.name,
           path: '/groups-page',
           args: GroupsRouteArgs(
             key: key,
-            eduProgramId: eduProgramId,
-            courseNumber: courseNumber,
+            educationalProgram: educationalProgram,
+            course: course,
           ),
         );
 
@@ -249,19 +266,63 @@ class GroupsRoute extends PageRouteInfo<GroupsRouteArgs> {
 class GroupsRouteArgs {
   const GroupsRouteArgs({
     this.key,
-    required this.eduProgramId,
-    required this.courseNumber,
+    required this.educationalProgram,
+    required this.course,
   });
 
   final Key? key;
 
-  final String eduProgramId;
+  final EduProgramDTO educationalProgram;
 
-  final int courseNumber;
+  final CourseDTO course;
 
   @override
   String toString() {
-    return 'GroupsRouteArgs{key: $key, eduProgramId: $eduProgramId, courseNumber: $courseNumber}';
+    return 'GroupsRouteArgs{key: $key, educationalProgram: $educationalProgram, course: $course}';
+  }
+}
+
+/// generated route for
+/// [UniInformationPage]
+class UniInformationRoute extends PageRouteInfo<UniInformationRouteArgs> {
+  UniInformationRoute({
+    Key? key,
+    required EduProgramDTO educationalProgram,
+    required CourseDTO course,
+    required GroupDTO group,
+  }) : super(
+          UniInformationRoute.name,
+          path: '/uni-information-page',
+          args: UniInformationRouteArgs(
+            key: key,
+            educationalProgram: educationalProgram,
+            course: course,
+            group: group,
+          ),
+        );
+
+  static const String name = 'UniInformationRoute';
+}
+
+class UniInformationRouteArgs {
+  const UniInformationRouteArgs({
+    this.key,
+    required this.educationalProgram,
+    required this.course,
+    required this.group,
+  });
+
+  final Key? key;
+
+  final EduProgramDTO educationalProgram;
+
+  final CourseDTO course;
+
+  final GroupDTO group;
+
+  @override
+  String toString() {
+    return 'UniInformationRouteArgs{key: $key, educationalProgram: $educationalProgram, course: $course, group: $group}';
   }
 }
 

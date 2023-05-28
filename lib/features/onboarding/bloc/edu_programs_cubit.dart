@@ -7,15 +7,14 @@ import 'package:schedule/features/search/models/university_dto.dart';
 part 'edu_programs_cubit.freezed.dart';
 
 class EduProgramsCubit extends Cubit<EduProgramsState> {
-  final IOnboardingRepository _repository;
   final IOnboardingRepository _onboardingRepository;
-  EduProgramsCubit(this._repository, this._onboardingRepository) : super(const EduProgramsState.initialState());
+  EduProgramsCubit(this._onboardingRepository) : super(const EduProgramsState.initialState());
 
   Future<void> getEduPrograms() async {
     final UniversityDTO? university = await _onboardingRepository.getUniversityFromCache();
 
     emit(const EduProgramsState.loadingState());
-    final result = await _repository.getEduPrograms(university!.code!);
+    final result = await _onboardingRepository.getEduPrograms(university!.code!);
     result.when(
       success: (eduPrograms) {
         emit(EduProgramsState.loadedState(eduPrograms: eduPrograms));

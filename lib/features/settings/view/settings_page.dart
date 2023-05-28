@@ -10,15 +10,27 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/enum/app_language.dart';
 import 'package:schedule/features/app/router/app_router.dart';
+import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:schedule/features/home/repositories/home_repository.dart';
+import 'package:schedule/features/home/repositories/home_repository_impl.dart';
+import 'package:schedule/features/settings/bloc/exit_cubit.dart';
 import 'package:schedule/features/settings/widgets/settings_button.dart';
 import 'package:schedule/features/settings/widgets/settings_button_subtitle.dart';
 import 'package:schedule/features/settings/widgets/switch_button.dart';
 
-class SettingsPage extends StatefulWidget {
+class SettingsPage extends StatefulWidget with AutoRouteWrapper {
   const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ExitCubit(context.repository.homeRepository, context.repository.onboardingRepository),
+      child: this,
+    );
+  }
 }
 
 class _SettingsPageState extends State<SettingsPage> {
@@ -46,9 +58,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // final themeProvider = Provider.of<ThemeProvider>(context);
-    // final bool darkMode = themeProvider.isDarkMode;
-    // final bool lightMode = themeProvider.isLightMode;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -187,16 +196,24 @@ class _SettingsPageState extends State<SettingsPage> {
               str: context.localized.termsOfUse,
               onTap: () {},
             ),
-            SettingsButton(
-              icon: SvgPicture.asset(
-                Assets.icons.icUniversity.path,
-                color: AppColors.kPrimary,
-                height: 25,
-              ),
-              str: 'Сбросить учебное заведение',
-              onTap: () {
-                BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting());
+            BlocListener<ExitCubit, ExitState>(
+              listener: (context, state) {
+                state.whenOrNull(
+                  errorState: (message) => buildErrorCustomSnackBar(context, message),
+                  loadedState: (result) => BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting()),
+                );
               },
+              child: SettingsButton(
+                icon: SvgPicture.asset(
+                  Assets.icons.icUniversity.path,
+                  color: AppColors.kPrimary,
+                  height: 25,
+                ),
+                str: 'Сбросить учебное заведение',
+                onTap: () {
+                  BlocProvider.of<ExitCubit>(context).removeAllFromShared();
+                },
+              ),
             ),
             const Spacer(),
             const SizedBox(height: 20),

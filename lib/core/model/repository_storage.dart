@@ -44,14 +44,14 @@ abstract class IRepositoryStorage {
 class RepositoryStorage implements IRepositoryStorage {
   // ignore: unused_field
   //nurda kosty bez ponyatiya _authDao degendi
-  final IOnboardingDao _onboardingDao;
+  final OnboardingDao _onboardingDao;
   final IAuthDao _authDao;
   final AppDatabase _appDatabase;
   final SharedPreferences _sharedPreferences;
   final NetworkExecuter _networkExecuter;
 
   RepositoryStorage({
-    required IOnboardingDao onboardingDao,
+    required OnboardingDao onboardingDao,
     required IAuthDao authDao,
     required AppDatabase appDatabase,
     required SharedPreferences sharedPreferences,
@@ -61,7 +61,6 @@ class RepositoryStorage implements IRepositoryStorage {
         _networkExecuter = networkExecuter,
         _onboardingDao = onboardingDao,
         //nurda kosty bez ponyatiya
-
         _authDao = authDao;
   // _onboardingDao = onboardingDao;
 
@@ -96,6 +95,7 @@ class RepositoryStorage implements IRepositoryStorage {
   @override
   IHomeRepository get homeRepository => HomeRepositoryImpl(
         remoteDS: homeRemoteDS,
+        onboardingDao: _onboardingDao,
         //nurda kosty bez ponyatiya
       );
 

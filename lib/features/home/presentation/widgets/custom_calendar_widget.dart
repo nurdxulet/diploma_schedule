@@ -30,7 +30,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
       pageAnimationEnabled: false,
       headerVisible: false,
       startingDayOfWeek: StartingDayOfWeek.monday,
-      rowHeight: 78,
+      rowHeight: 80,
       focusedDay: _selectedDay,
       currentDay: _selectedDay,
       locale: context.currentLocale.code,

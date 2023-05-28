@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:schedule/features/auth/repository/auth_repository.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
 import 'package:schedule/features/home/repositories/home_repository.dart';
 import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
@@ -8,31 +7,31 @@ import 'package:schedule/features/onboarding/repository/onboarding_repository.da
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/models/university_dto.dart';
 
-part 'schedule_cubit.freezed.dart';
+part 'my_schedule_cubit.freezed.dart';
 
-class ScheduleCubit extends Cubit<ScheduleState> {
+class MyScheduleCubit extends Cubit<MyScheduleState> {
   final IHomeRepository _repository;
   final IOnboardingRepository _onboardingRepository;
-  ScheduleCubit(this._repository, this._onboardingRepository) : super(const ScheduleState.initialState());
+  MyScheduleCubit(this._repository, this._onboardingRepository) : super(const MyScheduleState.initialState());
 
   List<ScheduleDTO> _schedules = [];
 
-  Future<void> getAllSchedules(String searchType) async {
-    emit(const ScheduleState.loadingState());
+  Future<void> getMySchedules(String searchType) async {
+    emit(const MyScheduleState.loadingState());
 
     final UniversityDTO? university = await _onboardingRepository.getUniversityFromCache();
-    final EduProgramDTO? educationalProgram = await _onboardingRepository.getEduProgramFromCache();
+    final GroupDTO? group = await _onboardingRepository.getGroupFromCache();
     // log('${university?.code}');
     if (university != null) {
-      final result = await _repository.getAllSchedules(university.code!, educationalProgram!.id, searchType);
+      final result = await _repository.getMySchedules(university.code!, group!.id, searchType);
 
       result.when(
         success: (schedules) {
           _schedules = schedules;
-          emit(ScheduleState.loadedState(schedules: _schedules));
+          emit(MyScheduleState.loadedState(schedules: _schedules));
         },
         failure: (error) => emit(
-          ScheduleState.errorState(
+          MyScheduleState.errorState(
             message: error.msg ?? "Ошибка при получении universityDTOFromCahche",
           ),
         ),
@@ -42,22 +41,22 @@ class ScheduleCubit extends Cubit<ScheduleState> {
 
   void sortList({required bool isFromTop}) {
     _schedules = _schedules.reversed.toList();
-    emit(ScheduleState.loadedState(schedules: _schedules));
+    emit(MyScheduleState.loadedState(schedules: _schedules));
   }
 
   void toInitital() {
-    emit(const ScheduleState.loadingState());
+    emit(const MyScheduleState.loadingState());
   }
 }
 
 @freezed
-class ScheduleState with _$ScheduleState {
-  const factory ScheduleState.initialState() = _InitialState;
-  const factory ScheduleState.loadingState() = _LoadingState;
-  const factory ScheduleState.loadedState({
+class MyScheduleState with _$MyScheduleState {
+  const factory MyScheduleState.initialState() = _InitialState;
+  const factory MyScheduleState.loadingState() = _LoadingState;
+  const factory MyScheduleState.loadedState({
     required List<ScheduleDTO> schedules,
   }) = _LoadedState;
-  const factory ScheduleState.errorState({
+  const factory MyScheduleState.errorState({
     required String message,
   }) = _ErrorState;
 }

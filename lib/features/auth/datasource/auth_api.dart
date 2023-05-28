@@ -77,7 +77,7 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
-        login: (universityCode) => '/api/v1/auth',
+        login: (universityCode) => 'universities/code',
         sendCode: (email) => '/api/v1/send/code',
         checkCode: (email, code) => '/api/user/check/code',
         resetPassword: (email, password) => '/api/user/reset/password',

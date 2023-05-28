@@ -6,6 +6,8 @@ abstract class IOnboardingDao {
 
   PreferencesEntry<String> get educationalProgram;
 
+  PreferencesEntry<String> get course;
+
   PreferencesEntry<String> get group;
 
   PreferencesEntry<bool> get onboarding;
@@ -27,4 +29,7 @@ class OnboardingDao extends TypedPreferencesDao implements IOnboardingDao {
 
   @override
   PreferencesEntry<bool> get onboarding => boolEntry('onboarding');
+
+  @override
+  PreferencesEntry<String> get course => stringEntry('course');
 }
