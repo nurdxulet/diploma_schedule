@@ -11,8 +11,6 @@ import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/enum/app_language.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
-import 'package:schedule/features/home/repositories/home_repository.dart';
-import 'package:schedule/features/home/repositories/home_repository_impl.dart';
 import 'package:schedule/features/settings/bloc/exit_cubit.dart';
 import 'package:schedule/features/settings/widgets/settings_button.dart';
 import 'package:schedule/features/settings/widgets/settings_button_subtitle.dart';
@@ -209,7 +207,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: AppColors.kPrimary,
                   height: 25,
                 ),
-                str: 'Сбросить учебное заведение',
+                str: context.localized.resetEducationalInstitution,
                 onTap: () {
                   BlocProvider.of<ExitCubit>(context).removeAllFromShared();
                 },

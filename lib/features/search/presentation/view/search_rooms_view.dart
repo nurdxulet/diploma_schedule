@@ -20,7 +20,6 @@ class _RoomSearchViewState extends State<RoomSearchView> {
 
   @override
   void initState() {
-    // BlocProvider.of<SearchCubit>(context).getAllRooms();
     super.initState();
   }
 

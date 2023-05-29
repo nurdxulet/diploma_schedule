@@ -7,10 +7,12 @@ import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_squar
 import 'package:table_calendar/table_calendar.dart';
 
 class CustomCalendarWidget extends StatefulWidget {
+  final DateTime selectedDay;
   final Function(DateTime)? onSelected;
   const CustomCalendarWidget({
     super.key,
     this.onSelected,
+    required this.selectedDay,
   });
 
   @override
@@ -18,24 +20,23 @@ class CustomCalendarWidget extends StatefulWidget {
 }
 
 class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
-  DateTime _selectedDay = DateTime.now();
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
-      // onDisabledDayTapped: (day) {
-      //   _selectedDay = day;
-      //   widget.onSelected?.call(day);
-      //   setState(() {});
-      // },
       pageAnimationEnabled: false,
       headerVisible: false,
       startingDayOfWeek: StartingDayOfWeek.monday,
       rowHeight: 80,
-      focusedDay: _selectedDay,
-      currentDay: _selectedDay,
+      focusedDay: widget.selectedDay,
+      currentDay: widget.selectedDay,
       locale: context.currentLocale.code,
       onDaySelected: (selectedDay, focusedDay) {
-        _selectedDay = selectedDay;
+        // widget.selectedDay = selectedDay;
         widget.onSelected?.call(selectedDay);
         setState(() {});
       },
@@ -104,14 +105,14 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
           color: AppColors.kPrimary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
-        outsideDecoration: BoxDecoration(
-          color: AppColors.kPrimary.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
+        // outsideDecoration: BoxDecoration(
+        //   color: AppColors.kPrimary.withOpacity(0.1),
+        //   borderRadius: BorderRadius.circular(12),
+        // ),
       ),
       calendarFormat: CalendarFormat.week,
-      firstDay: getDate(DateTime.now().add(Duration(days: DateTime.daysPerWeek - DateTime.now().day))),
-      lastDay: getDate(DateTime.now().add(Duration(days: DateTime.daysPerWeek - DateTime.now().weekday))),
+      firstDay: getDate(widget.selectedDay.subtract(Duration(days: widget.selectedDay.weekday - 1))),
+      lastDay: getDate(widget.selectedDay.add(Duration(days: DateTime.daysPerWeek - widget.selectedDay.weekday))),
     );
   }
 

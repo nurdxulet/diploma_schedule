@@ -11,6 +11,7 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/home/bloc/my_schedule_cubit.dart';
 import 'package:schedule/features/home/bloc/schedule_cubit.dart';
+import 'package:schedule/features/home/data/models/schedule_dto.dart';
 import 'package:schedule/features/home/presentation/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/presentation/widgets/subject_schedule_widget.dart';
 
@@ -30,9 +31,10 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _HomePageState extends State<HomePage> {
-  String id = '3f24b194-6378-46f8-85e6-138a20e1d041';
-  // String id = '';
   bool sortFromTop = true;
+  bool? isSelected = false;
+  bool? isDisabled = false;
+  DateTime selectedDate = DateTime.now();
 
   @override
   void initState() {
@@ -98,7 +100,11 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(
                               8,
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                selectedDate = DateTime.now();
+                              });
+                            },
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
@@ -110,7 +116,14 @@ class _HomePageState extends State<HomePage> {
                         )
                       ],
                     ),
-                    const CustomCalendarWidget(),
+                    CustomCalendarWidget(
+                      selectedDay: selectedDate,
+                      onSelected: (dateTime) {
+                        setState(() {
+                          selectedDate = dateTime;
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -127,29 +140,33 @@ class _HomePageState extends State<HomePage> {
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 10),
               sliver: SliverToBoxAdapter(
-                child: Row(
+                child: Column(
                   children: [
-                    Text(
-                      context.localized.subject,
-                      style: AppTextStyles.m12w600Grey,
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          sortFromTop = !sortFromTop;
-                        });
-                        BlocProvider.of<ScheduleCubit>(context).sortList(isFromTop: sortFromTop);
-                      },
-                      child: sortFromTop
-                          ? SvgPicture.asset(
-                              Assets.icons.icSortFromTop.path,
-                              color: Colors.grey,
-                            )
-                          : SvgPicture.asset(
-                              Assets.icons.icSortFromBottom.path,
-                              color: Colors.grey,
-                            ),
+                    Row(
+                      children: [
+                        Text(
+                          context.localized.subject,
+                          style: AppTextStyles.m12w600Grey,
+                        ),
+                        const Spacer(),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              sortFromTop = !sortFromTop;
+                            });
+                            BlocProvider.of<MyScheduleCubit>(context).sortList(isFromTop: sortFromTop);
+                          },
+                          child: sortFromTop
+                              ? SvgPicture.asset(
+                                  Assets.icons.icSortFromTop.path,
+                                  color: Colors.grey,
+                                )
+                              : SvgPicture.asset(
+                                  Assets.icons.icSortFromBottom.path,
+                                  color: Colors.grey,
+                                ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -183,17 +200,50 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     loadedState: (schedulesBack) {
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            return SubjectScheduleWidget(
-                              schedule: schedulesBack[index],
-                            );
-                          },
-                          childCount: schedulesBack.length,
-                          semanticIndexOffset: 2,
-                        ),
+                      final List<ScheduleDTO> scheduleByWeekDay = [];
+                      scheduleByWeekDay.addAll(
+                        schedulesBack
+                            .where((element) => element.week == DateFormat('EEEE').format(selectedDate).toUpperCase()),
                       );
+                      if (scheduleByWeekDay.isNotEmpty) {
+                        return SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int index) {
+                              return SubjectScheduleWidget(
+                                // schedule: schedulesBack[index],
+                                schedule: scheduleByWeekDay[index],
+                              );
+                            },
+                            childCount: scheduleByWeekDay.length,
+                          ),
+                        );
+                      } else {
+                        return SliverToBoxAdapter(
+                          child: Center(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 25,
+                                ),
+                                const Text(
+                                  'NO SCHEDULES FOUND',
+                                  style: AppTextStyles.m26w500Grey2,
+                                ),
+                                const SizedBox(
+                                  height: 25,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                                  child: SvgPicture.asset(
+                                    Assets.icons.noSchedule.path,
+                                    height: 200,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
                     },
                   );
                 },

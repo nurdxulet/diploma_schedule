@@ -342,6 +342,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/main_icon.svg
   SvgGenImage get mainIcon => const SvgGenImage('assets/icons/main_icon.svg');
 
+  /// File path: assets/icons/no_schedule.svg
+  SvgGenImage get noSchedule =>
+      const SvgGenImage('assets/icons/no_schedule.svg');
+
   /// File path: assets/icons/notification_icon.svg
   SvgGenImage get notificationIcon =>
       const SvgGenImage('assets/icons/notification_icon.svg');
@@ -511,6 +515,7 @@ class $AssetsIconsGen {
         leftBackgroundLonger,
         leftForeground,
         mainIcon,
+        noSchedule,
         notificationIcon,
         pairWork,
         paperClip,
