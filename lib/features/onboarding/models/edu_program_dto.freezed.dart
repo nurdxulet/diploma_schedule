@@ -24,6 +24,7 @@ mixin _$EduProgramDTO {
   String? get title => throw _privateConstructorUsedError;
   bool? get elective => throw _privateConstructorUsedError;
   String? get universityId => throw _privateConstructorUsedError;
+  List<GroupDTO>? get groups => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $EduProgramDTOCopyWith<$Res> {
           EduProgramDTO value, $Res Function(EduProgramDTO) then) =
       _$EduProgramDTOCopyWithImpl<$Res, EduProgramDTO>;
   @useResult
-  $Res call({String id, String? title, bool? elective, String? universityId});
+  $Res call(
+      {String id,
+      String? title,
+      bool? elective,
+      String? universityId,
+      List<GroupDTO>? groups});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$EduProgramDTOCopyWithImpl<$Res, $Val extends EduProgramDTO>
     Object? title = freezed,
     Object? elective = freezed,
     Object? universityId = freezed,
+    Object? groups = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,6 +82,10 @@ class _$EduProgramDTOCopyWithImpl<$Res, $Val extends EduProgramDTO>
           ? _value.universityId
           : universityId // ignore: cast_nullable_to_non_nullable
               as String?,
+      groups: freezed == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupDTO>?,
     ) as $Val);
   }
 }
@@ -87,7 +98,12 @@ abstract class _$$_EduProgramDTOCopyWith<$Res>
       __$$_EduProgramDTOCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? title, bool? elective, String? universityId});
+  $Res call(
+      {String id,
+      String? title,
+      bool? elective,
+      String? universityId,
+      List<GroupDTO>? groups});
 }
 
 /// @nodoc
@@ -105,6 +121,7 @@ class __$$_EduProgramDTOCopyWithImpl<$Res>
     Object? title = freezed,
     Object? elective = freezed,
     Object? universityId = freezed,
+    Object? groups = freezed,
   }) {
     return _then(_$_EduProgramDTO(
       id: null == id
@@ -123,6 +140,10 @@ class __$$_EduProgramDTOCopyWithImpl<$Res>
           ? _value.universityId
           : universityId // ignore: cast_nullable_to_non_nullable
               as String?,
+      groups: freezed == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupDTO>?,
     ));
   }
 }
@@ -131,7 +152,12 @@ class __$$_EduProgramDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EduProgramDTO implements _EduProgramDTO {
   const _$_EduProgramDTO(
-      {required this.id, this.title, this.elective, this.universityId});
+      {required this.id,
+      this.title,
+      this.elective,
+      this.universityId,
+      final List<GroupDTO>? groups})
+      : _groups = groups;
 
   factory _$_EduProgramDTO.fromJson(Map<String, dynamic> json) =>
       _$$_EduProgramDTOFromJson(json);
@@ -144,10 +170,19 @@ class _$_EduProgramDTO implements _EduProgramDTO {
   final bool? elective;
   @override
   final String? universityId;
+  final List<GroupDTO>? _groups;
+  @override
+  List<GroupDTO>? get groups {
+    final value = _groups;
+    if (value == null) return null;
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'EduProgramDTO(id: $id, title: $title, elective: $elective, universityId: $universityId)';
+    return 'EduProgramDTO(id: $id, title: $title, elective: $elective, universityId: $universityId, groups: $groups)';
   }
 
   @override
@@ -160,13 +195,14 @@ class _$_EduProgramDTO implements _EduProgramDTO {
             (identical(other.elective, elective) ||
                 other.elective == elective) &&
             (identical(other.universityId, universityId) ||
-                other.universityId == universityId));
+                other.universityId == universityId) &&
+            const DeepCollectionEquality().equals(other._groups, _groups));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, elective, universityId);
+  int get hashCode => Object.hash(runtimeType, id, title, elective,
+      universityId, const DeepCollectionEquality().hash(_groups));
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +223,8 @@ abstract class _EduProgramDTO implements EduProgramDTO {
       {required final String id,
       final String? title,
       final bool? elective,
-      final String? universityId}) = _$_EduProgramDTO;
+      final String? universityId,
+      final List<GroupDTO>? groups}) = _$_EduProgramDTO;
 
   factory _EduProgramDTO.fromJson(Map<String, dynamic> json) =
       _$_EduProgramDTO.fromJson;
@@ -200,6 +237,8 @@ abstract class _EduProgramDTO implements EduProgramDTO {
   bool? get elective;
   @override
   String? get universityId;
+  @override
+  List<GroupDTO>? get groups;
   @override
   @JsonKey(ignore: true)
   _$$_EduProgramDTOCopyWith<_$_EduProgramDTO> get copyWith =>

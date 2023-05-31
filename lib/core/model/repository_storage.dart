@@ -1,4 +1,3 @@
-import 'package:schedule/core/database/drift/app_database.dart';
 import 'package:schedule/core/network/layers/network_executer.dart';
 import 'package:schedule/features/auth/database/auth_dao.dart';
 import 'package:schedule/features/auth/datasource/auth_remote_ds.dart';
@@ -45,23 +44,16 @@ class RepositoryStorage implements IRepositoryStorage {
   // ignore: unused_field
   //nurda kosty bez ponyatiya _authDao degendi
   final OnboardingDao _onboardingDao;
-  final IAuthDao _authDao;
-  final AppDatabase _appDatabase;
   final SharedPreferences _sharedPreferences;
   final NetworkExecuter _networkExecuter;
 
   RepositoryStorage({
     required OnboardingDao onboardingDao,
-    required IAuthDao authDao,
-    required AppDatabase appDatabase,
     required SharedPreferences sharedPreferences,
     required NetworkExecuter networkExecuter,
-  })  : _appDatabase = appDatabase,
-        _sharedPreferences = sharedPreferences,
+  })  : _sharedPreferences = sharedPreferences,
         _networkExecuter = networkExecuter,
-        _onboardingDao = onboardingDao,
-        //nurda kosty bez ponyatiya
-        _authDao = authDao;
+        _onboardingDao = onboardingDao;
   // _onboardingDao = onboardingDao;
 
   ///

@@ -1,11 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:schedule/features/auth/repository/auth_repository.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
 import 'package:schedule/features/home/repositories/home_repository.dart';
 import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/onboarding/repository/onboarding_repository.dart';
-import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/models/university_dto.dart';
 
 part 'schedule_cubit.freezed.dart';

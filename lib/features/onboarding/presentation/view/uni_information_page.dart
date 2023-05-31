@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
@@ -53,157 +54,198 @@ class _UniInformationPageState extends State<UniInformationPage> {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
-      child: WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          backgroundColor: AppColors.kScaffoldBack,
-          body: SafeArea(
-            child: BlocConsumer<ReadyCubit, ReadyState>(
-              listener: (context, state) {
-                state.whenOrNull(
-                  initialState: () {
-                    context.loaderOverlay.hide();
-                  },
-                  loadingState: () {
-                    context.loaderOverlay.show();
-                  },
-                  loadedState: (university, educationalProgram, course, group) async {
-                    setState(() {
-                      ready = true;
-                    });
-                  },
-                  errorState: (String message) {
-                    context.loaderOverlay.hide();
-                    buildErrorCustomSnackBar(context, message);
-                  },
-                );
-              },
-              builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => const SizedBox(),
-                  loadedState: (university, educationalProgram, course, group) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "${context.localized.nowLetsCheck} 👀",
-                            style: AppTextStyles.m24w600.copyWith(color: AppColors.kPrimary),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            '${context.localized.educationInstitution}: ${university?.name}',
-                            style: AppTextStyles.m16w500,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '${context.localized.educationalProgram}: ${educationalProgram?.title}',
-                            style: AppTextStyles.m16w500,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '${context.localized.course}: ${course?.courseNumber}',
-                            style: AppTextStyles.m16w500,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '${context.localized.myGroup}: ${group?.title}',
-                            style: AppTextStyles.m16w500,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Image.asset(
-                            Assets.images.students.path,
-                            fit: BoxFit.contain,
-                            height: 350,
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
+      child: Scaffold(
+        // backgroundColor: AppColors.kScaffoldBack,
+        body: SafeArea(
+          child: BlocConsumer<ReadyCubit, ReadyState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                initialState: () {
+                  context.loaderOverlay.hide();
+                },
+                loadingState: () {
+                  context.loaderOverlay.show();
+                },
+                loadedState: (university, educationalProgram, course, group) async {
+                  setState(() {
+                    ready = true;
+                  });
+                },
+                errorState: (String message) {
+                  context.loaderOverlay.hide();
+                  buildErrorCustomSnackBar(context, message);
+                },
+              );
+            },
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const SizedBox(),
+                loadedState: (university, educationalProgram, course, group) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${context.localized.nowLetsCheck} 👀",
+                          style: AppTextStyles.m24w600.copyWith(color: AppColors.kPrimary),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '${context.localized.educationInstitution}:',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                            const Spacer(),
+                            Text(
+                              '${university?.name}',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '${context.localized.educationalProgram}:',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                            const Spacer(),
+                            Text(
+                              '${educationalProgram?.title}',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '${context.localized.course}:',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                            const Spacer(),
+                            Text(
+                              '${course?.courseNumber}',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '${context.localized.myGroup}: ',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                            const Spacer(),
+                            Text(
+                              '${group?.title}',
+                              style: AppTextStyles.m16w500,
+                              maxLines: 5,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Image.asset(
+                          Assets.images.personLookingInBinocularsVector1.path,
+                          fit: BoxFit.contain,
+                          height: 350,
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: BlocListener<ExitCubit, ExitState>(
+                listener: (context, exitState) {
+                  exitState.whenOrNull(
+                    errorState: (message) => buildErrorCustomSnackBar(context, message),
+                    loadedState: (result) {
+                      BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting());
+                      context.router.replaceAll([const LauncherRoute()]);
+                    },
+                  );
+                },
+                child: CustomButton(
+                  style: redMainButtonStyle(),
+                  radius: 10,
+                  body: Text(
+                    'Заново',
+                    // context.localized,
+                    style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
+                  ),
+                  onClick: ready
+                      ? () {
+                          BlocProvider.of<ExitCubit>(context).removeAllFromShared();
+                        }
+                      : () {
+                          buildErrorCustomSnackBar(context, context.localized.sorrySomethingWentWrong);
+                        },
+                ),
+              ),
             ),
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                child: BlocListener<ExitCubit, ExitState>(
-                  listener: (context, exitState) {
-                    exitState.whenOrNull(
-                      errorState: (message) => buildErrorCustomSnackBar(context, message),
-                      loadedState: (result) {
-                        BlocProvider.of<AppBLoC>(context).add(const AppEvent.exiting());
-                        context.router.replaceAll([const LauncherRoute()]);
-                      },
-                    );
-                  },
-                  child: CustomButton(
-                    style: redMainButtonStyle(),
-                    radius: 10,
-                    body: Text(
-                      'Заново',
-                      // context.localized,
-                      style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
-                    ),
-                    onClick: ready
-                        ? () {
-                            BlocProvider.of<ExitCubit>(context).removeAllFromShared();
-                          }
-                        : () {
-                            buildErrorCustomSnackBar(context, context.localized.sorrySomethingWentWrong);
-                          },
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: BlocListener<ReadyCubit, ReadyState>(
+                listener: (context, readyState) {
+                  readyState.whenOrNull(
+                    errorState: (message) => buildErrorCustomSnackBar(context, message),
+                  );
+                },
+                child: CustomButton(
+                  radius: 10,
+                  body: Text(
+                    context.localized.ready,
+                    style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
                   ),
+                  onClick: ready
+                      ? () {
+                          BlocProvider.of<AppBLoC>(context).add(const AppEvent.logining());
+                          context.router.replaceAll([const LauncherRoute()]);
+                        }
+                      : () {
+                          buildErrorCustomSnackBar(context, context.localized.sorrySomethingWentWrong);
+                        },
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                child: BlocListener<ReadyCubit, ReadyState>(
-                  listener: (context, readyState) {
-                    readyState.whenOrNull(
-                      errorState: (message) => buildErrorCustomSnackBar(context, message),
-                    );
-                  },
-                  child: CustomButton(
-                    radius: 10,
-                    body: Text(
-                      context.localized.ready,
-                      style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
-                    ),
-                    onClick: ready
-                        ? () {
-                            BlocProvider.of<AppBLoC>(context).add(const AppEvent.logining());
-                            context.router.replaceAll([const LauncherRoute()]);
-                          }
-                        : () {
-                            buildErrorCustomSnackBar(context, context.localized.sorrySomethingWentWrong);
-                          },
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

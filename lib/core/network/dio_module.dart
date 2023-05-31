@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_classes_with_only_static_members, avoid_redundant_argument_values
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -9,7 +8,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:schedule/core/enum/environment.dart';
 import 'package:schedule/features/auth/database/auth_dao.dart';
-import 'package:schedule/features/auth/model/user_dto.dart';
 import 'package:schedule/settings/database/settings_dao.dart';
 
 /// Creates new `Dio` instance

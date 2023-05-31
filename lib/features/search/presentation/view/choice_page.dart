@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/build_segment_widget.dart';
-import 'package:schedule/features/app/widgets/custom/app_bar_with_title.dart';
 import 'package:schedule/features/app/widgets/custom/custom_switch_button.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/presentation/view/search_group_view.dart';

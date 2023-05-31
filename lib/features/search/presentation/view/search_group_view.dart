@@ -1,13 +1,13 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
+import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
-import 'package:schedule/features/app/widgets/custom/custom_text_field.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
-import 'package:schedule/features/search/bloc/search_schedule_cubit.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class GroupSearchView extends StatefulWidget {
@@ -41,16 +41,17 @@ class _GroupSearchViewState extends State<GroupSearchView> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: CustomTextField(
-                borderColor: AppColors.kPrimary,
-                borderWidth: 1,
-                controller: nameController,
-                label: Text(
-                  context.localized.search,
-                  style: AppTextStyles.m14w400,
+              child: CupertinoTextField(
+                prefix: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: SizedBox(height: 40, width: 20, child: SvgPicture.asset(Assets.icons.icSearch.path)),
                 ),
-                hintText: context.localized.search,
-                hintStyle: AppTextStyles.m14w400Grey,
+                decoration: BoxDecoration(color: AppColors.kGrey3, borderRadius: BorderRadius.circular(10)),
+                placeholder: context.localized.search,
+                controller: nameController,
+                // onChanged: (enteredKeyword) {
+                //   _search(enteredKeyword, groups);
+                // },
               ),
             ),
             Expanded(

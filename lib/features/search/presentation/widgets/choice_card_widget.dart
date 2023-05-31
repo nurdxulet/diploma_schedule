@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/app/widgets/error_image_widget.dart';
 
 class ChoiceCardWidget extends StatelessWidget {
   final bool? isChoosed;

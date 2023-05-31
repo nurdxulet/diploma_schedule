@@ -13,7 +13,6 @@ import 'package:schedule/features/onboarding/presentation/view/onboarding_page.d
 import 'package:schedule/features/onboarding/presentation/view/uni_information_page.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/presentation/view/choice_page.dart';
-import 'package:schedule/features/search/presentation/view/search_page.dart';
 import 'package:schedule/features/settings/view/language_page.dart';
 import 'package:schedule/features/settings/view/settings_page.dart';
 

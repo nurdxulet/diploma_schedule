@@ -7,7 +7,6 @@ import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/bloc/app_bloc.dart';
 import 'package:schedule/features/app/view/base.dart';
-import 'package:schedule/features/auth/bloc/login_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/check_university_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
 import 'package:schedule/features/onboarding/presentation/view/onboarding_page.dart';

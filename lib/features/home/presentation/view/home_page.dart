@@ -10,7 +10,6 @@ import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/home/bloc/my_schedule_cubit.dart';
-import 'package:schedule/features/home/bloc/schedule_cubit.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
 import 'package:schedule/features/home/presentation/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/presentation/widgets/subject_schedule_widget.dart';
@@ -225,19 +224,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 25,
                                 ),
-                                const Text(
-                                  'NO SCHEDULES FOUND',
-                                  style: AppTextStyles.m26w500Grey2,
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                  child: Image.asset(
+                                    Assets.images.searchingGuysJpg.path,
+                                    height: 250,
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 25,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                                  child: SvgPicture.asset(
-                                    Assets.icons.noSchedule.path,
-                                    height: 200,
-                                  ),
+                                const Text(
+                                  'NO SCHEDULES FOUND',
+                                  style: AppTextStyles.m26w500Grey2,
                                 ),
                               ],
                             ),

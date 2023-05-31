@@ -12,6 +12,9 @@ _$_EduProgramDTO _$$_EduProgramDTOFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       elective: json['elective'] as bool?,
       universityId: json['universityId'] as String?,
+      groups: (json['groups'] as List<dynamic>?)
+          ?.map((e) => GroupDTO.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_EduProgramDTOToJson(_$_EduProgramDTO instance) =>
@@ -20,4 +23,5 @@ Map<String, dynamic> _$$_EduProgramDTOToJson(_$_EduProgramDTO instance) =>
       'title': instance.title,
       'elective': instance.elective,
       'universityId': instance.universityId,
+      'groups': instance.groups,
     };

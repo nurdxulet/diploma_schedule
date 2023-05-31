@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:l/l.dart';
 import 'package:schedule/core/error/network_exception.dart';
@@ -7,8 +5,6 @@ import 'package:schedule/core/network/layers/network_executer.dart';
 import 'package:schedule/core/network/result.dart';
 import 'package:schedule/features/home/data/datasource/home_api.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
-import 'package:schedule/features/onboarding/datasource/onboarding_api.dart';
-import 'package:schedule/features/search/models/university_dto.dart';
 
 abstract class IHomeRemoteDS {
   Future<Result<List<ScheduleDTO>>> getAllSchedules(String universityCode, String searchType, String searchId);

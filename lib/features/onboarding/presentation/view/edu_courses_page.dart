@@ -35,6 +35,8 @@ class EduCoursesPage extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _EduCoursesPageState extends State<EduCoursesPage> {
+  TextEditingController searchController = TextEditingController();
+
   @override
   void initState() {
     BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(widget.educationalProgram);
@@ -43,73 +45,70 @@ class _EduCoursesPageState extends State<EduCoursesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: LoaderOverlay(
-        child: Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24),
-              child: BlocConsumer<EduProgramCoursesCubit, EduProgramCoursesState>(
-                listener: (context, state) {
-                  state.whenOrNull(
-                    initialState: () {
-                      context.loaderOverlay.hide();
-                    },
-                    loadingState: () {
-                      context.loaderOverlay.show();
-                    },
-                    loadedState: (course) async {
-                      context.loaderOverlay.hide();
-                      // setState(() {});
-                      // context.router.push();
-                      // context.appBloc.add(const AppEvent.logining());
-                    },
-                    errorState: (String message) {
-                      context.loaderOverlay.hide();
-                      buildErrorCustomSnackBar(context, message);
-                    },
-                  );
-                },
-                builder: (context, state) {
-                  return state.maybeWhen(
-                    orElse: () => const SizedBox(),
-                    loadedState: (eduCourses) {
-                      return Column(
-                        children: [
-                          Text(
-                            context.localized.chooseGroup,
-                            style: AppTextStyles.m15w600.copyWith(color: AppColors.kPrimary),
+    return LoaderOverlay(
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24),
+            child: BlocConsumer<EduProgramCoursesCubit, EduProgramCoursesState>(
+              listener: (context, state) {
+                state.whenOrNull(
+                  initialState: () {
+                    context.loaderOverlay.hide();
+                  },
+                  loadingState: () {
+                    context.loaderOverlay.show();
+                  },
+                  loadedState: (course) async {
+                    context.loaderOverlay.hide();
+                    // setState(() {});
+                    // context.router.push();
+                    // context.appBloc.add(const AppEvent.logining());
+                  },
+                  errorState: (String message) {
+                    context.loaderOverlay.hide();
+                    buildErrorCustomSnackBar(context, message);
+                  },
+                );
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () => const SizedBox(),
+                  loadedState: (eduCourses) {
+                    return Column(
+                      children: [
+                        Text(
+                          context.localized.chooseCourse,
+                          style: AppTextStyles.m15w600.copyWith(color: AppColors.kPrimary),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: eduCourses.length,
+                            itemBuilder: (context, index) {
+                              return ChoiceCardWidget(
+                                onCardTap: () {
+                                  context.router.push(
+                                    GroupsRoute(
+                                      course: eduCourses[index],
+                                      educationalProgram: widget.educationalProgram,
+                                    ),
+                                  );
+                                  // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
+                                },
+                                index: index + 1,
+                                text: '${context.localized.course} ${eduCourses[index].courseNumber}',
+                              );
+                            },
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Expanded(
-                            child: ListView.builder(
-                              itemCount: eduCourses.length,
-                              itemBuilder: (context, index) {
-                                return ChoiceCardWidget(
-                                  onCardTap: () {
-                                    context.router.push(
-                                      GroupsRoute(
-                                        course: eduCourses[index],
-                                        educationalProgram: widget.educationalProgram,
-                                      ),
-                                    );
-                                    // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
-                                  },
-                                  index: index + 1,
-                                  text: '${context.localized.course} ${eduCourses[index].courseNumber}',
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),

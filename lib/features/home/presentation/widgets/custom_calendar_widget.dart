@@ -1,8 +1,11 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
+import 'package:schedule/features/app/enum/app_language.dart';
 import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_square_button.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -34,7 +37,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
       rowHeight: 80,
       focusedDay: widget.selectedDay,
       currentDay: widget.selectedDay,
-      locale: context.currentLocale.code,
+      locale: context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
       onDaySelected: (selectedDay, focusedDay) {
         // widget.selectedDay = selectedDay;
         widget.onSelected?.call(selectedDay);
@@ -70,7 +73,9 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
           horizontal: 16,
           vertical: 8,
         ).copyWith(top: 12),
-        titleTextFormatter: (date, locale) => DateFormat.MMMM(locale).format(date).capitalize(),
+        titleTextFormatter: (date, locale) => DateFormat.MMMM(
+          context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
+        ).format(date).capitalize(),
         titleTextStyle: AppTextStyles.m18w600,
         leftChevronMargin: EdgeInsets.zero,
         leftChevronPadding: const EdgeInsets.only(right: 4),
@@ -157,7 +162,10 @@ class CalendarItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                DateFormat('E', context.currentLocale.code).format(day).toUpperCase().substring(0, 2),
+                DateFormat(
+                  'E',
+                  context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
+                ).format(day).toUpperCase().substring(0, 2),
                 style: isSelected ?? false
                     ? AppTextStyles.m12w600.copyWith(color: AppColors.kWhite)
                     : AppTextStyles.m12w600,

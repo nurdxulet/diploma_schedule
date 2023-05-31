@@ -185,6 +185,9 @@ class $AssetsIconsGen {
   SvgGenImage get icLocation =>
       const SvgGenImage('assets/icons/ic_location.svg');
 
+  /// File path: assets/icons/ic_look.svg
+  SvgGenImage get icLook => const SvgGenImage('assets/icons/ic_look.svg');
+
   /// File path: assets/icons/ic_main.svg
   SvgGenImage get icMain => const SvgGenImage('assets/icons/ic_main.svg');
 
@@ -471,6 +474,7 @@ class $AssetsIconsGen {
         icHome,
         icInfinity,
         icLocation,
+        icLook,
         icMain,
         icMainSelected,
         icMedal,
@@ -548,6 +552,10 @@ class $AssetsImagesGen {
   AssetGenImage get blueDeskCalendar =>
       const AssetGenImage('assets/images/Blue desk calendar.png');
 
+  /// File path: assets/images/Person looking in binoculars vector 1.jpg
+  AssetGenImage get personLookingInBinocularsVector1 => const AssetGenImage(
+      'assets/images/Person looking in binoculars vector 1.jpg');
+
   /// File path: assets/images/bg_irek.png
   AssetGenImage get bgIrek => const AssetGenImage('assets/images/bg_irek.png');
 
@@ -563,10 +571,6 @@ class $AssetsImagesGen {
   AssetGenImage get circleBackground =>
       const AssetGenImage('assets/images/circle background.png');
 
-  /// File path: assets/images/educational_programm.png
-  AssetGenImage get educationalProgramm =>
-      const AssetGenImage('assets/images/educational_programm.png');
-
   /// File path: assets/images/globe5-3.png
   AssetGenImage get globe53 =>
       const AssetGenImage('assets/images/globe5-3.png');
@@ -579,25 +583,9 @@ class $AssetsImagesGen {
   AssetGenImage get magnifyGlass2 =>
       const AssetGenImage('assets/images/magnify-glass2.png');
 
-  /// File path: assets/images/medal_icon.png
-  AssetGenImage get medalIcon =>
-      const AssetGenImage('assets/images/medal_icon.png');
-
-  /// File path: assets/images/notebook-dynamic-color-img.png
-  AssetGenImage get notebookDynamicColorImg =>
-      const AssetGenImage('assets/images/notebook-dynamic-color-img.png');
-
-  /// File path: assets/images/ob_faculty.png
-  AssetGenImage get obFaculty =>
-      const AssetGenImage('assets/images/ob_faculty.png');
-
   /// File path: assets/images/ob_group.png
   AssetGenImage get obGroup =>
       const AssetGenImage('assets/images/ob_group.png');
-
-  /// File path: assets/images/ob_university.png
-  AssetGenImage get obUniversity =>
-      const AssetGenImage('assets/images/ob_university.png');
 
   /// File path: assets/images/profile_info.svg
   SvgGenImage get profileInfo =>
@@ -611,9 +599,12 @@ class $AssetsImagesGen {
   AssetGenImage get resultBg =>
       const AssetGenImage('assets/images/result_bg.png');
 
-  /// File path: assets/images/schedule.png
-  AssetGenImage get schedule =>
-      const AssetGenImage('assets/images/schedule.png');
+  /// File path: assets/images/searching_guys.jpg
+  AssetGenImage get searchingGuysJpg =>
+      const AssetGenImage('assets/images/searching_guys.jpg');
+
+  /// File path: assets/images/searching_guys.zip
+  String get searchingGuysZip => 'assets/images/searching_guys.zip';
 
   /// File path: assets/images/storm_bg.png
   AssetGenImage get stormBg =>
@@ -626,44 +617,31 @@ class $AssetsImagesGen {
   /// File path: assets/images/subjects.svg
   SvgGenImage get subjects => const SvgGenImage('assets/images/subjects.svg');
 
-  /// File path: assets/images/ubt_avatar_blur.png
-  AssetGenImage get ubtAvatarBlur =>
-      const AssetGenImage('assets/images/ubt_avatar_blur.png');
-
   /// File path: assets/images/ubt_winner_avatar.png
   AssetGenImage get ubtWinnerAvatar =>
       const AssetGenImage('assets/images/ubt_winner_avatar.png');
 
-  /// File path: assets/images/university.png
-  AssetGenImage get university =>
-      const AssetGenImage('assets/images/university.png');
-
   /// List of all assets
   List<dynamic> get values => [
         blueDeskCalendar,
+        personLookingInBinocularsVector1,
         bgIrek,
         circleBackgroundSmall,
         circleBackgroundTopp,
         circleBackground,
-        educationalProgramm,
         globe53,
         lessonDetailTitleback,
         magnifyGlass2,
-        medalIcon,
-        notebookDynamicColorImg,
-        obFaculty,
         obGroup,
-        obUniversity,
         profileInfo,
         progressHdBg,
         resultBg,
-        schedule,
+        searchingGuysJpg,
+        searchingGuysZip,
         stormBg,
         students,
         subjects,
-        ubtAvatarBlur,
-        ubtWinnerAvatar,
-        university
+        ubtWinnerAvatar
       ];
 }
 
