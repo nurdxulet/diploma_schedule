@@ -24,6 +24,9 @@ mixin _$SearchApi {
         getAllGroups,
     required TResult Function(String universityCode) getAllTeachers,
     required TResult Function(String universityCode) getAllRooms,
+    required TResult Function(
+            String universityCode, String searchType, String searchId)
+        getSchedules,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +35,9 @@ mixin _$SearchApi {
         getAllGroups,
     TResult? Function(String universityCode)? getAllTeachers,
     TResult? Function(String universityCode)? getAllRooms,
+    TResult? Function(
+            String universityCode, String searchType, String searchId)?
+        getSchedules,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +46,8 @@ mixin _$SearchApi {
         getAllGroups,
     TResult Function(String universityCode)? getAllTeachers,
     TResult Function(String universityCode)? getAllRooms,
+    TResult Function(String universityCode, String searchType, String searchId)?
+        getSchedules,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +56,7 @@ mixin _$SearchApi {
     required TResult Function(_GetAllGroups value) getAllGroups,
     required TResult Function(_GetAllTeachers value) getAllTeachers,
     required TResult Function(_GetAllRooms value) getAllRooms,
+    required TResult Function(_GetSchedules value) getSchedules,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +64,7 @@ mixin _$SearchApi {
     TResult? Function(_GetAllGroups value)? getAllGroups,
     TResult? Function(_GetAllTeachers value)? getAllTeachers,
     TResult? Function(_GetAllRooms value)? getAllRooms,
+    TResult? Function(_GetSchedules value)? getSchedules,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +72,7 @@ mixin _$SearchApi {
     TResult Function(_GetAllGroups value)? getAllGroups,
     TResult Function(_GetAllTeachers value)? getAllTeachers,
     TResult Function(_GetAllRooms value)? getAllRooms,
+    TResult Function(_GetSchedules value)? getSchedules,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +197,9 @@ class _$_GetAllGroups extends _GetAllGroups {
         getAllGroups,
     required TResult Function(String universityCode) getAllTeachers,
     required TResult Function(String universityCode) getAllRooms,
+    required TResult Function(
+            String universityCode, String searchType, String searchId)
+        getSchedules,
   }) {
     return getAllGroups(universityCode, educationalProgramId);
   }
@@ -197,6 +211,9 @@ class _$_GetAllGroups extends _GetAllGroups {
         getAllGroups,
     TResult? Function(String universityCode)? getAllTeachers,
     TResult? Function(String universityCode)? getAllRooms,
+    TResult? Function(
+            String universityCode, String searchType, String searchId)?
+        getSchedules,
   }) {
     return getAllGroups?.call(universityCode, educationalProgramId);
   }
@@ -208,6 +225,8 @@ class _$_GetAllGroups extends _GetAllGroups {
         getAllGroups,
     TResult Function(String universityCode)? getAllTeachers,
     TResult Function(String universityCode)? getAllRooms,
+    TResult Function(String universityCode, String searchType, String searchId)?
+        getSchedules,
     required TResult orElse(),
   }) {
     if (getAllGroups != null) {
@@ -222,6 +241,7 @@ class _$_GetAllGroups extends _GetAllGroups {
     required TResult Function(_GetAllGroups value) getAllGroups,
     required TResult Function(_GetAllTeachers value) getAllTeachers,
     required TResult Function(_GetAllRooms value) getAllRooms,
+    required TResult Function(_GetSchedules value) getSchedules,
   }) {
     return getAllGroups(this);
   }
@@ -232,6 +252,7 @@ class _$_GetAllGroups extends _GetAllGroups {
     TResult? Function(_GetAllGroups value)? getAllGroups,
     TResult? Function(_GetAllTeachers value)? getAllTeachers,
     TResult? Function(_GetAllRooms value)? getAllRooms,
+    TResult? Function(_GetSchedules value)? getSchedules,
   }) {
     return getAllGroups?.call(this);
   }
@@ -242,6 +263,7 @@ class _$_GetAllGroups extends _GetAllGroups {
     TResult Function(_GetAllGroups value)? getAllGroups,
     TResult Function(_GetAllTeachers value)? getAllTeachers,
     TResult Function(_GetAllRooms value)? getAllRooms,
+    TResult Function(_GetSchedules value)? getSchedules,
     required TResult orElse(),
   }) {
     if (getAllGroups != null) {
@@ -338,6 +360,9 @@ class _$_GetAllTeachers extends _GetAllTeachers {
         getAllGroups,
     required TResult Function(String universityCode) getAllTeachers,
     required TResult Function(String universityCode) getAllRooms,
+    required TResult Function(
+            String universityCode, String searchType, String searchId)
+        getSchedules,
   }) {
     return getAllTeachers(universityCode);
   }
@@ -349,6 +374,9 @@ class _$_GetAllTeachers extends _GetAllTeachers {
         getAllGroups,
     TResult? Function(String universityCode)? getAllTeachers,
     TResult? Function(String universityCode)? getAllRooms,
+    TResult? Function(
+            String universityCode, String searchType, String searchId)?
+        getSchedules,
   }) {
     return getAllTeachers?.call(universityCode);
   }
@@ -360,6 +388,8 @@ class _$_GetAllTeachers extends _GetAllTeachers {
         getAllGroups,
     TResult Function(String universityCode)? getAllTeachers,
     TResult Function(String universityCode)? getAllRooms,
+    TResult Function(String universityCode, String searchType, String searchId)?
+        getSchedules,
     required TResult orElse(),
   }) {
     if (getAllTeachers != null) {
@@ -374,6 +404,7 @@ class _$_GetAllTeachers extends _GetAllTeachers {
     required TResult Function(_GetAllGroups value) getAllGroups,
     required TResult Function(_GetAllTeachers value) getAllTeachers,
     required TResult Function(_GetAllRooms value) getAllRooms,
+    required TResult Function(_GetSchedules value) getSchedules,
   }) {
     return getAllTeachers(this);
   }
@@ -384,6 +415,7 @@ class _$_GetAllTeachers extends _GetAllTeachers {
     TResult? Function(_GetAllGroups value)? getAllGroups,
     TResult? Function(_GetAllTeachers value)? getAllTeachers,
     TResult? Function(_GetAllRooms value)? getAllRooms,
+    TResult? Function(_GetSchedules value)? getSchedules,
   }) {
     return getAllTeachers?.call(this);
   }
@@ -394,6 +426,7 @@ class _$_GetAllTeachers extends _GetAllTeachers {
     TResult Function(_GetAllGroups value)? getAllGroups,
     TResult Function(_GetAllTeachers value)? getAllTeachers,
     TResult Function(_GetAllRooms value)? getAllRooms,
+    TResult Function(_GetSchedules value)? getSchedules,
     required TResult orElse(),
   }) {
     if (getAllTeachers != null) {
@@ -488,6 +521,9 @@ class _$_GetAllRooms extends _GetAllRooms {
         getAllGroups,
     required TResult Function(String universityCode) getAllTeachers,
     required TResult Function(String universityCode) getAllRooms,
+    required TResult Function(
+            String universityCode, String searchType, String searchId)
+        getSchedules,
   }) {
     return getAllRooms(universityCode);
   }
@@ -499,6 +535,9 @@ class _$_GetAllRooms extends _GetAllRooms {
         getAllGroups,
     TResult? Function(String universityCode)? getAllTeachers,
     TResult? Function(String universityCode)? getAllRooms,
+    TResult? Function(
+            String universityCode, String searchType, String searchId)?
+        getSchedules,
   }) {
     return getAllRooms?.call(universityCode);
   }
@@ -510,6 +549,8 @@ class _$_GetAllRooms extends _GetAllRooms {
         getAllGroups,
     TResult Function(String universityCode)? getAllTeachers,
     TResult Function(String universityCode)? getAllRooms,
+    TResult Function(String universityCode, String searchType, String searchId)?
+        getSchedules,
     required TResult orElse(),
   }) {
     if (getAllRooms != null) {
@@ -524,6 +565,7 @@ class _$_GetAllRooms extends _GetAllRooms {
     required TResult Function(_GetAllGroups value) getAllGroups,
     required TResult Function(_GetAllTeachers value) getAllTeachers,
     required TResult Function(_GetAllRooms value) getAllRooms,
+    required TResult Function(_GetSchedules value) getSchedules,
   }) {
     return getAllRooms(this);
   }
@@ -534,6 +576,7 @@ class _$_GetAllRooms extends _GetAllRooms {
     TResult? Function(_GetAllGroups value)? getAllGroups,
     TResult? Function(_GetAllTeachers value)? getAllTeachers,
     TResult? Function(_GetAllRooms value)? getAllRooms,
+    TResult? Function(_GetSchedules value)? getSchedules,
   }) {
     return getAllRooms?.call(this);
   }
@@ -544,6 +587,7 @@ class _$_GetAllRooms extends _GetAllRooms {
     TResult Function(_GetAllGroups value)? getAllGroups,
     TResult Function(_GetAllTeachers value)? getAllTeachers,
     TResult Function(_GetAllRooms value)? getAllRooms,
+    TResult Function(_GetSchedules value)? getSchedules,
     required TResult orElse(),
   }) {
     if (getAllRooms != null) {
@@ -562,5 +606,188 @@ abstract class _GetAllRooms extends SearchApi {
   @override
   @JsonKey(ignore: true)
   _$$_GetAllRoomsCopyWith<_$_GetAllRooms> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetSchedulesCopyWith<$Res>
+    implements $SearchApiCopyWith<$Res> {
+  factory _$$_GetSchedulesCopyWith(
+          _$_GetSchedules value, $Res Function(_$_GetSchedules) then) =
+      __$$_GetSchedulesCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String universityCode, String searchType, String searchId});
+}
+
+/// @nodoc
+class __$$_GetSchedulesCopyWithImpl<$Res>
+    extends _$SearchApiCopyWithImpl<$Res, _$_GetSchedules>
+    implements _$$_GetSchedulesCopyWith<$Res> {
+  __$$_GetSchedulesCopyWithImpl(
+      _$_GetSchedules _value, $Res Function(_$_GetSchedules) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? universityCode = null,
+    Object? searchType = null,
+    Object? searchId = null,
+  }) {
+    return _then(_$_GetSchedules(
+      null == universityCode
+          ? _value.universityCode
+          : universityCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == searchType
+          ? _value.searchType
+          : searchType // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == searchId
+          ? _value.searchId
+          : searchId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetSchedules extends _GetSchedules {
+  const _$_GetSchedules(this.universityCode, this.searchType, this.searchId)
+      : super._();
+
+  @override
+  final String universityCode;
+  @override
+  final String searchType;
+  @override
+  final String searchId;
+
+  @override
+  String toString() {
+    return 'SearchApi.getSchedules(universityCode: $universityCode, searchType: $searchType, searchId: $searchId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetSchedules &&
+            (identical(other.universityCode, universityCode) ||
+                other.universityCode == universityCode) &&
+            (identical(other.searchType, searchType) ||
+                other.searchType == searchType) &&
+            (identical(other.searchId, searchId) ||
+                other.searchId == searchId));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, universityCode, searchType, searchId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetSchedulesCopyWith<_$_GetSchedules> get copyWith =>
+      __$$_GetSchedulesCopyWithImpl<_$_GetSchedules>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String universityCode, String educationalProgramId)
+        getAllGroups,
+    required TResult Function(String universityCode) getAllTeachers,
+    required TResult Function(String universityCode) getAllRooms,
+    required TResult Function(
+            String universityCode, String searchType, String searchId)
+        getSchedules,
+  }) {
+    return getSchedules(universityCode, searchType, searchId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String universityCode, String educationalProgramId)?
+        getAllGroups,
+    TResult? Function(String universityCode)? getAllTeachers,
+    TResult? Function(String universityCode)? getAllRooms,
+    TResult? Function(
+            String universityCode, String searchType, String searchId)?
+        getSchedules,
+  }) {
+    return getSchedules?.call(universityCode, searchType, searchId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String universityCode, String educationalProgramId)?
+        getAllGroups,
+    TResult Function(String universityCode)? getAllTeachers,
+    TResult Function(String universityCode)? getAllRooms,
+    TResult Function(String universityCode, String searchType, String searchId)?
+        getSchedules,
+    required TResult orElse(),
+  }) {
+    if (getSchedules != null) {
+      return getSchedules(universityCode, searchType, searchId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllGroups value) getAllGroups,
+    required TResult Function(_GetAllTeachers value) getAllTeachers,
+    required TResult Function(_GetAllRooms value) getAllRooms,
+    required TResult Function(_GetSchedules value) getSchedules,
+  }) {
+    return getSchedules(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAllGroups value)? getAllGroups,
+    TResult? Function(_GetAllTeachers value)? getAllTeachers,
+    TResult? Function(_GetAllRooms value)? getAllRooms,
+    TResult? Function(_GetSchedules value)? getSchedules,
+  }) {
+    return getSchedules?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllGroups value)? getAllGroups,
+    TResult Function(_GetAllTeachers value)? getAllTeachers,
+    TResult Function(_GetAllRooms value)? getAllRooms,
+    TResult Function(_GetSchedules value)? getSchedules,
+    required TResult orElse(),
+  }) {
+    if (getSchedules != null) {
+      return getSchedules(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetSchedules extends SearchApi {
+  const factory _GetSchedules(final String universityCode,
+      final String searchType, final String searchId) = _$_GetSchedules;
+  const _GetSchedules._() : super._();
+
+  @override
+  String get universityCode;
+  String get searchType;
+  String get searchId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_GetSchedulesCopyWith<_$_GetSchedules> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,6 +13,7 @@ import 'package:schedule/features/onboarding/presentation/view/onboarding_page.d
 import 'package:schedule/features/onboarding/presentation/view/uni_information_page.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/presentation/view/choice_page.dart';
+import 'package:schedule/features/search/presentation/view/schedule_page.dart';
 import 'package:schedule/features/settings/view/language_page.dart';
 import 'package:schedule/features/settings/view/settings_page.dart';
 
@@ -54,6 +55,9 @@ part 'app_router.gr.dart';
     AutoRoute<void>(page: EduCoursesPage),
     AutoRoute<void>(page: GroupsPage),
     AutoRoute<void>(page: UniInformationPage),
+
+    //Search pages
+    AutoRoute<void>(page: SchedulePage),
 
     //Settings
     AutoRoute<void>(page: LanguagePage),

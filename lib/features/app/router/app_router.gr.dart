@@ -71,6 +71,18 @@ class _$AppRouter extends RootStackRouter {
         )),
       );
     },
+    ScheduleRoute.name: (routeData) {
+      final args = routeData.argsAs<ScheduleRouteArgs>();
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: WrappedRoute(
+            child: SchedulePage(
+          key: args.key,
+          id: args.id,
+          searchType: args.searchType,
+        )),
+      );
+    },
     LanguageRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -160,6 +172,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           UniInformationRoute.name,
           path: '/uni-information-page',
+        ),
+        RouteConfig(
+          ScheduleRoute.name,
+          path: '/schedule-page',
         ),
         RouteConfig(
           LanguageRoute.name,
@@ -323,6 +339,45 @@ class UniInformationRouteArgs {
   @override
   String toString() {
     return 'UniInformationRouteArgs{key: $key, educationalProgram: $educationalProgram, course: $course, group: $group}';
+  }
+}
+
+/// generated route for
+/// [SchedulePage]
+class ScheduleRoute extends PageRouteInfo<ScheduleRouteArgs> {
+  ScheduleRoute({
+    Key? key,
+    required String id,
+    required String searchType,
+  }) : super(
+          ScheduleRoute.name,
+          path: '/schedule-page',
+          args: ScheduleRouteArgs(
+            key: key,
+            id: id,
+            searchType: searchType,
+          ),
+        );
+
+  static const String name = 'ScheduleRoute';
+}
+
+class ScheduleRouteArgs {
+  const ScheduleRouteArgs({
+    this.key,
+    required this.id,
+    required this.searchType,
+  });
+
+  final Key? key;
+
+  final String id;
+
+  final String searchType;
+
+  @override
+  String toString() {
+    return 'ScheduleRouteArgs{key: $key, id: $id, searchType: $searchType}';
   }
 }
 

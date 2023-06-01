@@ -17,6 +17,8 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
 
   const factory SearchApi.getAllRooms(String universityCode) = _GetAllRooms;
 
+  const factory SearchApi.getSchedules(String universityCode, String searchType, String searchId) = _GetSchedules;
+
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
   @override
@@ -34,19 +36,24 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
         getAllGroups: (universityCode, educationalProgramId) => 'educational-programs/$educationalProgramId/groups',
         getAllTeachers: (universityCode) => 'teachers/extended',
         getAllRooms: (universityCode) => 'rooms',
+        getSchedules: (universityCode, searchType, searchId) => 'schedules/extended',
       );
 
   /// Параметры запросов
   @override
   Map<String, dynamic>? get queryParameters => whenOrNull(
-        getAllGroups: (universityCode, educationalProgramId) => {
-          'universityCode': universityCode,
-        },
-        getAllTeachers: (universityCode) => {
-          'universityCode': universityCode,
-        },
-        getAllRooms: (universityCode) => {
-          'universityCode': universityCode,
-        },
-      );
+      getAllGroups: (universityCode, educationalProgramId) => {
+            'universityCode': universityCode,
+          },
+      getAllTeachers: (universityCode) => {
+            'universityCode': universityCode,
+          },
+      getAllRooms: (universityCode) => {
+            'universityCode': universityCode,
+          },
+      getSchedules: (universityCode, searchType, searchId) => {
+            'searchId': searchId,
+            'searchType': searchType,
+            'universityCode': universityCode,
+          });
 }

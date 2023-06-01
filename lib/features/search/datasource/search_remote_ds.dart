@@ -14,6 +14,8 @@ abstract class ISearchRemoteDS {
   Future<Result<List<TeacherDTO>>> getAllTeachers(String universityCode);
 
   Future<Result<List<RoomDTO>>> getAllRooms(String universityCode);
+
+  Future<Result<List<ScheduleDTO>>> getSchedules(String universityCode, String id, String searchType);
 }
 
 class SearchRemoteDSImpl implements ISearchRemoteDS {
@@ -23,37 +25,37 @@ class SearchRemoteDSImpl implements ISearchRemoteDS {
     required this.client,
   });
 
-  // @override
-  // Future<Result<List<QuestionDTO>>> getTest() async {
-  //   try {
-  //     final Result<Map<String, dynamic>?> result = await client.produce(
-  //       route: const TestApi.getTest(),
-  //     );
+  @override
+  Future<Result<List<ScheduleDTO>>> getSchedules(String universityCode, String searchType, String searchId) async {
+    try {
+      final Result<List?> result = await client.produce(
+        route: SearchApi.getSchedules(universityCode, searchId, searchType),
+      );
 
-  //     return result.when(
-  //       success: (Map<String, dynamic>? response) {
-  //         if (response == null) {
-  //           return const Result.failure(
-  //             NetworkException.type(error: 'Incorrect data parsing!'),
-  //           );
-  //         }
+      return result.when(
+        success: (List? response) {
+          // if (response) {
+          //   return const Result.failure(
+          //     NetworkException.type(error: 'Incorrect data parsing!'),
+          //   );
+          // }
 
-  //         final List<QuestionDTO> questions =
-  //             (response as List).map((e) => QuestionDTO.fromJson(e as Map<String, dynamic>)).toList();
+          final List<ScheduleDTO> schedules =
+              (response ?? []).map((e) => ScheduleDTO.fromJson(e as Map<String, dynamic>)).toList();
 
-  //         return Result<List<QuestionDTO>>.success(questions);
-  //       },
-  //       failure: (NetworkException exception) => Result<List<QuestionDTO>>.failure(exception),
-  //     );
-  //   } catch (e) {
-  //     if (kDebugMode) {
-  //       l.d('login => ${NetworkException.type(error: e.toString())}');
-  //     }
-  //     return Result<List<QuestionDTO>>.failure(
-  //       NetworkException.type(error: e.toString()),
-  //     );
-  //   }
-  // }
+          return Result<List<ScheduleDTO>>.success(schedules);
+        },
+        failure: (NetworkException exception) => Result<List<ScheduleDTO>>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('login => ${NetworkException.type(error: e.toString())}');
+      }
+      return Result<List<ScheduleDTO>>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
 
   @override
   Future<Result<List<GroupDTO>>> getAllGroups(String universityCode, String educationalProgramId) async {

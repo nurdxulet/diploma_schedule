@@ -33,10 +33,10 @@ class SearchRepositoryImpl extends ISearchRepository {
     return result;
   }
 
-  // @override
-  // Future<Result<List<ScheduleDTO>>> getTeacherSchedule(String id) async {
-  //   final Result<List<ScheduleDTO>> result = await _remoteDS.getGroupSchedule(id);
+  @override
+  Future<Result<List<ScheduleDTO>>> getSchedules(String universityCode, String id, String searchType) async {
+    final Result<List<ScheduleDTO>> result = await _remoteDS.getSchedules(universityCode, id, searchType);
 
-  //   return result;
-  // }
+    return result;
+  }
 }

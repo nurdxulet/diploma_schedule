@@ -11,4 +11,6 @@ abstract class ISearchRepository {
   Future<Result<List<TeacherDTO>>> getAllTeachers(String universityCode);
 
   Future<Result<List<RoomDTO>>> getAllRooms(String universityCode);
+
+  Future<Result<List<ScheduleDTO>>> getSchedules(String universityCode, String id, String searchType);
 }
