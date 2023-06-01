@@ -37,7 +37,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
       rowHeight: 80,
       focusedDay: widget.selectedDay,
       currentDay: widget.selectedDay,
-      locale: context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
+      locale: context.currentLocale.localeCode,
       onDaySelected: (selectedDay, focusedDay) {
         // widget.selectedDay = selectedDay;
         widget.onSelected?.call(selectedDay);
@@ -74,7 +74,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
           vertical: 8,
         ).copyWith(top: 12),
         titleTextFormatter: (date, locale) => DateFormat.MMMM(
-          context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
+          context.currentLocale.localeCode,
         ).format(date).capitalize(),
         titleTextStyle: AppTextStyles.m18w600,
         leftChevronMargin: EdgeInsets.zero,
@@ -144,7 +144,7 @@ class CalendarItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -164,7 +164,7 @@ class CalendarItemWidget extends StatelessWidget {
               Text(
                 DateFormat(
                   'E',
-                  context.currentLocale.code == AppLanguage.kk ? AppLanguage.en.localeCode : context.currentLocale.code,
+                  context.currentLocale.localeCode,
                 ).format(day).toUpperCase().substring(0, 2),
                 style: isSelected ?? false
                     ? AppTextStyles.m12w600.copyWith(color: AppColors.kWhite)
