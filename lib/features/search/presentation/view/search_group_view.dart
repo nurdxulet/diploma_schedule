@@ -58,7 +58,6 @@ class _GroupSearchViewState extends State<GroupSearchView> {
             );
           },
           loadedGroupsState: (groups) {
-            _foundGroups = groups;
             return Column(
               children: [
                 Padding(

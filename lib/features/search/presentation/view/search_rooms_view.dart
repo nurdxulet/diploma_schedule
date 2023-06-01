@@ -75,7 +75,7 @@ class _RoomSearchViewState extends State<RoomSearchView> {
                   ),
                 ),
                 Expanded(
-                  child: rooms.isNotEmpty
+                  child: _foundRooms.isNotEmpty
                       ? ListView.builder(
                           padding: const EdgeInsets.only(top: 8),
                           itemCount: _foundRooms.length,

@@ -80,18 +80,19 @@ class _TeacherSearchViewState extends State<TeacherSearchView> {
                     ),
                   ),
                   Expanded(
-                    child: techers.isNotEmpty
+                    child: _foundTeachers.isNotEmpty
                         ? ListView.builder(
                             padding: const EdgeInsets.only(top: 8),
-                            itemCount: techers.length,
+                            itemCount: _foundTeachers.length,
                             itemBuilder: (context, index) {
                               return ChoiceCardWidget(
                                 onCardTap: () {
-                                  context.router.push(ScheduleRoute(id: techers[index].id, searchType: 'TEACHER'));
+                                  context.router
+                                      .push(ScheduleRoute(id: _foundTeachers[index].id, searchType: 'TEACHER'));
                                 },
                                 index: index + 1,
                                 text:
-                                    '${techers[index].firstName} ${techers[index].middleName} ${techers[index].lastName}',
+                                    '${_foundTeachers[index].firstName} ${_foundTeachers[index].middleName} ${_foundTeachers[index].lastName}',
                               );
                             },
                           )
