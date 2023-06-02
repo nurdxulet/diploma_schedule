@@ -330,14 +330,6 @@ class $AssetsIconsGen {
   SvgGenImage get languageIcon =>
       const SvgGenImage('assets/icons/language_icon.svg');
 
-  /// File path: assets/icons/left_background.svg
-  SvgGenImage get leftBackground =>
-      const SvgGenImage('assets/icons/left_background.svg');
-
-  /// File path: assets/icons/left_background_longer.svg
-  SvgGenImage get leftBackgroundLonger =>
-      const SvgGenImage('assets/icons/left_background_longer.svg');
-
   /// File path: assets/icons/left_foreground.svg
   SvgGenImage get leftForeground =>
       const SvgGenImage('assets/icons/left_foreground.svg');
@@ -515,8 +507,6 @@ class $AssetsIconsGen {
         icYoutube,
         irekBg,
         languageIcon,
-        leftBackground,
-        leftBackgroundLonger,
         leftForeground,
         mainIcon,
         noSchedule,
@@ -548,10 +538,6 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/Blue desk calendar.png
-  AssetGenImage get blueDeskCalendar =>
-      const AssetGenImage('assets/images/Blue desk calendar.png');
-
   /// File path: assets/images/Person looking in binoculars vector 1.jpg
   AssetGenImage get personLookingInBinocularsVector1 => const AssetGenImage(
       'assets/images/Person looking in binoculars vector 1.jpg');
@@ -571,77 +557,33 @@ class $AssetsImagesGen {
   AssetGenImage get circleBackground =>
       const AssetGenImage('assets/images/circle background.png');
 
-  /// File path: assets/images/globe5-3.png
-  AssetGenImage get globe53 =>
-      const AssetGenImage('assets/images/globe5-3.png');
-
-  /// File path: assets/images/lesson_detail_titleback.png
-  AssetGenImage get lessonDetailTitleback =>
-      const AssetGenImage('assets/images/lesson_detail_titleback.png');
-
   /// File path: assets/images/magnify-glass2.png
   AssetGenImage get magnifyGlass2 =>
       const AssetGenImage('assets/images/magnify-glass2.png');
-
-  /// File path: assets/images/ob_group.png
-  AssetGenImage get obGroup =>
-      const AssetGenImage('assets/images/ob_group.png');
-
-  /// File path: assets/images/profile_info.svg
-  SvgGenImage get profileInfo =>
-      const SvgGenImage('assets/images/profile_info.svg');
 
   /// File path: assets/images/progress_hd_bg.png
   AssetGenImage get progressHdBg =>
       const AssetGenImage('assets/images/progress_hd_bg.png');
 
-  /// File path: assets/images/result_bg.png
-  AssetGenImage get resultBg =>
-      const AssetGenImage('assets/images/result_bg.png');
-
   /// File path: assets/images/searching_guys.jpg
-  AssetGenImage get searchingGuysJpg =>
+  AssetGenImage get searchingGuys =>
       const AssetGenImage('assets/images/searching_guys.jpg');
-
-  /// File path: assets/images/searching_guys.zip
-  String get searchingGuysZip => 'assets/images/searching_guys.zip';
-
-  /// File path: assets/images/storm_bg.png
-  AssetGenImage get stormBg =>
-      const AssetGenImage('assets/images/storm_bg.png');
 
   /// File path: assets/images/students.jpg
   AssetGenImage get students =>
       const AssetGenImage('assets/images/students.jpg');
 
-  /// File path: assets/images/subjects.svg
-  SvgGenImage get subjects => const SvgGenImage('assets/images/subjects.svg');
-
-  /// File path: assets/images/ubt_winner_avatar.png
-  AssetGenImage get ubtWinnerAvatar =>
-      const AssetGenImage('assets/images/ubt_winner_avatar.png');
-
   /// List of all assets
-  List<dynamic> get values => [
-        blueDeskCalendar,
+  List<AssetGenImage> get values => [
         personLookingInBinocularsVector1,
         bgIrek,
         circleBackgroundSmall,
         circleBackgroundTopp,
         circleBackground,
-        globe53,
-        lessonDetailTitleback,
         magnifyGlass2,
-        obGroup,
-        profileInfo,
         progressHdBg,
-        resultBg,
-        searchingGuysJpg,
-        searchingGuysZip,
-        stormBg,
-        students,
-        subjects,
-        ubtWinnerAvatar
+        searchingGuys,
+        students
       ];
 }
 

@@ -72,17 +72,17 @@ class _ChoicePageState extends State<ChoicePage> {
                         backgroundColor: AppColors.kGrey3,
                         children: {
                           0: BuildSegmentWidget(
-                            text: "Группы",
+                            text: context.localized.groups,
                             isSelected: 0 == page,
                             isBordered: true,
                           ),
                           1: BuildSegmentWidget(
-                            text: "Преподаватели",
+                            text: context.localized.teachers,
                             isSelected: 1 == page,
                             isBordered: true,
                           ),
                           2: BuildSegmentWidget(
-                            text: "Аудитории",
+                            text: context.localized.rooms,
                             isSelected: 2 == page,
                             isBordered: true,
                           ),

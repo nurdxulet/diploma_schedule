@@ -1,4 +1,4 @@
-package com.tan.schedule
+package com.tanschedule
 
 import io.flutter.embedding.android.FlutterActivity
 
