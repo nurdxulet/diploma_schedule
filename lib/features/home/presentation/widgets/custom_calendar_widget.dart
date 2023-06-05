@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/app/enum/app_language.dart';
 import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_square_button.dart';
 import 'package:table_calendar/table_calendar.dart';
 

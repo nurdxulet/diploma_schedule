@@ -11,7 +11,7 @@ abstract class IOnboardingRepository {
   Future<void> setOnboarding({required bool onboarding});
   Future<String> setUniInfo(
       // CourseDTO course,
-      List<GroupDTO> groups);
+      List<GroupDTO> groups,);
 
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<UniversityDTO?> getUniversityFromCache();

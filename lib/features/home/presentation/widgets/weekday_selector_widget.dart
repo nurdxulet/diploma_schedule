@@ -10,6 +10,6 @@ class WeekdaySelectorWidget extends StatefulWidget {
 class _WeekdaySelectorWidgetState extends State<WeekdaySelectorWidget> {
   @override
   Widget build(BuildContext context) {
-    return Row();
+    return const Row();
   }
 }

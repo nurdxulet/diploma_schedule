@@ -87,8 +87,13 @@ class _TeacherSearchViewState extends State<TeacherSearchView> {
                             itemBuilder: (context, index) {
                               return ChoiceCardWidget(
                                 onCardTap: () {
-                                  context.router
-                                      .push(ScheduleRoute(id: _foundTeachers[index].id, searchType: 'TEACHER'));
+                                  context.router.push(
+                                    ScheduleRoute(
+                                      id: _foundTeachers[index].id,
+                                      searchType: 'TEACHER',
+                                      teacher: _foundTeachers[index],
+                                    ),
+                                  );
                                 },
                                 index: index + 1,
                                 text:

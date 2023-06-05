@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
@@ -11,10 +10,7 @@ import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_button.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/onboarding/bloc/ready_cubit.dart';
-import 'package:schedule/features/onboarding/models/course_dto.dart';
-import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
-import 'package:schedule/features/search/models/university_dto.dart';
 import 'package:schedule/features/settings/bloc/exit_cubit.dart';
 
 class UniInformationPage extends StatefulWidget with AutoRouteWrapper {
@@ -142,7 +138,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                                       style: AppTextStyles.m16w500,
                                       maxLines: 5,
                                     );
-                                  }),
+                                  },),
                             )
                           ],
                         ),

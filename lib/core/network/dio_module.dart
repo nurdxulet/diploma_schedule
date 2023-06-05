@@ -37,7 +37,7 @@ class DioModule {
       })
       ..interceptors.addAll([
         // LogOutInterceptor(userRepository),
-        _AuthDioInterceptor(authDao),
+        _AuthDioInterceptor(),
         PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
@@ -52,8 +52,7 @@ class DioModule {
 }
 
 class _AuthDioInterceptor extends Interceptor {
-  final AuthDao _authDao;
-  _AuthDioInterceptor(this._authDao);
+  _AuthDioInterceptor();
 
   // Dio dio = Dio(BaseOptions(baseUrl: SERVER_));
 

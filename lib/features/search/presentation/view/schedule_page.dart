@@ -13,11 +13,16 @@ import 'package:schedule/features/home/data/models/schedule_dto.dart';
 import 'package:schedule/features/home/presentation/widgets/custom_calendar_widget.dart';
 import 'package:schedule/features/home/presentation/widgets/subject_schedule_widget.dart';
 import 'package:schedule/features/search/bloc/schedule_cubit.dart';
+import 'package:schedule/features/search/models/group_dto.dart';
+import 'package:schedule/features/search/models/teacher_dto.dart';
 
 class SchedulePage extends StatefulWidget with AutoRouteWrapper {
+  final GroupDTO? group;
+  final TeacherDTO? teacher;
+  final RoomDTO? room;
   final String id;
   final String searchType;
-  const SchedulePage({super.key, required this.id, required this.searchType});
+  const SchedulePage({super.key, required this.id, required this.searchType, this.group, this.teacher, this.room});
 
   @override
   State<SchedulePage> createState() => _SchedulePageState();
@@ -57,25 +62,58 @@ class _SchedulePageState extends State<SchedulePage> {
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: InkWell(
-                            onTap: () => context.router.pop(),
-                            child: SvgPicture.asset(
-                              Assets.icons.icBackArrow.path,
-                              fit: BoxFit.cover,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: const [
+                                BoxShadow(
+                                  offset: Offset(1, 1),
+                                  spreadRadius: 0.01,
+                                  blurRadius: 7,
+                                  color: AppColors.kGrey4,
+                                )
+                              ],
+                              color: AppColors.kWhite,
+                            ),
+                            height: 35,
+                            width: 35,
+                            child: InkWell(
+                              onTap: () => context.router.pop(),
+                              child: SvgPicture.asset(
+                                Assets.icons.icBackArrow.path,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          context.localized.schedule,
-                          style: AppTextStyles.m24w600,
-                        ),
-                      ],
+                          const Spacer(),
+                          Column(
+                            children: [
+                              if (widget.group != null)
+                                Text(
+                                  '${widget.group?.title}',
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.m18w600,
+                                )
+                              else if (widget.teacher != null)
+                                Text(
+                                  '${widget.teacher?.lastName} ${widget.teacher?.firstName} ${widget.teacher?.middleName}',
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.m18w600,
+                                )
+                              else if (widget.room != null)
+                                Text(
+                                  '${context.localized.room} ${widget.room?.name}',
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.m18w600,
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     Row(
                       children: [
@@ -227,7 +265,11 @@ class _SchedulePageState extends State<SchedulePage> {
                           delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
                               return SubjectScheduleWidget(
-                                // schedule: schedulesBack[index],
+                                widgetColor: index % 3 == 0
+                                    ? AppColors.kSubjectOrange
+                                    : index % 3 == 1
+                                        ? AppColors.kSubjectRed
+                                        : AppColors.kSubjectGreen,
                                 schedule: scheduleByWeekDay[index],
                               );
                             },

@@ -11,7 +11,6 @@ import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
-import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
@@ -84,7 +83,8 @@ class _GroupSearchViewState extends State<GroupSearchView> {
                           itemBuilder: (context, index) {
                             return ChoiceCardWidget(
                               onCardTap: () {
-                                context.router.push(ScheduleRoute(id: _foundGroups[index].id, searchType: 'GROUP'));
+                                context.router.push(ScheduleRoute(
+                                    id: _foundGroups[index].id, searchType: 'GROUP', group: _foundGroups[index],),);
                               },
                               index: index + 1,
                               text: _foundGroups[index].title,

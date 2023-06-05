@@ -7,7 +7,6 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
-import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
 import 'package:schedule/features/onboarding/models/edu_program_dto.dart';

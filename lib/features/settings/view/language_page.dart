@@ -1,3 +1,5 @@
+// ignore_for_file: type_annotate_public_apis
+
 import 'package:flutter/material.dart';
 import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/features/app/widgets/custom/app_bar_with_title.dart';

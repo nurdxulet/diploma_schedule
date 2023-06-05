@@ -82,7 +82,13 @@ class _RoomSearchViewState extends State<RoomSearchView> {
                           itemBuilder: (context, index) {
                             return ChoiceCardWidget(
                               onCardTap: () {
-                                context.router.push(ScheduleRoute(id: _foundRooms[index].id ?? '', searchType: 'ROOM'));
+                                context.router.push(
+                                  ScheduleRoute(
+                                    id: _foundRooms[index].id ?? '',
+                                    searchType: 'ROOM',
+                                    room: _foundRooms[index],
+                                  ),
+                                );
                               },
                               index: index + 1,
                               text: '${context.localized.room} ${_foundRooms[index].name}',

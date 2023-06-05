@@ -55,5 +55,5 @@ class SearchApi extends BaseClientGenerator with _$SearchApi {
             'searchId': searchId,
             'searchType': searchType,
             'universityCode': universityCode,
-          });
+          },);
 }

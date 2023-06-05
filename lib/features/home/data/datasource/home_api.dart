@@ -2,7 +2,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/core/network/interfaces/base_client_generator.dart';
-import 'package:schedule/features/search/models/group_dto.dart';
 part 'home_api.freezed.dart';
 
 @freezed
@@ -37,7 +36,7 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
   @override
   String get path => when(
         getAllSchedules: (universityCode, searchType, searchId) => 'schedules/extended',
-        getMySchedules:(payload, universityCode) => 'schedules/extended',
+        getMySchedules: (payload, universityCode) => 'schedules/extended',
       );
 
   /// Параметры запросов

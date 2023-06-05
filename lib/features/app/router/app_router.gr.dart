@@ -67,6 +67,9 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           id: args.id,
           searchType: args.searchType,
+          group: args.group,
+          teacher: args.teacher,
+          room: args.room,
         )),
       );
     },
@@ -277,6 +280,9 @@ class ScheduleRoute extends PageRouteInfo<ScheduleRouteArgs> {
     Key? key,
     required String id,
     required String searchType,
+    GroupDTO? group,
+    TeacherDTO? teacher,
+    RoomDTO? room,
   }) : super(
           ScheduleRoute.name,
           path: '/schedule-page',
@@ -284,6 +290,9 @@ class ScheduleRoute extends PageRouteInfo<ScheduleRouteArgs> {
             key: key,
             id: id,
             searchType: searchType,
+            group: group,
+            teacher: teacher,
+            room: room,
           ),
         );
 
@@ -295,6 +304,9 @@ class ScheduleRouteArgs {
     this.key,
     required this.id,
     required this.searchType,
+    this.group,
+    this.teacher,
+    this.room,
   });
 
   final Key? key;
@@ -303,9 +315,15 @@ class ScheduleRouteArgs {
 
   final String searchType;
 
+  final GroupDTO? group;
+
+  final TeacherDTO? teacher;
+
+  final RoomDTO? room;
+
   @override
   String toString() {
-    return 'ScheduleRouteArgs{key: $key, id: $id, searchType: $searchType}';
+    return 'ScheduleRouteArgs{key: $key, id: $id, searchType: $searchType, group: $group, teacher: $teacher, room: $room}';
   }
 }
 

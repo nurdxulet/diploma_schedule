@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:l/l.dart';
 import 'package:schedule/core/error/network_exception.dart';

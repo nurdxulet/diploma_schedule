@@ -209,7 +209,11 @@ class _HomePageState extends State<HomePage> {
                           delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
                               return SubjectScheduleWidget(
-                                // schedule: schedulesBack[index],
+                                widgetColor: index % 3 == 0
+                                    ? AppColors.kSubjectOrange
+                                    : index % 3 == 1
+                                        ? AppColors.kSubjectRed
+                                        : AppColors.kSubjectGreen,
                                 schedule: scheduleByWeekDay[index],
                               );
                             },

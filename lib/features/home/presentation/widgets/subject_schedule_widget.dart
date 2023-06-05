@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
@@ -84,13 +83,15 @@ class SubjectScheduleWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${DateFormat('hh:mm a').format(schedule.startTime!)} - ${DateFormat('hh:mm a').format(schedule.endTime!)}',
-                                style: AppTextStyles.m12w600.copyWith(color: AppColors.kLightBlue),
+                                '${schedule.teacher?.lastName} ${schedule.teacher?.firstName} ${schedule.teacher?.middleName}',
+                                style: AppTextStyles.m14w600Blue.copyWith(color: AppColors.kGrey),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                '${context.localized.breakTime} ${DateFormat('hh:mm a').format(schedule.startTime!)} - ${DateFormat('hh:mm a').format(schedule.endTime!)}',
+                                '${DateFormat('hh:mm a').format(schedule.startTime!)} - ${DateFormat('hh:mm a').format(schedule.endTime!)}',
                                 //TODO need break start time and end time
-                                style: AppTextStyles.m12w600.copyWith(color: AppColors.kSubjectGreen),
+                                style: AppTextStyles.m14w600.copyWith(color: AppColors.kSubjectGreen),
                               ),
                             ],
                           ),

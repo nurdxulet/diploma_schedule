@@ -8,7 +8,6 @@ import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
 import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/edu_programs_cubit.dart';
-import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class EduCoursesPage extends StatefulWidget with AutoRouteWrapper {
@@ -96,12 +95,8 @@ class _EduCoursesPageState extends State<EduCoursesPage> {
                               return ChoiceCardWidget(
                                 onCardTap: () {
                                   context.router.push(
-                                    GroupsRoute(
-                                        // course: eduCourses[index],
-                                        // educationalProgram: widget.educationalProgram,
-                                        ),
+                                    const GroupsRoute(),
                                   );
-                                  // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
                                 },
                                 index: index + 1,
                                 text: '${context.localized.course} ${eduCourses[index].courseNumber}',
