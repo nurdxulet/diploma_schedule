@@ -11,6 +11,9 @@ abstract class IOnboardingDao {
   PreferencesEntry<List<String>> get groups;
 
   PreferencesEntry<bool> get onboarding;
+
+  PreferencesEntry<bool> get notifications;
+  PreferencesEntry<String> get notificationsId;
 }
 
 class OnboardingDao extends TypedPreferencesDao implements IOnboardingDao {
@@ -29,6 +32,12 @@ class OnboardingDao extends TypedPreferencesDao implements IOnboardingDao {
 
   @override
   PreferencesEntry<bool> get onboarding => boolEntry('onboarding');
+
+  @override
+  PreferencesEntry<bool> get notifications => boolEntry('notifications');
+
+  @override
+  PreferencesEntry<String> get notificationsId => stringEntry('notifications_id');
 
   @override
   PreferencesEntry<String> get course => stringEntry('course');

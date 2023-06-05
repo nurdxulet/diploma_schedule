@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -19,6 +20,17 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  @override
+  void initState() {
+    getToken();
+    super.initState();
+  }
+
+  Future<void> getToken() async {
+    final String? deviceToken = await FirebaseMessaging.instance.getToken();
+    debugPrint(deviceToken);
+  }
+
   TextEditingController codeController = TextEditingController();
 
   @override

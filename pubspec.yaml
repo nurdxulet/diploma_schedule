@@ -27,10 +27,14 @@ dependencies:
   expandable_page_view: ^1.0.17
   extended_image: ^7.0.2
   # file_picker: ^5.2.5
+  firebase_analytics: ^10.4.2
+  firebase_core: ^2.13.1
+  firebase_messaging: ^14.6.2
   flashy_tab_bar2: ^0.0.6
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_local_notifications: ^14.1.1
   flutter_localizations:
     sdk: flutter
   flutter_onboarding_slider: ^1.0.9

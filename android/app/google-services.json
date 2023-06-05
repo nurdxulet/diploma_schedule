@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "290765633463",
+    "project_id": "university-scheduler-e145a",
+    "storage_bucket": "university-scheduler-e145a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290765633463:android:3e04fb67ba1ff32c855a32",
+        "android_client_info": {
+          "package_name": "com.tanschedule"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApPTGV2XhP-q3I26zge4GXLsfpFcQ7aBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
