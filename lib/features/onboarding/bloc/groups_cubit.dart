@@ -8,14 +8,22 @@ part 'groups_cubit.freezed.dart';
 
 class GroupsCubit extends Cubit<GroupsState> {
   final IOnboardingRepository _repository;
-  final IOnboardingRepository _onboardingRepository;
-  GroupsCubit(this._repository, this._onboardingRepository) : super(const GroupsState.initialState());
+  GroupsCubit(
+    this._repository,
+  ) : super(const GroupsState.initialState());
 
-  Future<void> getEduProgramCourses(String educationalProgramId, int courseNumber) async {
-    final UniversityDTO? university = await _onboardingRepository.getUniversityFromCache();
+  Future<void> getGroups(
+      // String educationalProgramId,
+      // int courseNumber
+      ) async {
+    final UniversityDTO? university = await _repository.getUniversityFromCache();
 
     emit(const GroupsState.loadingState());
-    final result = await _repository.getGroups(university!.code!, educationalProgramId, courseNumber);
+    final result = await _repository.getGroups(
+      university!.code!,
+      //  educationalProgramId,
+      // courseNumber
+    );
     result.when(
       success: (groups) => emit(GroupsState.loadedState(groups: groups)),
       failure: (error) => emit(

@@ -20,11 +20,7 @@ mixin _$ReadyState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)
+    required TResult Function(UniversityDTO? university, List<GroupDTO>? groups)
         loadedState,
     required TResult Function(String message) errorState,
   }) =>
@@ -33,11 +29,7 @@ mixin _$ReadyState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult? Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult? Function(String message)? errorState,
   }) =>
@@ -46,11 +38,7 @@ mixin _$ReadyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
@@ -141,11 +129,7 @@ class _$_InitialState implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)
+    required TResult Function(UniversityDTO? university, List<GroupDTO>? groups)
         loadedState,
     required TResult Function(String message) errorState,
   }) {
@@ -157,11 +141,7 @@ class _$_InitialState implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult? Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult? Function(String message)? errorState,
   }) {
@@ -173,11 +153,7 @@ class _$_InitialState implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
@@ -270,11 +246,7 @@ class _$_LoadingState implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)
+    required TResult Function(UniversityDTO? university, List<GroupDTO>? groups)
         loadedState,
     required TResult Function(String message) errorState,
   }) {
@@ -286,11 +258,7 @@ class _$_LoadingState implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult? Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult? Function(String message)? errorState,
   }) {
@@ -302,11 +270,7 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
@@ -365,16 +329,9 @@ abstract class _$$_LoadedStateCopyWith<$Res> {
           _$_LoadedState value, $Res Function(_$_LoadedState) then) =
       __$$_LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {UniversityDTO? university,
-      EduProgramDTO? educationalProgram,
-      CourseDTO? course,
-      GroupDTO? group});
+  $Res call({UniversityDTO? university, List<GroupDTO>? groups});
 
   $UniversityDTOCopyWith<$Res>? get university;
-  $EduProgramDTOCopyWith<$Res>? get educationalProgram;
-  $CourseDTOCopyWith<$Res>? get course;
-  $GroupDTOCopyWith<$Res>? get group;
 }
 
 /// @nodoc
@@ -389,27 +346,17 @@ class __$$_LoadedStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? university = freezed,
-    Object? educationalProgram = freezed,
-    Object? course = freezed,
-    Object? group = freezed,
+    Object? groups = freezed,
   }) {
     return _then(_$_LoadedState(
       university: freezed == university
           ? _value.university
           : university // ignore: cast_nullable_to_non_nullable
               as UniversityDTO?,
-      educationalProgram: freezed == educationalProgram
-          ? _value.educationalProgram
-          : educationalProgram // ignore: cast_nullable_to_non_nullable
-              as EduProgramDTO?,
-      course: freezed == course
-          ? _value.course
-          : course // ignore: cast_nullable_to_non_nullable
-              as CourseDTO?,
-      group: freezed == group
-          ? _value.group
-          : group // ignore: cast_nullable_to_non_nullable
-              as GroupDTO?,
+      groups: freezed == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<GroupDTO>?,
     ));
   }
 
@@ -424,62 +371,33 @@ class __$$_LoadedStateCopyWithImpl<$Res>
       return _then(_value.copyWith(university: value));
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EduProgramDTOCopyWith<$Res>? get educationalProgram {
-    if (_value.educationalProgram == null) {
-      return null;
-    }
-
-    return $EduProgramDTOCopyWith<$Res>(_value.educationalProgram!, (value) {
-      return _then(_value.copyWith(educationalProgram: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CourseDTOCopyWith<$Res>? get course {
-    if (_value.course == null) {
-      return null;
-    }
-
-    return $CourseDTOCopyWith<$Res>(_value.course!, (value) {
-      return _then(_value.copyWith(course: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GroupDTOCopyWith<$Res>? get group {
-    if (_value.group == null) {
-      return null;
-    }
-
-    return $GroupDTOCopyWith<$Res>(_value.group!, (value) {
-      return _then(_value.copyWith(group: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$_LoadedState implements _LoadedState {
-  const _$_LoadedState(
-      {this.university, this.educationalProgram, this.course, this.group});
+  const _$_LoadedState({this.university, final List<GroupDTO>? groups})
+      : _groups = groups;
 
   @override
   final UniversityDTO? university;
+// EduProgramDTO? educationalProgram,
+// CourseDTO? course,
+  final List<GroupDTO>? _groups;
+// EduProgramDTO? educationalProgram,
+// CourseDTO? course,
   @override
-  final EduProgramDTO? educationalProgram;
-  @override
-  final CourseDTO? course;
-  @override
-  final GroupDTO? group;
+  List<GroupDTO>? get groups {
+    final value = _groups;
+    if (value == null) return null;
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ReadyState.loadedState(university: $university, educationalProgram: $educationalProgram, course: $course, group: $group)';
+    return 'ReadyState.loadedState(university: $university, groups: $groups)';
   }
 
   @override
@@ -489,15 +407,12 @@ class _$_LoadedState implements _LoadedState {
             other is _$_LoadedState &&
             (identical(other.university, university) ||
                 other.university == university) &&
-            (identical(other.educationalProgram, educationalProgram) ||
-                other.educationalProgram == educationalProgram) &&
-            (identical(other.course, course) || other.course == course) &&
-            (identical(other.group, group) || other.group == group));
+            const DeepCollectionEquality().equals(other._groups, _groups));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, university, educationalProgram, course, group);
+  int get hashCode => Object.hash(
+      runtimeType, university, const DeepCollectionEquality().hash(_groups));
 
   @JsonKey(ignore: true)
   @override
@@ -510,15 +425,11 @@ class _$_LoadedState implements _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)
+    required TResult Function(UniversityDTO? university, List<GroupDTO>? groups)
         loadedState,
     required TResult Function(String message) errorState,
   }) {
-    return loadedState(university, educationalProgram, course, group);
+    return loadedState(university, groups);
   }
 
   @override
@@ -526,15 +437,11 @@ class _$_LoadedState implements _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult? Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult? Function(String message)? errorState,
   }) {
-    return loadedState?.call(university, educationalProgram, course, group);
+    return loadedState?.call(university, groups);
   }
 
   @override
@@ -542,17 +449,13 @@ class _$_LoadedState implements _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
-      return loadedState(university, educationalProgram, course, group);
+      return loadedState(university, groups);
     }
     return orElse();
   }
@@ -598,14 +501,11 @@ class _$_LoadedState implements _LoadedState {
 abstract class _LoadedState implements ReadyState {
   const factory _LoadedState(
       {final UniversityDTO? university,
-      final EduProgramDTO? educationalProgram,
-      final CourseDTO? course,
-      final GroupDTO? group}) = _$_LoadedState;
+      final List<GroupDTO>? groups}) = _$_LoadedState;
 
-  UniversityDTO? get university;
-  EduProgramDTO? get educationalProgram;
-  CourseDTO? get course;
-  GroupDTO? get group;
+  UniversityDTO? get university; // EduProgramDTO? educationalProgram,
+// CourseDTO? course,
+  List<GroupDTO>? get groups;
   @JsonKey(ignore: true)
   _$$_LoadedStateCopyWith<_$_LoadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -677,11 +577,7 @@ class _$_ErrorState implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function() loadingState,
-    required TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)
+    required TResult Function(UniversityDTO? university, List<GroupDTO>? groups)
         loadedState,
     required TResult Function(String message) errorState,
   }) {
@@ -693,11 +589,7 @@ class _$_ErrorState implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function()? loadingState,
-    TResult? Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult? Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult? Function(String message)? errorState,
   }) {
@@ -709,11 +601,7 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function()? loadingState,
-    TResult Function(
-            UniversityDTO? university,
-            EduProgramDTO? educationalProgram,
-            CourseDTO? course,
-            GroupDTO? group)?
+    TResult Function(UniversityDTO? university, List<GroupDTO>? groups)?
         loadedState,
     TResult Function(String message)? errorState,
     required TResult orElse(),

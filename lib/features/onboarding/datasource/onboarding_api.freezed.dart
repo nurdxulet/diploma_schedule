@@ -24,9 +24,7 @@ mixin _$OnboardingApi {
     required TResult Function(
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
-    required TResult Function(String universityCode,
-            String educationalProgramId, int courseNumber)
-        getGroups,
+    required TResult Function(String universityCode) getGroups,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,9 +33,7 @@ mixin _$OnboardingApi {
     TResult? Function(String universityCode)? getEduPrograms,
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult? Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult? Function(String universityCode)? getGroups,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,9 +42,7 @@ mixin _$OnboardingApi {
     TResult Function(String universityCode)? getEduPrograms,
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult Function(String universityCode)? getGroups,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,9 +182,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     required TResult Function(
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
-    required TResult Function(String universityCode,
-            String educationalProgramId, int courseNumber)
-        getGroups,
+    required TResult Function(String universityCode) getGroups,
   }) {
     return checkUniversity(universityCode);
   }
@@ -202,9 +194,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult? Function(String universityCode)? getEduPrograms,
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult? Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult? Function(String universityCode)? getGroups,
   }) {
     return checkUniversity?.call(universityCode);
   }
@@ -216,9 +206,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult Function(String universityCode)? getEduPrograms,
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult Function(String universityCode)? getGroups,
     required TResult orElse(),
   }) {
     if (checkUniversity != null) {
@@ -350,9 +338,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     required TResult Function(
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
-    required TResult Function(String universityCode,
-            String educationalProgramId, int courseNumber)
-        getGroups,
+    required TResult Function(String universityCode) getGroups,
   }) {
     return getEduPrograms(universityCode);
   }
@@ -364,9 +350,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult? Function(String universityCode)? getEduPrograms,
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult? Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult? Function(String universityCode)? getGroups,
   }) {
     return getEduPrograms?.call(universityCode);
   }
@@ -378,9 +362,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult Function(String universityCode)? getEduPrograms,
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult Function(String universityCode)? getGroups,
     required TResult orElse(),
   }) {
     if (getEduPrograms != null) {
@@ -524,9 +506,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     required TResult Function(
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
-    required TResult Function(String universityCode,
-            String educationalProgramId, int courseNumber)
-        getGroups,
+    required TResult Function(String universityCode) getGroups,
   }) {
     return getEduProgramCourses(universityCode, educationalProgramId);
   }
@@ -538,9 +518,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult? Function(String universityCode)? getEduPrograms,
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult? Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult? Function(String universityCode)? getGroups,
   }) {
     return getEduProgramCourses?.call(universityCode, educationalProgramId);
   }
@@ -552,9 +530,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult Function(String universityCode)? getEduPrograms,
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult Function(String universityCode)? getGroups,
     required TResult orElse(),
   }) {
     if (getEduProgramCourses != null) {
@@ -624,8 +600,7 @@ abstract class _$$_GetGroupsCopyWith<$Res>
       __$$_GetGroupsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String universityCode, String educationalProgramId, int courseNumber});
+  $Res call({String universityCode});
 }
 
 /// @nodoc
@@ -640,22 +615,12 @@ class __$$_GetGroupsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? universityCode = null,
-    Object? educationalProgramId = null,
-    Object? courseNumber = null,
   }) {
     return _then(_$_GetGroups(
       null == universityCode
           ? _value.universityCode
           : universityCode // ignore: cast_nullable_to_non_nullable
               as String,
-      null == educationalProgramId
-          ? _value.educationalProgramId
-          : educationalProgramId // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == courseNumber
-          ? _value.courseNumber
-          : courseNumber // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -663,20 +628,14 @@ class __$$_GetGroupsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetGroups extends _GetGroups {
-  const _$_GetGroups(
-      this.universityCode, this.educationalProgramId, this.courseNumber)
-      : super._();
+  const _$_GetGroups(this.universityCode) : super._();
 
   @override
   final String universityCode;
-  @override
-  final String educationalProgramId;
-  @override
-  final int courseNumber;
 
   @override
   String toString() {
-    return 'OnboardingApi.getGroups(universityCode: $universityCode, educationalProgramId: $educationalProgramId, courseNumber: $courseNumber)';
+    return 'OnboardingApi.getGroups(universityCode: $universityCode)';
   }
 
   @override
@@ -685,16 +644,11 @@ class _$_GetGroups extends _GetGroups {
         (other.runtimeType == runtimeType &&
             other is _$_GetGroups &&
             (identical(other.universityCode, universityCode) ||
-                other.universityCode == universityCode) &&
-            (identical(other.educationalProgramId, educationalProgramId) ||
-                other.educationalProgramId == educationalProgramId) &&
-            (identical(other.courseNumber, courseNumber) ||
-                other.courseNumber == courseNumber));
+                other.universityCode == universityCode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, universityCode, educationalProgramId, courseNumber);
+  int get hashCode => Object.hash(runtimeType, universityCode);
 
   @JsonKey(ignore: true)
   @override
@@ -710,11 +664,9 @@ class _$_GetGroups extends _GetGroups {
     required TResult Function(
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
-    required TResult Function(String universityCode,
-            String educationalProgramId, int courseNumber)
-        getGroups,
+    required TResult Function(String universityCode) getGroups,
   }) {
-    return getGroups(universityCode, educationalProgramId, courseNumber);
+    return getGroups(universityCode);
   }
 
   @override
@@ -724,11 +676,9 @@ class _$_GetGroups extends _GetGroups {
     TResult? Function(String universityCode)? getEduPrograms,
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult? Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult? Function(String universityCode)? getGroups,
   }) {
-    return getGroups?.call(universityCode, educationalProgramId, courseNumber);
+    return getGroups?.call(universityCode);
   }
 
   @override
@@ -738,13 +688,11 @@ class _$_GetGroups extends _GetGroups {
     TResult Function(String universityCode)? getEduPrograms,
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
-    TResult Function(String universityCode, String educationalProgramId,
-            int courseNumber)?
-        getGroups,
+    TResult Function(String universityCode)? getGroups,
     required TResult orElse(),
   }) {
     if (getGroups != null) {
-      return getGroups(universityCode, educationalProgramId, courseNumber);
+      return getGroups(universityCode);
     }
     return orElse();
   }
@@ -788,14 +736,11 @@ class _$_GetGroups extends _GetGroups {
 }
 
 abstract class _GetGroups extends OnboardingApi {
-  const factory _GetGroups(final String universityCode,
-      final String educationalProgramId, final int courseNumber) = _$_GetGroups;
+  const factory _GetGroups(final String universityCode) = _$_GetGroups;
   const _GetGroups._() : super._();
 
   @override
   String get universityCode;
-  String get educationalProgramId;
-  int get courseNumber;
   @override
   @JsonKey(ignore: true)
   _$$_GetGroupsCopyWith<_$_GetGroups> get copyWith =>

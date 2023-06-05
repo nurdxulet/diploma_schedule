@@ -9,14 +9,20 @@ abstract class IOnboardingRepository {
   bool get isAuthenticated;
   bool getOnboarding();
   Future<void> setOnboarding({required bool onboarding});
-  Future<String> setUniInfo(EduProgramDTO eduProgram, CourseDTO course, GroupDTO group);
+  Future<String> setUniInfo(
+      // CourseDTO course,
+      List<GroupDTO> groups);
 
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<UniversityDTO?> getUniversityFromCache();
   Future<EduProgramDTO?> getEduProgramFromCache();
   Future<CourseDTO?> getCourseFromCache();
-  Future<GroupDTO?> getGroupFromCache();
+  Future<List<GroupDTO>> getGroupsFromCache();
   Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode);
   Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId);
-  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber);
+  Future<Result<List<GroupDTO>>> getGroups(
+    String universityCode,
+    // String educationalProgramId,
+    // int courseNumber
+  );
 }

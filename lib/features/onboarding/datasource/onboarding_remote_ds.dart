@@ -15,7 +15,11 @@ abstract class IOnboardingRemoteDS {
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode);
   Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId);
-  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber);
+  Future<Result<List<GroupDTO>>> getGroups(
+    String universityCode,
+    //  String educationalProgramId,
+    // int courseNumber,
+  );
 }
 
 class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
@@ -109,10 +113,18 @@ class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
   }
 
   @override
-  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber) async {
+  Future<Result<List<GroupDTO>>> getGroups(
+    String universityCode,
+    //  String educationalProgramId,
+    // int courseNumber,
+  ) async {
     try {
       final Result<List?> result = await client.produce(
-        route: OnboardingApi.getGroups(universityCode, educationalProgramId, courseNumber),
+        route: OnboardingApi.getGroups(
+          universityCode,
+          //  educationalProgramId,
+          // courseNumber
+        ),
       );
 
       return result.when(

@@ -12,8 +12,11 @@ import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class EduCoursesPage extends StatefulWidget with AutoRouteWrapper {
-  final EduProgramDTO educationalProgram;
-  const EduCoursesPage({super.key, required this.educationalProgram});
+  // final EduProgramDTO educationalProgram;
+  const EduCoursesPage({
+    super.key,
+    // required this.educationalProgram
+  });
 
   @override
   State<EduCoursesPage> createState() => _EduCoursesPageState();
@@ -39,7 +42,9 @@ class _EduCoursesPageState extends State<EduCoursesPage> {
 
   @override
   void initState() {
-    BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(widget.educationalProgram);
+    // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(
+    //     // widget.educationalProgram
+    //     );
     super.initState();
   }
 
@@ -92,9 +97,9 @@ class _EduCoursesPageState extends State<EduCoursesPage> {
                                 onCardTap: () {
                                   context.router.push(
                                     GroupsRoute(
-                                      course: eduCourses[index],
-                                      educationalProgram: widget.educationalProgram,
-                                    ),
+                                        // course: eduCourses[index],
+                                        // educationalProgram: widget.educationalProgram,
+                                        ),
                                   );
                                   // BlocProvider.of<EduProgramCoursesCubit>(context).getEduProgramCourses(eduPrograms[index].id);
                                 },

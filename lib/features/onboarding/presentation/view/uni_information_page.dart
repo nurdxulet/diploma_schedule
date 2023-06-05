@@ -14,13 +14,18 @@ import 'package:schedule/features/onboarding/bloc/ready_cubit.dart';
 import 'package:schedule/features/onboarding/models/course_dto.dart';
 import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
+import 'package:schedule/features/search/models/university_dto.dart';
 import 'package:schedule/features/settings/bloc/exit_cubit.dart';
 
 class UniInformationPage extends StatefulWidget with AutoRouteWrapper {
-  final EduProgramDTO educationalProgram;
-  final CourseDTO course;
-  final GroupDTO group;
-  const UniInformationPage({super.key, required this.educationalProgram, required this.course, required this.group});
+  // final EduProgramDTO educationalProgram;
+  // final CourseDTO course;
+  final List<GroupDTO> groups;
+  const UniInformationPage({
+    super.key,
+    //  required this.educationalProgram, required this.course,
+    required this.groups,
+  });
 
   @override
   State<UniInformationPage> createState() => _UniInformationPageState();
@@ -44,7 +49,10 @@ class UniInformationPage extends StatefulWidget with AutoRouteWrapper {
 class _UniInformationPageState extends State<UniInformationPage> {
   @override
   void initState() {
-    BlocProvider.of<ReadyCubit>(context).setUniInfo(widget.educationalProgram, widget.course, widget.group);
+    BlocProvider.of<ReadyCubit>(context).setUniInfo(
+      // widget.course,
+      widget.groups,
+    );
     super.initState();
   }
 
@@ -66,7 +74,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                 loadingState: () {
                   context.loaderOverlay.show();
                 },
-                loadedState: (university, educationalProgram, course, group) async {
+                loadedState: (university, groups) async {
                   setState(() {
                     ready = true;
                   });
@@ -80,7 +88,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
             builder: (context, state) {
               return state.maybeWhen(
                 orElse: () => const SizedBox(),
-                loadedState: (university, educationalProgram, course, group) {
+                loadedState: (university, groups) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                     child: Column(
@@ -88,6 +96,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                       children: [
                         Text(
                           "${context.localized.nowLetsCheck} 👀",
+                          textAlign: TextAlign.center,
                           style: AppTextStyles.m24w600.copyWith(color: AppColors.kPrimary),
                         ),
                         const SizedBox(
@@ -111,55 +120,30 @@ class _UniInformationPageState extends State<UniInformationPage> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              '${context.localized.educationalProgram}:',
-                              style: AppTextStyles.m16w500,
-                              maxLines: 5,
-                            ),
-                            const Spacer(),
-                            Text(
-                              '${educationalProgram?.title}',
-                              style: AppTextStyles.m16w500,
-                              maxLines: 5,
-                            ),
-                          ],
-                        ),
                         const SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
                             Text(
-                              '${context.localized.course}:',
+                              '${context.localized.groups}: ',
                               style: AppTextStyles.m16w500,
                               maxLines: 5,
                             ),
                             const Spacer(),
-                            Text(
-                              '${course?.courseNumber}',
-                              style: AppTextStyles.m16w500,
-                              maxLines: 5,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '${context.localized.myGroup}: ',
-                              style: AppTextStyles.m16w500,
-                              maxLines: 5,
-                            ),
-                            const Spacer(),
-                            Text(
-                              '${group?.title}',
-                              style: AppTextStyles.m16w500,
-                              maxLines: 5,
-                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: groups?.length,
+                                  itemBuilder: (context, index) {
+                                    return Text(
+                                      '${groups?[index].title} 🔘',
+                                      textAlign: TextAlign.end,
+                                      style: AppTextStyles.m16w500,
+                                      maxLines: 5,
+                                    );
+                                  }),
+                            )
                           ],
                         ),
                         const SizedBox(
@@ -168,7 +152,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                         Image.asset(
                           Assets.images.personLookingInBinocularsVector1.path,
                           fit: BoxFit.contain,
-                          height: 350,
+                          height: 300,
                         ),
                         const Spacer(),
                       ],
@@ -187,6 +171,24 @@ class _UniInformationPageState extends State<UniInformationPage> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
+              child: CustomButton(
+                style: greenMainButtonStyle(),
+                radius: 10,
+                body: Text(
+                  context.localized.changeGroups,
+                  // context.localized,
+                  style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
+                ),
+                onClick: () => context.router.pop(),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
               child: BlocListener<ExitCubit, ExitState>(
                 listener: (context, exitState) {
                   exitState.whenOrNull(
@@ -201,7 +203,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                   style: redMainButtonStyle(),
                   radius: 10,
                   body: Text(
-                    'Заново',
+                    context.localized.startOver,
                     // context.localized,
                     style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
                   ),

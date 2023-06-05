@@ -10,6 +10,7 @@ import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
@@ -28,7 +29,7 @@ class _GroupSearchViewState extends State<GroupSearchView> {
 
   @override
   void initState() {
-    // BlocProvider.of<SearchCubit>(context).getAllGroups();
+    BlocProvider.of<GroupsCubit>(context).getGroups();
     super.initState();
   }
 
@@ -36,11 +37,11 @@ class _GroupSearchViewState extends State<GroupSearchView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SearchCubit, SearchState>(
+    return BlocConsumer<GroupsCubit, GroupsState>(
       listener: (context, state) {
         state.whenOrNull(
           errorState: (message) => buildErrorCustomSnackBar(context, message),
-          loadedGroupsState: (groups) {
+          loadedState: (groups) {
             _foundGroups = groups;
             context.loaderOverlay.hide();
             setState(() {});
@@ -57,7 +58,7 @@ class _GroupSearchViewState extends State<GroupSearchView> {
               ),
             );
           },
-          loadedGroupsState: (groups) {
+          loadedState: (groups) {
             return Column(
               children: [
                 Padding(

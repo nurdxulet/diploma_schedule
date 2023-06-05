@@ -4,12 +4,12 @@ mixin AppTheme {
   static ThemeData get light => ThemeData(
         // primarySwatch: MaterialColor(0xffB1F9A3, primaryColorMap),
         // fontFamily: AppFonts.gilroy,
-         fontFamily:Platform.isIOS? FontFamily.mukta:FontFamily.openSans,
+        fontFamily: Platform.isIOS ? FontFamily.mukta : FontFamily.openSans,
         // appBarTheme: const AppBarTheme(
         //   elevation: 0,
         //   systemOverlayStyle: SystemUiOverlayStyle.dark,
         //   backgroundColor: AppColors.kWhite,
-        // ),ата 
+        // ),ата
         scaffoldBackgroundColor: AppColors.kWhite,
         primaryColor: AppColors.kBlue,
       );

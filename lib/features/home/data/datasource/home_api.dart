@@ -2,6 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/core/network/interfaces/base_client_generator.dart';
+import 'package:schedule/features/search/models/group_dto.dart';
 part 'home_api.freezed.dart';
 
 @freezed
@@ -13,24 +14,30 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
   ///
   const factory HomeApi.getAllSchedules(String universityCode, String searchId, String searchType) = _GetAllSchedules;
 
-  const factory HomeApi.getMySchedules(String universityCode, String searchId, String searchType) = _GetMySchedules;
+  const factory HomeApi.getMySchedules(
+    List<Map<String, dynamic>> payload,
+    String universityCode,
+  ) = _GetMySchedules;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
   @override
-  dynamic get body => whenOrNull();
+  dynamic get body => whenOrNull(
+        getMySchedules: (payload, universityCode) => payload,
+      );
 
   /// Используемые методы запросов, по умолчанию 'GET'
   @override
   String get method => maybeWhen(
         orElse: () => 'GET',
+        getMySchedules: (payload, universityCode) => "POST",
       );
 
   /// Пути всех запросов (после [kBaseUrl])
   @override
   String get path => when(
         getAllSchedules: (universityCode, searchType, searchId) => 'schedules/extended',
-        getMySchedules: (universityCode, searchType, searchId) => 'schedules/extended',
+        getMySchedules:(payload, universityCode) => 'schedules/extended',
       );
 
   /// Параметры запросов
@@ -41,9 +48,7 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
           'searchType': searchType,
           'universityCode': universityCode,
         },
-        getMySchedules: (universityCode, searchType, searchId) => {
-          'searchId': searchId,
-          'searchType': searchType,
+        getMySchedules: (payload, universityCode) => {
           'universityCode': universityCode,
         },
       );

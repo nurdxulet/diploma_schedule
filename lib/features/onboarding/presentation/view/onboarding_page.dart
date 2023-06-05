@@ -40,7 +40,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   },
                   loadedState: (university) async {
                     context.loaderOverlay.hide();
-                    context.router.push(const EduProgramsRoute());
+                    context.router.push(const GroupsRoute());
                     // context.appBloc.add(const AppEvent.logining());
                   },
                   errorState: (String message) {

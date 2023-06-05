@@ -5,10 +5,11 @@ import 'package:schedule/core/network/layers/network_executer.dart';
 import 'package:schedule/core/network/result.dart';
 import 'package:schedule/features/home/data/datasource/home_api.dart';
 import 'package:schedule/features/home/data/models/schedule_dto.dart';
+import 'package:schedule/features/search/models/group_dto.dart';
 
 abstract class IHomeRemoteDS {
   Future<Result<List<ScheduleDTO>>> getAllSchedules(String universityCode, String searchType, String searchId);
-  Future<Result<List<ScheduleDTO>>> getMySchedules(String universityCode, String searchType, String searchId);
+  Future<Result<List<ScheduleDTO>>> getMySchedules(String universityCode, List<GroupDTO> groups, String searchType);
 }
 
 class HomeRemoteDSDSImpl implements IHomeRemoteDS {
@@ -51,10 +52,25 @@ class HomeRemoteDSDSImpl implements IHomeRemoteDS {
   }
 
   @override
-  Future<Result<List<ScheduleDTO>>> getMySchedules(String universityCode, String searchType, String searchId) async {
+  Future<Result<List<ScheduleDTO>>> getMySchedules(
+    String universityCode,
+    List<GroupDTO> groups,
+    String searchType,
+  ) async {
     try {
+      final List<Map<String, dynamic>> mapp = [];
+
+      for (int i = 0; i < groups.length; i++) {
+        mapp.add({
+          "searchId": groups[i].id,
+          "searchType": "GROUP",
+        });
+      }
       final Result<List?> result = await client.produce(
-        route: HomeApi.getMySchedules(universityCode, searchId, searchType),
+        route: HomeApi.getMySchedules(
+          mapp,
+          universityCode,
+        ),
       );
 
       return result.when(

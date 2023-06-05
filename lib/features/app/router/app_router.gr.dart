@@ -36,26 +36,15 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     EduCoursesRoute.name: (routeData) {
-      final args = routeData.argsAs<EduCoursesRouteArgs>();
       return MaterialPageX<void>(
         routeData: routeData,
-        child: WrappedRoute(
-            child: EduCoursesPage(
-          key: args.key,
-          educationalProgram: args.educationalProgram,
-        )),
+        child: WrappedRoute(child: const EduCoursesPage()),
       );
     },
     GroupsRoute.name: (routeData) {
-      final args = routeData.argsAs<GroupsRouteArgs>();
       return MaterialPageX<void>(
         routeData: routeData,
-        child: WrappedRoute(
-            child: GroupsPage(
-          key: args.key,
-          educationalProgram: args.educationalProgram,
-          course: args.course,
-        )),
+        child: WrappedRoute(child: const GroupsPage()),
       );
     },
     UniInformationRoute.name: (routeData) {
@@ -65,9 +54,7 @@ class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(
             child: UniInformationPage(
           key: args.key,
-          educationalProgram: args.educationalProgram,
-          course: args.course,
-          group: args.group,
+          groups: args.groups,
         )),
       );
     },
@@ -227,75 +214,26 @@ class EduProgramsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EduCoursesPage]
-class EduCoursesRoute extends PageRouteInfo<EduCoursesRouteArgs> {
-  EduCoursesRoute({
-    Key? key,
-    required EduProgramDTO educationalProgram,
-  }) : super(
+class EduCoursesRoute extends PageRouteInfo<void> {
+  const EduCoursesRoute()
+      : super(
           EduCoursesRoute.name,
           path: '/edu-courses-page',
-          args: EduCoursesRouteArgs(
-            key: key,
-            educationalProgram: educationalProgram,
-          ),
         );
 
   static const String name = 'EduCoursesRoute';
 }
 
-class EduCoursesRouteArgs {
-  const EduCoursesRouteArgs({
-    this.key,
-    required this.educationalProgram,
-  });
-
-  final Key? key;
-
-  final EduProgramDTO educationalProgram;
-
-  @override
-  String toString() {
-    return 'EduCoursesRouteArgs{key: $key, educationalProgram: $educationalProgram}';
-  }
-}
-
 /// generated route for
 /// [GroupsPage]
-class GroupsRoute extends PageRouteInfo<GroupsRouteArgs> {
-  GroupsRoute({
-    Key? key,
-    required EduProgramDTO educationalProgram,
-    required CourseDTO course,
-  }) : super(
+class GroupsRoute extends PageRouteInfo<void> {
+  const GroupsRoute()
+      : super(
           GroupsRoute.name,
           path: '/groups-page',
-          args: GroupsRouteArgs(
-            key: key,
-            educationalProgram: educationalProgram,
-            course: course,
-          ),
         );
 
   static const String name = 'GroupsRoute';
-}
-
-class GroupsRouteArgs {
-  const GroupsRouteArgs({
-    this.key,
-    required this.educationalProgram,
-    required this.course,
-  });
-
-  final Key? key;
-
-  final EduProgramDTO educationalProgram;
-
-  final CourseDTO course;
-
-  @override
-  String toString() {
-    return 'GroupsRouteArgs{key: $key, educationalProgram: $educationalProgram, course: $course}';
-  }
 }
 
 /// generated route for
@@ -303,17 +241,13 @@ class GroupsRouteArgs {
 class UniInformationRoute extends PageRouteInfo<UniInformationRouteArgs> {
   UniInformationRoute({
     Key? key,
-    required EduProgramDTO educationalProgram,
-    required CourseDTO course,
-    required GroupDTO group,
+    required List<GroupDTO> groups,
   }) : super(
           UniInformationRoute.name,
           path: '/uni-information-page',
           args: UniInformationRouteArgs(
             key: key,
-            educationalProgram: educationalProgram,
-            course: course,
-            group: group,
+            groups: groups,
           ),
         );
 
@@ -323,22 +257,16 @@ class UniInformationRoute extends PageRouteInfo<UniInformationRouteArgs> {
 class UniInformationRouteArgs {
   const UniInformationRouteArgs({
     this.key,
-    required this.educationalProgram,
-    required this.course,
-    required this.group,
+    required this.groups,
   });
 
   final Key? key;
 
-  final EduProgramDTO educationalProgram;
-
-  final CourseDTO course;
-
-  final GroupDTO group;
+  final List<GroupDTO> groups;
 
   @override
   String toString() {
-    return 'UniInformationRouteArgs{key: $key, educationalProgram: $educationalProgram, course: $course, group: $group}';
+    return 'UniInformationRouteArgs{key: $key, groups: $groups}';
   }
 }
 

@@ -19,10 +19,10 @@ class MyScheduleCubit extends Cubit<MyScheduleState> {
     emit(const MyScheduleState.loadingState());
 
     final UniversityDTO? university = await _onboardingRepository.getUniversityFromCache();
-    final GroupDTO? group = await _onboardingRepository.getGroupFromCache();
+    final List<GroupDTO> groups = await _onboardingRepository.getGroupsFromCache();
     // log('${university?.code}');
     if (university != null) {
-      final result = await _repository.getMySchedules(university.code!, group!.id, searchType);
+      final result = await _repository.getMySchedules(university.code!, groups, searchType);
 
       result.when(
         success: (schedules) {

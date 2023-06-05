@@ -47,6 +47,14 @@ class $AssetsIconsGen {
   SvgGenImage get checkCircleOn24 =>
       const SvgGenImage('assets/icons/check_circle_on_24.svg');
 
+  /// File path: assets/icons/checkmark--filled_24.svg
+  SvgGenImage get checkmarkFilled24 =>
+      const SvgGenImage('assets/icons/checkmark--filled_24.svg');
+
+  /// File path: assets/icons/checkmark--not--filled_24.svg
+  SvgGenImage get checkmarkNotFilled24 =>
+      const SvgGenImage('assets/icons/checkmark--not--filled_24.svg');
+
   /// File path: assets/icons/chevron_left.svg
   SvgGenImage get chevronLeft =>
       const SvgGenImage('assets/icons/chevron_left.svg');
@@ -429,6 +437,8 @@ class $AssetsIconsGen {
         carbonArrowLeft,
         charmTick,
         checkCircleOn24,
+        checkmarkFilled24,
+        checkmarkNotFilled24,
         chevronLeft,
         chevronRight,
         circumFaceSmile,
@@ -561,6 +571,10 @@ class $AssetsImagesGen {
   AssetGenImage get magnifyGlass2 =>
       const AssetGenImage('assets/images/magnify-glass2.png');
 
+  /// File path: assets/images/playstore.png
+  AssetGenImage get playstore =>
+      const AssetGenImage('assets/images/playstore.png');
+
   /// File path: assets/images/progress_hd_bg.png
   AssetGenImage get progressHdBg =>
       const AssetGenImage('assets/images/progress_hd_bg.png');
@@ -581,6 +595,7 @@ class $AssetsImagesGen {
         circleBackgroundTopp,
         circleBackground,
         magnifyGlass2,
+        playstore,
         progressHdBg,
         searchingGuys,
         students

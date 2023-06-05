@@ -4,6 +4,7 @@ import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/widgets/build_segment_widget.dart';
 import 'package:schedule/features/app/widgets/custom/custom_switch_button.dart';
+import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
 import 'package:schedule/features/search/bloc/search_cubit.dart';
 import 'package:schedule/features/search/presentation/view/search_group_view.dart';
 import 'package:schedule/features/search/presentation/view/search_rooms_view.dart';
@@ -19,22 +20,6 @@ class ChoicePage extends StatefulWidget {
 class _ChoicePageState extends State<ChoicePage> {
   int page = 0;
   final PageController pageController = PageController();
-
-  //   void _search(String enteredKeyword) {
-  //   List<OrganizationMock> results = [];
-  //   if (enteredKeyword.isEmpty) {
-  //     results = organizations;
-  //   } else {
-  //     results = organizations
-  //         .where(
-  //           (organization) => organization.orgName.toLowerCase().contains(enteredKeyword.toLowerCase()),
-  //         )
-  //         .toList();
-  //   }
-  //   setState(() {
-  //     _foundOrganizations = results;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -114,9 +99,7 @@ class _ChoicePageState extends State<ChoicePage> {
                 controller: pageController,
                 children: [
                   BlocProvider(
-                    create: (context) =>
-                        SearchCubit(context.repository.searchRepository, context.repository.onboardingRepository)
-                          ..getAllGroups(),
+                    create: (context) => GroupsCubit(context.repository.onboardingRepository),
                     child: const GroupSearchView(),
                   ),
                   BlocProvider(

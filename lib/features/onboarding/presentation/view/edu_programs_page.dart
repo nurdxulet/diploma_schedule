@@ -109,7 +109,7 @@ class _EduProgramsPageState extends State<EduProgramsPage> {
                             itemBuilder: (context, index) {
                               return ChoiceCardWidget(
                                 onCardTap: () {
-                                  context.router.push(EduCoursesRoute(educationalProgram: _foundEduPrograms[index]));
+                                  // context.router.push(EduCoursesRoute(educationalProgram: _foundEduPrograms[index]));
                                 },
                                 index: index + 1,
                                 text: _foundEduPrograms[index].title,
@@ -136,15 +136,6 @@ class _EduProgramsPageState extends State<EduProgramsPage> {
         results.add(a);
       }
     }
-    // if (enteredKeyword.isEmpty) {
-    //   results = eduPrograms;
-    // } else {
-    //   results = eduPrograms
-    //       .where(
-    //         (e) => e.title!.toLowerCase().contains(enteredKeyword.toLowerCase()),
-    //       )
-    //       .toList();
-    // }
     setState(() {
       _foundEduPrograms = results;
     });

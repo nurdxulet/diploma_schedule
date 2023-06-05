@@ -26,9 +26,9 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   @override
   bool get isAuthenticated =>
       _onboardingDao.university.value != null &&
-      _onboardingDao.educationalProgram.value != null &&
-      _onboardingDao.course.value != null &&
-      _onboardingDao.group.value != null;
+      // _onboardingDao.educationalProgram.value != null &&
+      // _onboardingDao.course.value != null &&
+      _onboardingDao.groups.value != null;
 
   @override
   bool getOnboarding() => _onboardingDao.onboarding.value ?? false;
@@ -81,8 +81,7 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   Future<CourseDTO?> getCourseFromCache() async {
     try {
       if (_onboardingDao.university.value != null) {
-        final CourseDTO course =
-            CourseDTO.fromJson(jsonDecode(_onboardingDao.educationalProgram.value!) as Map<String, dynamic>);
+        final CourseDTO course = CourseDTO.fromJson(jsonDecode(_onboardingDao.course.value!) as Map<String, dynamic>);
         return course;
       }
     } on Exception catch (e) {
@@ -92,16 +91,19 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   }
 
   @override
-  Future<GroupDTO?> getGroupFromCache() async {
+  Future<List<GroupDTO>> getGroupsFromCache() async {
     try {
       if (_onboardingDao.university.value != null) {
-        final GroupDTO group = GroupDTO.fromJson(jsonDecode(_onboardingDao.group.value!) as Map<String, dynamic>);
-        return group;
+        final List<String> strs = _onboardingDao.groups.value ?? [];
+        final List<GroupDTO> groups =
+            strs.map((e) => GroupDTO.fromJson(jsonDecode(e) as Map<String, dynamic>)).toList();
+        // final GroupDTO group = GroupDTO.fromJson(jsonDecode(_onboardingDao.groups.value!) as Map<String, dynamic>);
+        return groups;
       }
     } on Exception catch (e) {
       log(e.toString(), name: 'getUniversityFromCache()');
     }
-    return null;
+    return [];
   }
 
   @override
@@ -118,16 +120,24 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
   }
 
   @override
-  Future<Result<List<GroupDTO>>> getGroups(String universityCode, String educationalProgramId, int courseNumber) async {
-    final Result<List<GroupDTO>> result = await _remoteDS.getGroups(universityCode, educationalProgramId, courseNumber);
+  Future<Result<List<GroupDTO>>> getGroups(
+    String universityCode,
+    //  String educationalProgramId,
+    // int courseNumber,
+  ) async {
+    final Result<List<GroupDTO>> result = await _remoteDS.getGroups(
+      universityCode,
+      //  educationalProgramId,
+      // courseNumber,
+    );
     return result;
   }
 
   @override
-  Future<String> setUniInfo(EduProgramDTO eduProgram, CourseDTO course, GroupDTO group) async {
-    _onboardingDao.educationalProgram.setValue(jsonEncode(eduProgram.toJson()));
-    _onboardingDao.course.setValue(jsonEncode(course.toJson()));
-    _onboardingDao.group.setValue(jsonEncode(group.toJson()));
+  Future<String> setUniInfo(List<GroupDTO> groups) async {
+    // _onboardingDao.educationalProgram.setValue(jsonEncode(eduProgram.toJson()));
+    // _onboardingDao.course.setValue(jsonEncode(course.toJson()));
+    _onboardingDao.groups.setValue(groups.map((e) => jsonEncode(e.toJson())).toList());
     return 'setUniInfo success';
   }
 }

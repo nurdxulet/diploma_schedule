@@ -13,21 +13,21 @@ class ReadyCubit extends Cubit<ReadyState> {
   ReadyCubit(this._repository) : super(const ReadyState.initialState());
 
   Future<void> setUniInfo(
-    EduProgramDTO educationalProgram,
-    CourseDTO course,
-    GroupDTO group,
+    // EduProgramDTO educationalProgram,
+    // CourseDTO course,
+    List<GroupDTO> groups,
   ) async {
     emit(const ReadyState.loadingState());
-    final result = await _repository.setUniInfo(educationalProgram, course, group);
+    final result = await _repository.setUniInfo(groups);
 
     final UniversityDTO? university = await _repository.getUniversityFromCache();
     if (result.isNotEmpty) {
       emit(
         ReadyState.loadedState(
           university: university,
-          educationalProgram: educationalProgram,
-          course: course,
-          group: group,
+          // educationalProgram: educationalProgram,
+          // course: course,
+          groups: groups,
         ),
       );
     } else {
@@ -44,9 +44,9 @@ class ReadyState with _$ReadyState {
   const factory ReadyState.loadingState() = _LoadingState;
   const factory ReadyState.loadedState({
     UniversityDTO? university,
-    EduProgramDTO? educationalProgram,
-    CourseDTO? course,
-    GroupDTO? group,
+    // EduProgramDTO? educationalProgram,
+    // CourseDTO? course,
+    List<GroupDTO>? groups,
   }) = _LoadedState;
   const factory ReadyState.errorState({
     required String message,

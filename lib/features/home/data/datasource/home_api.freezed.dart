@@ -17,15 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeApi {
   String get universityCode => throw _privateConstructorUsedError;
-  String get searchId => throw _privateConstructorUsedError;
-  String get searchType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String universityCode, String searchId, String searchType)
         getAllSchedules,
     required TResult Function(
-            String universityCode, String searchId, String searchType)
+            List<Map<String, dynamic>> payload, String universityCode)
         getMySchedules,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,7 +33,7 @@ mixin _$HomeApi {
             String universityCode, String searchId, String searchType)?
         getAllSchedules,
     TResult? Function(
-            String universityCode, String searchId, String searchType)?
+            List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,7 +41,7 @@ mixin _$HomeApi {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String universityCode, String searchId, String searchType)?
         getAllSchedules,
-    TResult Function(String universityCode, String searchId, String searchType)?
+    TResult Function(List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
     required TResult orElse(),
   }) =>
@@ -77,7 +75,7 @@ abstract class $HomeApiCopyWith<$Res> {
   factory $HomeApiCopyWith(HomeApi value, $Res Function(HomeApi) then) =
       _$HomeApiCopyWithImpl<$Res, HomeApi>;
   @useResult
-  $Res call({String universityCode, String searchId, String searchType});
+  $Res call({String universityCode});
 }
 
 /// @nodoc
@@ -94,21 +92,11 @@ class _$HomeApiCopyWithImpl<$Res, $Val extends HomeApi>
   @override
   $Res call({
     Object? universityCode = null,
-    Object? searchId = null,
-    Object? searchType = null,
   }) {
     return _then(_value.copyWith(
       universityCode: null == universityCode
           ? _value.universityCode
           : universityCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchId: null == searchId
-          ? _value.searchId
-          : searchId // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchType: null == searchType
-          ? _value.searchType
-          : searchType // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -205,7 +193,7 @@ class _$_GetAllSchedules extends _GetAllSchedules {
             String universityCode, String searchId, String searchType)
         getAllSchedules,
     required TResult Function(
-            String universityCode, String searchId, String searchType)
+            List<Map<String, dynamic>> payload, String universityCode)
         getMySchedules,
   }) {
     return getAllSchedules(universityCode, searchId, searchType);
@@ -218,7 +206,7 @@ class _$_GetAllSchedules extends _GetAllSchedules {
             String universityCode, String searchId, String searchType)?
         getAllSchedules,
     TResult? Function(
-            String universityCode, String searchId, String searchType)?
+            List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
   }) {
     return getAllSchedules?.call(universityCode, searchId, searchType);
@@ -229,7 +217,7 @@ class _$_GetAllSchedules extends _GetAllSchedules {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String universityCode, String searchId, String searchType)?
         getAllSchedules,
-    TResult Function(String universityCode, String searchId, String searchType)?
+    TResult Function(List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
     required TResult orElse(),
   }) {
@@ -278,9 +266,7 @@ abstract class _GetAllSchedules extends HomeApi {
 
   @override
   String get universityCode;
-  @override
   String get searchId;
-  @override
   String get searchType;
   @override
   @JsonKey(ignore: true)
@@ -296,7 +282,7 @@ abstract class _$$_GetMySchedulesCopyWith<$Res>
       __$$_GetMySchedulesCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String universityCode, String searchId, String searchType});
+  $Res call({List<Map<String, dynamic>> payload, String universityCode});
 }
 
 /// @nodoc
@@ -310,22 +296,17 @@ class __$$_GetMySchedulesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? payload = null,
     Object? universityCode = null,
-    Object? searchId = null,
-    Object? searchType = null,
   }) {
     return _then(_$_GetMySchedules(
+      null == payload
+          ? _value._payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
       null == universityCode
           ? _value.universityCode
           : universityCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == searchId
-          ? _value.searchId
-          : searchId // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == searchType
-          ? _value.searchType
-          : searchType // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -334,19 +315,25 @@ class __$$_GetMySchedulesCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetMySchedules extends _GetMySchedules {
-  const _$_GetMySchedules(this.universityCode, this.searchId, this.searchType)
-      : super._();
+  const _$_GetMySchedules(
+      final List<Map<String, dynamic>> payload, this.universityCode)
+      : _payload = payload,
+        super._();
+
+  final List<Map<String, dynamic>> _payload;
+  @override
+  List<Map<String, dynamic>> get payload {
+    if (_payload is EqualUnmodifiableListView) return _payload;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_payload);
+  }
 
   @override
   final String universityCode;
-  @override
-  final String searchId;
-  @override
-  final String searchType;
 
   @override
   String toString() {
-    return 'HomeApi.getMySchedules(universityCode: $universityCode, searchId: $searchId, searchType: $searchType)';
+    return 'HomeApi.getMySchedules(payload: $payload, universityCode: $universityCode)';
   }
 
   @override
@@ -354,17 +341,14 @@ class _$_GetMySchedules extends _GetMySchedules {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetMySchedules &&
+            const DeepCollectionEquality().equals(other._payload, _payload) &&
             (identical(other.universityCode, universityCode) ||
-                other.universityCode == universityCode) &&
-            (identical(other.searchId, searchId) ||
-                other.searchId == searchId) &&
-            (identical(other.searchType, searchType) ||
-                other.searchType == searchType));
+                other.universityCode == universityCode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, universityCode, searchId, searchType);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_payload), universityCode);
 
   @JsonKey(ignore: true)
   @override
@@ -379,10 +363,10 @@ class _$_GetMySchedules extends _GetMySchedules {
             String universityCode, String searchId, String searchType)
         getAllSchedules,
     required TResult Function(
-            String universityCode, String searchId, String searchType)
+            List<Map<String, dynamic>> payload, String universityCode)
         getMySchedules,
   }) {
-    return getMySchedules(universityCode, searchId, searchType);
+    return getMySchedules(payload, universityCode);
   }
 
   @override
@@ -392,10 +376,10 @@ class _$_GetMySchedules extends _GetMySchedules {
             String universityCode, String searchId, String searchType)?
         getAllSchedules,
     TResult? Function(
-            String universityCode, String searchId, String searchType)?
+            List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
   }) {
-    return getMySchedules?.call(universityCode, searchId, searchType);
+    return getMySchedules?.call(payload, universityCode);
   }
 
   @override
@@ -403,12 +387,12 @@ class _$_GetMySchedules extends _GetMySchedules {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String universityCode, String searchId, String searchType)?
         getAllSchedules,
-    TResult Function(String universityCode, String searchId, String searchType)?
+    TResult Function(List<Map<String, dynamic>> payload, String universityCode)?
         getMySchedules,
     required TResult orElse(),
   }) {
     if (getMySchedules != null) {
-      return getMySchedules(universityCode, searchId, searchType);
+      return getMySchedules(payload, universityCode);
     }
     return orElse();
   }
@@ -446,16 +430,13 @@ class _$_GetMySchedules extends _GetMySchedules {
 }
 
 abstract class _GetMySchedules extends HomeApi {
-  const factory _GetMySchedules(final String universityCode,
-      final String searchId, final String searchType) = _$_GetMySchedules;
+  const factory _GetMySchedules(final List<Map<String, dynamic>> payload,
+      final String universityCode) = _$_GetMySchedules;
   const _GetMySchedules._() : super._();
 
+  List<Map<String, dynamic>> get payload;
   @override
   String get universityCode;
-  @override
-  String get searchId;
-  @override
-  String get searchType;
   @override
   @JsonKey(ignore: true)
   _$$_GetMySchedulesCopyWith<_$_GetMySchedules> get copyWith =>

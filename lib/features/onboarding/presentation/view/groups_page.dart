@@ -8,18 +8,20 @@ import 'package:schedule/core/extension/src/build_context.dart';
 import 'package:schedule/core/resources/assets.gen.dart';
 import 'package:schedule/core/resources/resources.dart';
 import 'package:schedule/features/app/router/app_router.dart';
+import 'package:schedule/features/app/widgets/custom/custom_buttons/custom_button.dart';
 import 'package:schedule/features/app/widgets/custom/custom_snackbars.dart';
-import 'package:schedule/features/onboarding/bloc/edu_courses_cubit.dart';
 import 'package:schedule/features/onboarding/bloc/groups_cubit.dart';
-import 'package:schedule/features/onboarding/models/course_dto.dart';
-import 'package:schedule/features/onboarding/models/edu_program_dto.dart';
 import 'package:schedule/features/search/models/group_dto.dart';
 import 'package:schedule/features/search/presentation/widgets/choice_card_widget.dart';
 
 class GroupsPage extends StatefulWidget with AutoRouteWrapper {
-  final EduProgramDTO educationalProgram;
-  final CourseDTO course;
-  const GroupsPage({super.key, required this.educationalProgram, required this.course});
+  // final EduProgramDTO educationalProgram;
+  // final CourseDTO course;
+  const GroupsPage({
+    super.key,
+    // required this.educationalProgram,
+    // required this.course
+  });
 
   @override
   State<GroupsPage> createState() => _GroupsPageState();
@@ -29,12 +31,11 @@ class GroupsPage extends StatefulWidget with AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              GroupsCubit(context.repository.onboardingRepository, context.repository.onboardingRepository),
+          create: (context) => GroupsCubit(context.repository.onboardingRepository),
         ),
-        BlocProvider(
-          create: (context) => EduProgramCoursesCubit(context.repository.onboardingRepository),
-        ),
+        // BlocProvider(
+        //   create: (context) => EduProgramCoursesCubit(context.repository.onboardingRepository),
+        // ),
       ],
       child: this,
     );
@@ -43,13 +44,13 @@ class GroupsPage extends StatefulWidget with AutoRouteWrapper {
 
 class _GroupsPageState extends State<GroupsPage> {
   List<GroupDTO> _foundGroups = [];
+  List<GroupDTO> myGroups = [];
 
   TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
-    BlocProvider.of<GroupsCubit>(context)
-        .getEduProgramCourses(widget.educationalProgram.id, widget.course.courseNumber);
+    BlocProvider.of<GroupsCubit>(context).getGroups();
     super.initState();
   }
 
@@ -119,17 +120,19 @@ class _GroupsPageState extends State<GroupsPage> {
                         ),
                         Expanded(
                           child: ListView.builder(
+                            padding: const EdgeInsets.only(bottom: 50),
                             itemCount: _foundGroups.length,
                             itemBuilder: (context, index) {
                               return ChoiceCardWidget(
+                                choosable: true,
+                                isChoosed: myGroups.contains(_foundGroups[index]),
                                 onCardTap: () {
-                                  context.router.push(
-                                    UniInformationRoute(
-                                      educationalProgram: widget.educationalProgram,
-                                      course: widget.course,
-                                      group: _foundGroups[index],
-                                    ),
-                                  );
+                                  if (myGroups.contains(_foundGroups[index])) {
+                                    myGroups.remove(_foundGroups[index]);
+                                  } else {
+                                    myGroups.add(_foundGroups[index]);
+                                  }
+                                  setState(() {});
                                 },
                                 index: index + 1,
                                 text: _foundGroups[index].title,
@@ -144,6 +147,31 @@ class _GroupsPageState extends State<GroupsPage> {
               },
             ),
           ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: CustomButton(
+                radius: 10,
+                body: Text(
+                  context.localized.ready,
+                  style: AppTextStyles.m16w500.copyWith(color: AppColors.kScaffoldBack),
+                ),
+                onClick: () {
+                  context.router.push(
+                    UniInformationRoute(
+                      groups: myGroups,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
