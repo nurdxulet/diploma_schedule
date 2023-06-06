@@ -140,4 +140,10 @@ class OnboardingRepositoryImpl extends IOnboardingRepository {
     _onboardingDao.groups.setValue(groups.map((e) => jsonEncode(e.toJson())).toList());
     return 'setUniInfo success';
   }
+
+  @override
+  Future<Result<Map<String, dynamic>>> turnOnNotifications(String deviceToken, List<GroupDTO> groups) async {
+    final Result<Map<String, dynamic>> result = await _remoteDS.turnOnNotifications(deviceToken, groups);
+    return result;
+  }
 }

@@ -71,6 +71,7 @@ class _UniInformationPageState extends State<UniInformationPage> {
                   context.loaderOverlay.show();
                 },
                 loadedState: (university, groups) async {
+                  
                   setState(() {
                     ready = true;
                   });

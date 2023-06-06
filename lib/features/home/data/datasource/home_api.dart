@@ -19,7 +19,7 @@ class HomeApi extends BaseClientGenerator with _$HomeApi {
   ) = _GetMySchedules;
 
   /// Здесь описываются body для всех запросов
-  /// По умолчанию null
+  /// По умолчанию null8
   @override
   dynamic get body => whenOrNull(
         getMySchedules: (payload, universityCode) => payload,

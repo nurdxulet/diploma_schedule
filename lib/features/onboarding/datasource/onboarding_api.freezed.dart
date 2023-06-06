@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OnboardingApi {
-  String get universityCode => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String universityCode) checkUniversity,
@@ -25,6 +24,8 @@ mixin _$OnboardingApi {
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
     required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,8 @@ mixin _$OnboardingApi {
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +46,8 @@ mixin _$OnboardingApi {
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +57,7 @@ mixin _$OnboardingApi {
     required TResult Function(_GetEduPrograms value) getEduPrograms,
     required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
     required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +66,7 @@ mixin _$OnboardingApi {
     TResult? Function(_GetEduPrograms value)? getEduPrograms,
     TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,12 +75,9 @@ mixin _$OnboardingApi {
     TResult Function(_GetEduPrograms value)? getEduPrograms,
     TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $OnboardingApiCopyWith<OnboardingApi> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -82,8 +86,6 @@ abstract class $OnboardingApiCopyWith<$Res> {
   factory $OnboardingApiCopyWith(
           OnboardingApi value, $Res Function(OnboardingApi) then) =
       _$OnboardingApiCopyWithImpl<$Res, OnboardingApi>;
-  @useResult
-  $Res call({String universityCode});
 }
 
 /// @nodoc
@@ -95,28 +97,13 @@ class _$OnboardingApiCopyWithImpl<$Res, $Val extends OnboardingApi>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? universityCode = null,
-  }) {
-    return _then(_value.copyWith(
-      universityCode: null == universityCode
-          ? _value.universityCode
-          : universityCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_CheckUniversityCopyWith<$Res>
-    implements $OnboardingApiCopyWith<$Res> {
+abstract class _$$_CheckUniversityCopyWith<$Res> {
   factory _$$_CheckUniversityCopyWith(
           _$_CheckUniversity value, $Res Function(_$_CheckUniversity) then) =
       __$$_CheckUniversityCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String universityCode});
 }
@@ -183,6 +170,8 @@ class _$_CheckUniversity extends _CheckUniversity {
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
     required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
   }) {
     return checkUniversity(universityCode);
   }
@@ -195,6 +184,8 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
   }) {
     return checkUniversity?.call(universityCode);
   }
@@ -207,6 +198,8 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
     required TResult orElse(),
   }) {
     if (checkUniversity != null) {
@@ -222,6 +215,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     required TResult Function(_GetEduPrograms value) getEduPrograms,
     required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
     required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
   }) {
     return checkUniversity(this);
   }
@@ -233,6 +227,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult? Function(_GetEduPrograms value)? getEduPrograms,
     TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
   }) {
     return checkUniversity?.call(this);
   }
@@ -244,6 +239,7 @@ class _$_CheckUniversity extends _CheckUniversity {
     TResult Function(_GetEduPrograms value)? getEduPrograms,
     TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
     required TResult orElse(),
   }) {
     if (checkUniversity != null) {
@@ -258,21 +254,17 @@ abstract class _CheckUniversity extends OnboardingApi {
       _$_CheckUniversity;
   const _CheckUniversity._() : super._();
 
-  @override
   String get universityCode;
-  @override
   @JsonKey(ignore: true)
   _$$_CheckUniversityCopyWith<_$_CheckUniversity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetEduProgramsCopyWith<$Res>
-    implements $OnboardingApiCopyWith<$Res> {
+abstract class _$$_GetEduProgramsCopyWith<$Res> {
   factory _$$_GetEduProgramsCopyWith(
           _$_GetEduPrograms value, $Res Function(_$_GetEduPrograms) then) =
       __$$_GetEduProgramsCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String universityCode});
 }
@@ -339,6 +331,8 @@ class _$_GetEduPrograms extends _GetEduPrograms {
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
     required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
   }) {
     return getEduPrograms(universityCode);
   }
@@ -351,6 +345,8 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
   }) {
     return getEduPrograms?.call(universityCode);
   }
@@ -363,6 +359,8 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getEduPrograms != null) {
@@ -378,6 +376,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     required TResult Function(_GetEduPrograms value) getEduPrograms,
     required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
     required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
   }) {
     return getEduPrograms(this);
   }
@@ -389,6 +388,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult? Function(_GetEduPrograms value)? getEduPrograms,
     TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
   }) {
     return getEduPrograms?.call(this);
   }
@@ -400,6 +400,7 @@ class _$_GetEduPrograms extends _GetEduPrograms {
     TResult Function(_GetEduPrograms value)? getEduPrograms,
     TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getEduPrograms != null) {
@@ -414,21 +415,17 @@ abstract class _GetEduPrograms extends OnboardingApi {
       _$_GetEduPrograms;
   const _GetEduPrograms._() : super._();
 
-  @override
   String get universityCode;
-  @override
   @JsonKey(ignore: true)
   _$$_GetEduProgramsCopyWith<_$_GetEduPrograms> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetEduProgramCoursesCopyWith<$Res>
-    implements $OnboardingApiCopyWith<$Res> {
+abstract class _$$_GetEduProgramCoursesCopyWith<$Res> {
   factory _$$_GetEduProgramCoursesCopyWith(_$_GetEduProgramCourses value,
           $Res Function(_$_GetEduProgramCourses) then) =
       __$$_GetEduProgramCoursesCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String universityCode, String educationalProgramId});
 }
@@ -507,6 +504,8 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
     required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
   }) {
     return getEduProgramCourses(universityCode, educationalProgramId);
   }
@@ -519,6 +518,8 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
   }) {
     return getEduProgramCourses?.call(universityCode, educationalProgramId);
   }
@@ -531,6 +532,8 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getEduProgramCourses != null) {
@@ -546,6 +549,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     required TResult Function(_GetEduPrograms value) getEduPrograms,
     required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
     required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
   }) {
     return getEduProgramCourses(this);
   }
@@ -557,6 +561,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult? Function(_GetEduPrograms value)? getEduPrograms,
     TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
   }) {
     return getEduProgramCourses?.call(this);
   }
@@ -568,6 +573,7 @@ class _$_GetEduProgramCourses extends _GetEduProgramCourses {
     TResult Function(_GetEduPrograms value)? getEduPrograms,
     TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getEduProgramCourses != null) {
@@ -583,22 +589,18 @@ abstract class _GetEduProgramCourses extends OnboardingApi {
       _$_GetEduProgramCourses;
   const _GetEduProgramCourses._() : super._();
 
-  @override
   String get universityCode;
   String get educationalProgramId;
-  @override
   @JsonKey(ignore: true)
   _$$_GetEduProgramCoursesCopyWith<_$_GetEduProgramCourses> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetGroupsCopyWith<$Res>
-    implements $OnboardingApiCopyWith<$Res> {
+abstract class _$$_GetGroupsCopyWith<$Res> {
   factory _$$_GetGroupsCopyWith(
           _$_GetGroups value, $Res Function(_$_GetGroups) then) =
       __$$_GetGroupsCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String universityCode});
 }
@@ -665,6 +667,8 @@ class _$_GetGroups extends _GetGroups {
             String universityCode, String educationalProgramId)
         getEduProgramCourses,
     required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
   }) {
     return getGroups(universityCode);
   }
@@ -677,6 +681,8 @@ class _$_GetGroups extends _GetGroups {
     TResult? Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
   }) {
     return getGroups?.call(universityCode);
   }
@@ -689,6 +695,8 @@ class _$_GetGroups extends _GetGroups {
     TResult Function(String universityCode, String educationalProgramId)?
         getEduProgramCourses,
     TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getGroups != null) {
@@ -704,6 +712,7 @@ class _$_GetGroups extends _GetGroups {
     required TResult Function(_GetEduPrograms value) getEduPrograms,
     required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
     required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
   }) {
     return getGroups(this);
   }
@@ -715,6 +724,7 @@ class _$_GetGroups extends _GetGroups {
     TResult? Function(_GetEduPrograms value)? getEduPrograms,
     TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
   }) {
     return getGroups?.call(this);
   }
@@ -726,6 +736,7 @@ class _$_GetGroups extends _GetGroups {
     TResult Function(_GetEduPrograms value)? getEduPrograms,
     TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
     TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
     required TResult orElse(),
   }) {
     if (getGroups != null) {
@@ -739,10 +750,188 @@ abstract class _GetGroups extends OnboardingApi {
   const factory _GetGroups(final String universityCode) = _$_GetGroups;
   const _GetGroups._() : super._();
 
-  @override
   String get universityCode;
-  @override
   @JsonKey(ignore: true)
   _$$_GetGroupsCopyWith<_$_GetGroups> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TurnOnNotificationsCopyWith<$Res> {
+  factory _$$_TurnOnNotificationsCopyWith(_$_TurnOnNotifications value,
+          $Res Function(_$_TurnOnNotifications) then) =
+      __$$_TurnOnNotificationsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String deviceToken, List<String> payload});
+}
+
+/// @nodoc
+class __$$_TurnOnNotificationsCopyWithImpl<$Res>
+    extends _$OnboardingApiCopyWithImpl<$Res, _$_TurnOnNotifications>
+    implements _$$_TurnOnNotificationsCopyWith<$Res> {
+  __$$_TurnOnNotificationsCopyWithImpl(_$_TurnOnNotifications _value,
+      $Res Function(_$_TurnOnNotifications) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deviceToken = null,
+    Object? payload = null,
+  }) {
+    return _then(_$_TurnOnNotifications(
+      null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == payload
+          ? _value._payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TurnOnNotifications extends _TurnOnNotifications {
+  const _$_TurnOnNotifications(this.deviceToken, final List<String> payload)
+      : _payload = payload,
+        super._();
+
+  @override
+  final String deviceToken;
+  final List<String> _payload;
+  @override
+  List<String> get payload {
+    if (_payload is EqualUnmodifiableListView) return _payload;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_payload);
+  }
+
+  @override
+  String toString() {
+    return 'OnboardingApi.turnOnNotifications(deviceToken: $deviceToken, payload: $payload)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TurnOnNotifications &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken) &&
+            const DeepCollectionEquality().equals(other._payload, _payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, deviceToken, const DeepCollectionEquality().hash(_payload));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TurnOnNotificationsCopyWith<_$_TurnOnNotifications> get copyWith =>
+      __$$_TurnOnNotificationsCopyWithImpl<_$_TurnOnNotifications>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String universityCode) checkUniversity,
+    required TResult Function(String universityCode) getEduPrograms,
+    required TResult Function(
+            String universityCode, String educationalProgramId)
+        getEduProgramCourses,
+    required TResult Function(String universityCode) getGroups,
+    required TResult Function(String deviceToken, List<String> payload)
+        turnOnNotifications,
+  }) {
+    return turnOnNotifications(deviceToken, payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String universityCode)? checkUniversity,
+    TResult? Function(String universityCode)? getEduPrograms,
+    TResult? Function(String universityCode, String educationalProgramId)?
+        getEduProgramCourses,
+    TResult? Function(String universityCode)? getGroups,
+    TResult? Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
+  }) {
+    return turnOnNotifications?.call(deviceToken, payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String universityCode)? checkUniversity,
+    TResult Function(String universityCode)? getEduPrograms,
+    TResult Function(String universityCode, String educationalProgramId)?
+        getEduProgramCourses,
+    TResult Function(String universityCode)? getGroups,
+    TResult Function(String deviceToken, List<String> payload)?
+        turnOnNotifications,
+    required TResult orElse(),
+  }) {
+    if (turnOnNotifications != null) {
+      return turnOnNotifications(deviceToken, payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckUniversity value) checkUniversity,
+    required TResult Function(_GetEduPrograms value) getEduPrograms,
+    required TResult Function(_GetEduProgramCourses value) getEduProgramCourses,
+    required TResult Function(_GetGroups value) getGroups,
+    required TResult Function(_TurnOnNotifications value) turnOnNotifications,
+  }) {
+    return turnOnNotifications(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckUniversity value)? checkUniversity,
+    TResult? Function(_GetEduPrograms value)? getEduPrograms,
+    TResult? Function(_GetEduProgramCourses value)? getEduProgramCourses,
+    TResult? Function(_GetGroups value)? getGroups,
+    TResult? Function(_TurnOnNotifications value)? turnOnNotifications,
+  }) {
+    return turnOnNotifications?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckUniversity value)? checkUniversity,
+    TResult Function(_GetEduPrograms value)? getEduPrograms,
+    TResult Function(_GetEduProgramCourses value)? getEduProgramCourses,
+    TResult Function(_GetGroups value)? getGroups,
+    TResult Function(_TurnOnNotifications value)? turnOnNotifications,
+    required TResult orElse(),
+  }) {
+    if (turnOnNotifications != null) {
+      return turnOnNotifications(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TurnOnNotifications extends OnboardingApi {
+  const factory _TurnOnNotifications(
+          final String deviceToken, final List<String> payload) =
+      _$_TurnOnNotifications;
+  const _TurnOnNotifications._() : super._();
+
+  String get deviceToken;
+  List<String> get payload;
+  @JsonKey(ignore: true)
+  _$$_TurnOnNotificationsCopyWith<_$_TurnOnNotifications> get copyWith =>
       throw _privateConstructorUsedError;
 }

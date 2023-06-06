@@ -13,11 +13,8 @@ abstract class IOnboardingRemoteDS {
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<Result<List<EduProgramDTO>>> getEduPrograms(String universityCode);
   Future<Result<List<CourseDTO>>> getEduProgramCourses(String universityCode, String educationalProgramId);
-  Future<Result<List<GroupDTO>>> getGroups(
-    String universityCode,
-    //  String educationalProgramId,
-    // int courseNumber,
-  );
+  Future<Result<List<GroupDTO>>> getGroups(String universityCode);
+  Future<Result<Map<String, dynamic>>> turnOnNotifications(String deviceToken, List<GroupDTO> groups);
 }
 
 class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
@@ -139,6 +136,44 @@ class OnboardingRemoteDSImpl implements IOnboardingRemoteDS {
         l.d('login => ${NetworkException.type(error: e.toString())}');
       }
       return Result<List<GroupDTO>>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Result<Map<String, dynamic>>> turnOnNotifications(String deviceToken, List<GroupDTO> groups) async {
+    try {
+      final List<String> listt = [];
+
+      for (int i = 0; i < groups.length; i++) {
+        listt.add(
+          groups[i].id,
+        );
+      }
+      final Result<Map?> result = await client.produce(
+        route: OnboardingApi.turnOnNotifications(deviceToken, listt),
+      );
+
+      return result.when(
+        success: (Map? response) {
+          // if (response) {
+          //   return const Result.failure(
+          //     NetworkException.type(error: 'Incorrect data parsing!'),
+          //   );
+          // }
+
+          final Map<String, dynamic> deviceId = response as Map<String, dynamic>;
+
+          return Result<Map<String, dynamic>>.success(deviceId);
+        },
+        failure: (NetworkException exception) => Result<Map<String, dynamic>>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('login => ${NetworkException.type(error: e.toString())}');
+      }
+      return Result<Map<String, dynamic>>.failure(
         NetworkException.type(error: e.toString()),
       );
     }

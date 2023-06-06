@@ -15,16 +15,18 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
   const factory OnboardingApi.getEduPrograms(String universityCode) = _GetEduPrograms;
   const factory OnboardingApi.getEduProgramCourses(String universityCode, String educationalProgramId) =
       _GetEduProgramCourses;
-  const factory OnboardingApi.getGroups(
-    String universityCode,
-    // String educationalProgramId,
-    // int courseNumber,
-  ) = _GetGroups;
+  const factory OnboardingApi.getGroups(String universityCode) = _GetGroups;
+  const factory OnboardingApi.turnOnNotifications(String deviceToken, List<String> payload) = _TurnOnNotifications;
 
   /// Здесь описываются body для всех запросов
   /// По умолчанию null
   @override
-  dynamic get body => whenOrNull();
+  dynamic get body => whenOrNull(
+        turnOnNotifications: (deviceToken, payload) => {
+          "deviceToken": deviceToken,
+          "groups": payload,
+        },
+      );
 
   /// Используемые методы запросов, по умолчанию 'GET'
   @override
@@ -39,16 +41,8 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
         getEduPrograms: (String universityCode) => 'educational-programs',
         getEduProgramCourses: (String universityCode, String educationalProgramId) =>
             'educational-programs/$educationalProgramId/courses',
-        // getGroups: (String universityCode,
-        //  String educationalProgramId,
-        //  int courseNumber) =>
-        //     'educational-programs/$educationalProgramId/courses/$courseNumber/groups',
-        getGroups: (
-          String universityCode,
-          //  String educationalProgramId,
-          // int courseNumber,
-        ) =>
-            'groups',
+        getGroups: (String universityCode) => 'groups',
+        turnOnNotifications: (deviceToken, payload) => 'notifications',
       );
 
   /// Параметры запросов
@@ -63,12 +57,7 @@ class OnboardingApi extends BaseClientGenerator with _$OnboardingApi {
         getEduProgramCourses: (String universityCode, String educationalProgramId) => {
           'universityCode': universityCode,
         },
-        getGroups: (
-          String universityCode,
-          // String educationalProgramId,
-          // int courseNumber
-        ) =>
-            {
+        getGroups: (String universityCode) => {
           'universityCode': universityCode,
         },
       );

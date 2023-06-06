@@ -10,8 +10,9 @@ abstract class IOnboardingRepository {
   bool getOnboarding();
   Future<void> setOnboarding({required bool onboarding});
   Future<String> setUniInfo(
-      // CourseDTO course,
-      List<GroupDTO> groups,);
+    // CourseDTO course,
+    List<GroupDTO> groups,
+  );
 
   Future<Result<UniversityDTO>> checkUniversity(String universityCode);
   Future<UniversityDTO?> getUniversityFromCache();
@@ -25,4 +26,6 @@ abstract class IOnboardingRepository {
     // String educationalProgramId,
     // int courseNumber
   );
+
+  Future<Result<Map<String, dynamic>>> turnOnNotifications(String deviceToken, List<GroupDTO> groups);
 }
